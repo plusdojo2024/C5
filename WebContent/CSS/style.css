@@ -40,7 +40,7 @@ header{
     margin-top: 0px;
     padding: 5px;
     background-color: #f9c146;
-    max-width: 350px;
+    width: 100%;
 }
 
 /*ひろしninaruロゴの色*/
@@ -50,12 +50,18 @@ h3{
 
 .content{
     text-align: center;
-    max-width: 350px;
+    width: 100%;
     padding-top: 10px;
     background-color: #b1dbd1;
+    margin-bottom: 20px;
 }
 
 #recordIcon{
+    width: 70px;
+    height: 80px;
+}
+
+#fixedBar{
     width: 70px;
     height: 80px;
 }
@@ -64,9 +70,10 @@ footer {
     position: fixed;
     bottom: 0;
     left: 0;
-    max-width: 350px;
+    width: 100%;
     text-align: center;
     background: white;
+    margin-top: 10px;
     padding: 10px 0;
 }
 
