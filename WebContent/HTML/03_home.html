@@ -1,10 +1,8 @@
 <!DOCTYPE html>
 <html lang="ja">
-    <head>
-        <meta charset="UTF-8" />
-        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-            
+
+<div class="content">
+    <head>            
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@100..900&display=swap" rel="stylesheet">
@@ -14,28 +12,50 @@
     </head>
 
 <body>
-
     <header>
         <h3>ひろしninaru</h3>
     </header>
 
-<div class="content">
     <form id="birthdateForm">
         <label for="birthdate">生年月日を選択してください:</label>
         <input type ="date" id="birthdate" name = "birthdate">
     </form>
-    <img src="../images/Home-Hiroshi.png">
+    
+    <!--↓生年月日を表示する-->
     <p id="result"></p>
 
-    <input type ="submit" id="" value="体温を測る"></input>
+    <img src="../images/Home-Hiroshi.png">
+    
+    <br>
+    <input type ="button" id="" value="体温を測る"></input>
 
     <h2>記録する</h2>
-    <input type ="submit" id="" value="排泄"></input>
-    <input type ="submit" id="" value="睡眠"></input>
-    <input type ="submit" id="" value="ごはん"></input>
-    <input type ="submit" id="" value="写真"></input><br>
-    
-    <input type ="submit" id="" value="パートナーにシェア"></input>
+   <table align="center">
+        <tr>
+            <td>
+                <img src="../images/icons/poop.jpeg" id="recordIcon" alt="排泄">
+            </td>
+            <td>
+                <img src="../images/icons/sleepingHima.png" id="recordIcon" alt="睡眠">
+            </td>
+            <td>
+                <img src="../images/icons/milk.jpeg" id="recordIcon" alt="ごはん">
+            </td>
+            <td>
+                <img src="../images/icons/photos.jpeg" id="recordIcon" alt="写真">
+            </td>
+        </tr>
+
+        <tr>
+            <td><input type ="button" id="" value="排泄"></input></td>
+            <td><input type ="button" id="" value="睡眠"></input></td>
+            <td><input type ="button" id="" value="ごはん"></input></td>
+            <td><input type ="button" id="" value="写真"></input></td>
+        </tr>
+
+    </table>
+    <br>
+    <input type ="button" id="shareQR" value="パートナーにシェア"></input>
 
             <!--ポップアップダイアログ
             <div id="popup" class="modal">
@@ -50,14 +70,33 @@
                     
                 </div>
             </div>-->
+
 <footer>
-    <ul id="nav">
-        <li><a href="Home.html">ホーム</a></li>
-        <li><a href="Home.html">記録書</a></li>
-        <li><a href="Home.html">ハンドブック</a></li>
-        <li><a href="Home.html">相談所</a></li>
-    </ul>
+    <table align="center">
+        <tr>
+            <td>
+                <img src="../images/icons/home.png" id="fixedBar" alt=""></a>
+            </td>
+            <td>
+                <img src="../images/icons/record.png" id="fixedBar" alt=""></a>
+            </td>
+            <td>
+                <img src="../images/icons/handbook.png" id="fixedBar" alt=""></a>
+            </td>
+            <td>
+                <img src="../images/icons/consul.png" id="fixedBar" alt=""></a>
+            </td>
+        </tr>
+
+        <tr>
+            <td><input type ="submit" id="" value="ホーム"></input></td>
+            <td><input type ="submit" id="" value="記録書"></input></td>
+            <td><input type ="submit" id="" value="ハンドブック"></input></td>
+            <td><input type ="submit" id="" value="相談所"></input></td>
+        </tr>
+    </table>
 </footer>
+
     <script>
         //ポップアップ、トグルスイッチ
         /*document.addEventListener('DOMContentLoaded',(event)=> {
@@ -151,6 +190,7 @@
                 document.getElementById('result').textContent = result;
         }
     </script>
+
 </div>
 </body>
 </html>
