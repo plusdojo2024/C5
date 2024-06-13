@@ -4,7 +4,7 @@ import java.io.Serializable;
 
 //フィールドを増やした分だけ、下のコンストラクタを増やす
 public class Users implements Serializable {
-	private int user_id;/* ユーザーID */
+	private int id;/* ユーザーID */
 	private String user_name; /* ユーザー名 */
 	private String password; /* パスワード */
 	private int sum; /* 合計 */
@@ -12,10 +12,10 @@ public class Users implements Serializable {
 	private String child_name; /* 子供の名前 */
 
 	//	引数のあるコンストラクタ
-	public Users(int user_id, String user_name, String password, int sum,
+	public Users(int id, String user_name, String password, int sum,
 			String child_bairthday, String child_name) {
 
-		this.user_id = user_id;
+		this.id = id;
 		this.user_name = user_name;
 		this.password = password;
 		this.sum = sum;
@@ -25,7 +25,7 @@ public class Users implements Serializable {
 
 	//	引数のないコンストラクタ
 	public Users() {
-		this.user_id = 0;
+		this.id = 0;
 		this.user_name = "";
 		this.password = "";
 		this.sum = 0;
@@ -34,12 +34,12 @@ public class Users implements Serializable {
 
 	}
 
-	public int getUser_id() {
-		return user_id;
+	public int getId() {
+		return id;
 	}
 
-	public void setUser_id(int user_id) {
-		this.user_id = user_id;
+	public void setId(int id) {
+		this.id = id;
 	}
 
 	public String getUser_name() {
