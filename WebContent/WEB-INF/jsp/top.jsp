@@ -7,6 +7,8 @@
 <title>Insert title here</title>
 </head>
 <body>
-
+<form  method="post" action="/C5/LoginServlet">
+<input type="submit" value="ボタン">
+</form>
 </body>
 </html>
