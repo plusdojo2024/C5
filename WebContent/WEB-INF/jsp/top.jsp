@@ -7,8 +7,11 @@
 <title>Insert title here</title>
 </head>
 <body>
+<<<<<<< HEAD
 <form  method="post" action="/C5/LoginServlet">
 <input type="submit" value="ボタン">
 </form>
+=======
+>>>>>>> 181e212b31d3a44926f39bb3693f83205a5dc764
 </body>
 </html>
