@@ -13,7 +13,7 @@ public class Users implements Serializable {
 
 	//	引数のあるコンストラクタ
 	public Users(int id, String user_name, String password, int sum,
-			String child_bairthday, String child_name) {
+			String child_birthday, String child_name) {
 
 		this.id = id;
 		this.user_name = user_name;
