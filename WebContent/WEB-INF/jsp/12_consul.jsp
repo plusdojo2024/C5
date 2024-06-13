@@ -1,0 +1,25 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+    <!DOCTYPE html>
+    <html lang="ja">
+        <div class="content">
+    <head>
+        <meta charset="UTF-8">
+        <title>サンプル</title>
+        <link rel="stylesheet" href="Home.css">
+    </head>
+    <body>
+        <h1>ひろしninaru</h1>
+        <ul id="nav"></ul>
+        <li><a href="ConsulLife.html">衣</a></li>
+        <li><a href="ConsulLife.html">食</a></li>
+        <li><a href="ConsulLife.html">住</a></li>
+        <li><a href="ConsulLife.html">その他</a></li>       
+    <footer>
+        <ul id="nav">
+            <li><a href="Home.html">ホーム</a></li>
+            <li><a href="record.html">記録書</a></li>
+            <li><a href="ConsulTop.html">相談所</a></li>
+            <li><a href="HandBook.html">Handbook</a></li>
+        </ul>
+    </footer>
