@@ -3,7 +3,7 @@
     <!DOCTYPE html>
     <html lang="ja">
     
-    <div class="content">
+    <div id="content">
         <head>            
             <link rel="preconnect" href="https://fonts.googleapis.com">
             <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -15,7 +15,7 @@
     
     <body>
         <header>
-            <h3>ひろしninaru</h3>
+            <h3 id="AppLogo">ひろしninaru</h3>
         </header>
     
         <form id="birthdateForm">
