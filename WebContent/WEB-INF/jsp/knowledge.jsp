@@ -6,10 +6,21 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>HandBook</title>
+
+    <title>ハンドブック</title>
+
+  </head>
+  <header style="text-align: center;">
+      ひろしninaru
+  </header>
+
+  <body style="text-align: center;">
+
+      <h1>ハンドブック</h1>
+
   </head>
   <body>
-    <div id="#衣1">
+    <div class="Cloth1">
     1.おむつの替え方<br><br>
     準備するもの
     •  おむつ
@@ -31,7 +42,7 @@
     <br>
     <br>
 
-    <div id="#2">
+    <div class="Cloth2">
         2.洗濯時の注意<br><br>
         ・少なくとも生後一か月未満は大人服と一緒に洗わない
         赤ちゃんの肌はデリケートなため、肌トラブルを起こす可能性があります。
@@ -48,7 +59,7 @@
     <br>
     <br>
 
-    <div id="#3">
+    <div class="Cloth3">
         3.外出時の持ち物<br><br>
         赤ちゃんと外出時の必需品は
         「ミルク、おむつ、おしりふき」
@@ -72,7 +83,7 @@
     <br>
     <br>
 
-    <div id="#食1">
+    <div class="Meal1">
        1.食べてはいけないもの<br><br>
         子供に食べてはいけないものは、のどの詰まりや窒息の原因となる「食材自体が危険なもの」と「子どもの噛む力や口の大きさに見合わないもの」です！<br><br>
 
@@ -108,7 +119,7 @@
     <br>
 
 
-    <div id="#2">
+    <div class="Meal2">
         2.栄養バランス<br><br>
         離乳食がすすむにつれ、気になるのが栄養バランス!<br>
         1日3食になる頃から、それまで半々だった母乳やミルクからの栄養/離乳食からの栄養の割合が、徐々に離乳食の方が多くなっていくため、
@@ -129,7 +140,7 @@
     <br>
     <br>
 
-    <div id="#3">
+    <div class="Meal3">
         3.ミルクの作り方と飲ませ方<br><br>
         粉ミルクを溶かすときは70度以上のお湯を使いましょう!<br>
         ・お湯で溶かした粉ミルクは、流水にあてるか冷水または氷水の入った容器に入れて授乳できる温度まで短期間で冷やしましょう。
@@ -150,7 +161,7 @@
     <br>
     <br>
 
-    <div id="#住1">
+    <div class="Living1">
         1.温度・湿度<br><br>
         個人差はあるものの、体温の基準は「36.5～37.5℃くらい」<br>
 
@@ -171,7 +182,7 @@
     <br>
     <br>
 
-    <div id="#2">
+    <div class="Living2">
         2.お風呂の入れ方<br><br>
         生まれて間もない赤ちゃんは抵抗力が弱いので、生後1ヶ月頃までは、大人と一緒のおふろではなくベビーバスで沐浴をさせてあげます。<br><br>
 
@@ -209,7 +220,7 @@
     <br>
     <br>
 
-    <div id="#3">
+    <div class="Living3">
         3.注意する家具<br><br>
         ・テーブルや棚などの角・隙間でけがをしないように保護する
         <br>赤ちゃんがけがをしないように、<br>

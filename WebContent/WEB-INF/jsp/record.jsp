@@ -12,7 +12,7 @@
 -->
 </head>
 <body>
- <div id="#">
+ <div id="record">
 <h1 style="text-align:center">育児記録書</h1>
 <p style="text-align:center">カレンダー</p>
 
@@ -22,6 +22,8 @@
 <p style="text-align:center">今日はどんな一日だったかな？</p>
 
 <textarea rows="5" cols="80"></textarea>
+
+</div>
 
 <br>
 
