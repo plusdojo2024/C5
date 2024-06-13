@@ -2,7 +2,6 @@ package model;
 
 import java.io.Serializable;
 import java.sql.Timestamp;
-import java.util.Date;
 
 //フィールドを増やした分だけ、下のコンストラクタを増やす
 public class Record_times implements Serializable {
@@ -16,18 +15,51 @@ public class Record_times implements Serializable {
 			Timestamp excretion_time, Timestamp sleep_time) {
 
 		this.id = id;
-		this.meal_time=meal_time;
-		this.excretion_time=excretion_time;
-		this.sleep_time=sleep_time;
+		this.meal_time = meal_time;
+		this.excretion_time = excretion_time;
+		this.sleep_time = sleep_time;
 
 	}
 
 	//	引数のないコンストラクタ
 	public Record_times() {
 		this.id = 0;
-		this.meal_time=new Timestamp();
-		this.excre:
+		this.meal_time=new Timestamp(System.currentTimeMillis());
+		this.excretion_time=new Timestamp(System.currentTimeMillis());
+		this.sleep_time=new Timestamp(System.currentTimeMillis());
 
+	}
 
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
+	}
+
+	public Timestamp getMeal_time() {
+		return meal_time;
+	}
+
+	public void setMeal_time(Timestamp meal_time) {
+		this.meal_time = meal_time;
+	}
+
+	public Timestamp getExcretion_time() {
+		return excretion_time;
+	}
+
+	public void setExcretion_time(Timestamp excretion_time) {
+		this.excretion_time = excretion_time;
+	}
+
+	public Timestamp getSleep_time() {
+		return sleep_time;
+	}
+
+	public void setSleep_time(Timestamp sleep_time) {
+		this.sleep_time = sleep_time;
+	}
 
 	}
