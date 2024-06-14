@@ -59,7 +59,7 @@
 
 /*新規登録ボタン*/
 
-.SignUp{  
+.SignUp{
     margin-top: 20px;
     width: 80%;
     background-color: #f9c146;
@@ -122,7 +122,7 @@
 
 /*新規登録ボタン*/
 
-.SignUp{  
+.SignUp{
     margin-top: 20px;
     width: 80%;
     background-color: #f9c146;
@@ -218,7 +218,7 @@ footer {
     padding-right: 30px;		/* 区切りを空ける */
 }
 
- 
+
 
 /*---相談所トップ--------------------------------------------*/
 
@@ -316,7 +316,7 @@ h3{
 .TimeRecord{
     text-align: left;
     background-color: white;
-    
+
 }
 
 .RecordData{
