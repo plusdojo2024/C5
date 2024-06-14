@@ -6,10 +6,13 @@
   <meta charset="UTF-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>テスト結果</title>
-<!--
-<link rel="stylesheet" type="text/css" href="style.css">
--->
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@100..900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" type="text/css" href="/C5/CSS/style.css">
+
+  <title>テスト結果</title>
 </head>
 <body>
 
@@ -31,14 +34,16 @@
 <br>
 
 <p style="text-align:center">ハンドブックをチェック！</p>
-
-<input type="button" value="ハンドブックを確認する" class="#HandBookCheck">
+<form method="post" action="/C5/HandbookServlet">
+	<input type="button" value="ハンドブックを確認する" class="#HandBookCheck">
+</form>
 
 <br>
 <br>
-<p style="text-align:center">もう一度テストする？</p>
-<input type="button" value="再テスト" class="testButton">
-
+<form method="post" action="/C5/TestResultServlet">
+	<p style="text-align:center">もう一度テストする？</p>
+	<input type="button" value="再テスト" class="testButton">
+</form>
 <br>
 <br>
 <br>
