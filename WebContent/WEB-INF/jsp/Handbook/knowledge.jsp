@@ -241,32 +241,48 @@
         <table align="center">
             <tr>
                 <td>
-                	<form method="get" action="/C5/HomeServlet">
-                    <img src="../images/icons/home.png" id="fixedBar" alt=""></a>
-                    </form>
+
+                    <img src="../images/icons/home.png" id="fixedBar" alt="ホーム"></a>
+
                 </td>
                 <td>
-                    <form method="get" action="/C5/RecordServlet">
-                    <img src="../images/icons/record.png" id="fixedBar" alt=""></a>
-                    </form>
+
+                    <img src="../images/icons/record.png" id="fixedBar" alt="記録書"></a>
+
                 </td>
                 <td>
-                    <form method="get" action="/C5/HandbookServlet">
-                    <img src="../images/icons/handbook.png" id="fixedBar" alt=""></a>
-                    </form>
+
+                    <img src="../images/icons/handbook.png" id="fixedBar" alt="ハンドブック"></a>
+
                 </td>
                 <td>
-                    <form method="get" action="/C5/ConsulServlet">
-                    <img src="../images/icons/consul.png" id="fixedBar" alt=""></a>
-                    </form>
+
+                    <img src="../images/icons/consul.png" id="fixedBar" alt="相談所"></a>
+
                 </td>
             </tr>
 
             <tr>
-                <td><input type ="submit" id="" value="ホーム"></input></td>
-                <td><input type ="submit" id="" value="記録書"></input></td>
-                <td><input type ="submit" id="" value="ハンドブック"></input></td>
-                <td><input type ="submit" id="" value="相談所"></input></td>
+                <td>
+                	<form method="get" action="/C5/HomeServlet">
+                	<input type ="submit" id="" value="ホーム"></input>
+                	</form>
+                </td>
+                <td>
+                	<form method="get" action="/C5/RecordServlet">
+                	<input type ="submit" id="" value="記録書"></input>
+                	</form>
+                </td>
+                <td>
+                	<form method="get" action="/C5/HandbookServlet">
+                	<input type ="submit" id="" value="ハンドブック"></input>
+                	</form>
+                </td>
+                <td>
+                	<form method="get" action="/C5/ConsulServlet">
+                	<input type ="submit" id="" value="相談所"></input>
+                	</form>
+                </td>
             </tr>
         </table>
     </footer>
