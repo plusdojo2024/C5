@@ -47,33 +47,27 @@
 
     <br>
 
-    <ul id="nav">
-        <li><a href="">ホーム</a></li>
-        <li><a href="">記録書</a></li>
-        <li><a href="">相談所</a></li>
-        <li><a href="">ハンドブック</a></li>
-      </ul>
-        <footer>
+    <footer>
         <table align="center">
             <tr>
                 <td>
 
-                    <img src="../images/icons/home.png" id="fixedBar" alt="ホーム"></a>
+                    <img src="/C5/images/icons/home.png" class="FixedBar" alt="ホーム"></a>
 
                 </td>
                 <td>
 
-                    <img src="../images/icons/record.png" id="fixedBar" alt="記録書"></a>
+                    <img src="/C5/images/icons/record.png" class="FixedBar" alt="記録書"></a>
 
                 </td>
                 <td>
 
-                    <img src="../images/icons/handbook.png" id="fixedBar" alt="ハンドブック"></a>
+                    <img src="/C5/images/icons/handbook.png" class="FixedBar" alt="ハンドブック"></a>
 
                 </td>
                 <td>
 
-                    <img src="../images/icons/consul.png" id="fixedBar" alt="相談所"></a>
+                    <img src="/C5/images/icons/consul.png" class="FixedBar" alt="相談所"></a>
 
                 </td>
             </tr>
