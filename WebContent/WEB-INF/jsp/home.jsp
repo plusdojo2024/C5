@@ -31,7 +31,7 @@
       <br>
 
       <form>
-      	<input type ="button" id="" value="体温を測る"></input>
+      	<input type ="submit" id="" value="体温を測る"></input>
 	  </form>
 
       <h2>記録する</h2>
