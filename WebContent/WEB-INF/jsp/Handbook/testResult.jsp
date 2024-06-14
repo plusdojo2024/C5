@@ -6,10 +6,13 @@
   <meta charset="UTF-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>テスト結果</title>
-<!--
-<link rel="stylesheet" type="text/css" href="style.css">
--->
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@100..900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" type="text/css" href="/C5/CSS/style.css">
+
+  <title>テスト結果</title>
 </head>
 <body>
 
@@ -31,52 +34,69 @@
 <br>
 
 <p style="text-align:center">ハンドブックをチェック！</p>
-
-<input type="button" value="ハンドブックを確認する" class="#HandBookCheck">
-
-<br>
-<br>
-<p style="text-align:center">もう一度テストする？</p>
-<input type="button" value="再テスト" class="testButton">
+<form method="post" action="/C5/HandbookServlet">
+	<input type="button" value="ハンドブックを確認する" class="#HandBookCheck">
+</form>
 
 <br>
 <br>
+<form method="post" action="/C5/TestResultServlet">
+	<p style="text-align:center">もう一度テストする？</p>
+	<input type="button" value="再テスト" class="testButton">
+</form>
+<br>
+<br>
 <br>
 
-    <footer>
+     <footer>
         <table align="center">
             <tr>
                 <td>
-                	<form method="get" action="/C5/HomeServlet">
-                    <img src="../images/icons/home.png" id="fixedBar" alt=""></a>
-                    </form>
+
+                    <img src="../images/icons/home.png" id="fixedBar" alt="ホーム"></a>
+
                 </td>
                 <td>
-                    <form method="get" action="/C5/RecordServlet">
-                    <img src="../images/icons/record.png" id="fixedBar" alt=""></a>
-                    </form>
+
+                    <img src="../images/icons/record.png" id="fixedBar" alt="記録書"></a>
+
                 </td>
                 <td>
-                    <form method="get" action="/C5/HandbookServlet">
-                    <img src="../images/icons/handbook.png" id="fixedBar" alt=""></a>
-                    </form>
+
+                    <img src="../images/icons/handbook.png" id="fixedBar" alt="ハンドブック"></a>
+
                 </td>
                 <td>
-                    <form method="get" action="/C5/ConsulServlet">
-                    <img src="../images/icons/consul.png" id="fixedBar" alt=""></a>
-                    </form>
+
+                    <img src="../images/icons/consul.png" id="fixedBar" alt="相談所"></a>
+
                 </td>
             </tr>
 
             <tr>
-                <td><input type ="submit" id="" value="ホーム"></input></td>
-                <td><input type ="submit" id="" value="記録書"></input></td>
-                <td><input type ="submit" id="" value="ハンドブック"></input></td>
-                <td><input type ="submit" id="" value="相談所"></input></td>
+                <td>
+                	<form method="get" action="/C5/HomeServlet">
+                	<input type ="submit" id="" value="ホーム"></input>
+                	</form>
+                </td>
+                <td>
+                	<form method="get" action="/C5/RecordServlet">
+                	<input type ="submit" id="" value="記録書"></input>
+                	</form>
+                </td>
+                <td>
+                	<form method="get" action="/C5/HandbookServlet">
+                	<input type ="submit" id="" value="ハンドブック"></input>
+                	</form>
+                </td>
+                <td>
+                	<form method="get" action="/C5/ConsulServlet">
+                	<input type ="submit" id="" value="相談所"></input>
+                	</form>
+                </td>
             </tr>
         </table>
     </footer>
-
 </body>
 
 </html>

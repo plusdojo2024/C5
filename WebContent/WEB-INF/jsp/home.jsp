@@ -8,7 +8,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@100..900&display=swap" rel="stylesheet">
-    <link rel="stylesheet" type="text/css" href="../css/style.css">
+    <link rel="stylesheet" type="text/css" href="/C5/CSS/style.css">
 
     <title>ホーム</title>
   </head>
@@ -31,7 +31,7 @@
       <br>
 
       <form>
-      	<input type ="button" id="" value="体温を測る"></input>
+      	<input type ="submit" class="openPopupBtn" value="体温を測る"></input>
 	  </form>
 
       <h2>記録する</h2>
@@ -52,17 +52,18 @@
           </tr>
 
           <tr>
-            <td><input type ="button" id="" value="排泄"></input></td>
-            <td><input type ="button" id="" value="睡眠"></input></td>
-            <td><input type ="button" id="" value="ごはん"></input></td>
-            <td><input type ="button" id="" value="写真"></input></td>
+            <td><input type ="submit" class="openPopupBtn" value="排泄"></input></td>
+            <td><input type ="submit" class="openPopupBtn" value="睡眠"></input></td>
+            <td><input type ="submit" class="openPopupBtn" value="ごはん"></input></td>
+            <td><input type ="submit" class="openPopupBtn" value="写真"></input></td>
           </tr>
 
        </table>
        	<br>
 
-       <input type ="button" id="shareQR" value="パートナーにシェア"></input>
+       <input type ="submit" class="shareQR" value="パートナーにシェア"></input>
 
+<<<<<<< HEAD
 
 
                 <!--ポップアップダイアログ
@@ -75,9 +76,23 @@
                                 <span class="toggle-slibe"></span></label>
                                 <input type="text" id="userInput" placeholder="ここに入力">
                                 <button id="submitBtn">登録</button>
+=======
+                <!--ポップアップダイアログ-->
+            <div id="popup" class="modal" style="display: none;">
+            <div class="modal-content">
+                <span class="close">&times;</span>
+                <p>テキストを入力してください:</p>
+                <input type="text" id="userInput" placeholder="ここに入力">
+                <button id="submitBtn">登録</button>
+                <!-- トグルスイッチ -->
+                    <label class="toggle-switch">
+                    <input type="checkbox" id="toggleSwitch">
+                    <span class="toggle-slider round"></span></label>
+>>>>>>> d22bbd540094533443c3e979f0e5af4b54edddf6
 
-                    </div>
-                </div>-->
+
+            </div>
+    </div>
 
     <footer>
         <table align="center">
@@ -129,53 +144,76 @@
         </table>
     </footer>
         <script>
-            //ポップアップ、トグルスイッチ
-            /*document.addEventListener('DOMContentLoaded',(event)=> {
-                const modal = document.getElementById("popup");
-                    const btl1 = document.getElementById("openPopupBtn1");
-                    const btl2 = document.getElementById("openPopupBtn2");
+      //ポップアップ、トグルスイッチ
+        document.addEventListener('DOMContentLoaded',function (){
+            //モーダル要素を取得
+            const modal = document.getElementById("popup");
 
-                    const span = document.getElementsByClassName("close")[0];
-                    const submitBtn = document.getElementById("submitBtn");
-                    const userInput = document.getElementById("userInput");
-                    const toggleswich = document.getElementById("toggleSwich");
+            //ポップアップ表示ボタンを取得
+                const openPopupBtns = document.querySelectorAll(".openPopupBtn");
 
-                function openModal() {
-                    modal.style.display = "block";
-                        setTimeout(()=>) {
-                            modal.classList.add("open");
-                        },10);
-                    }
-                    function closeModal(){
-                        modal.classList.remove("open");
-                            setTimeout(() => {
-                                modal.style.display ="none";
-                            },300);
-                    }
+                //const btn2 = document.getElementById("openPopupBtn2");
 
-                    btl1.onclick = function (){
+                //閉じるボタン要素を取得
+                const closeBtn = document.querySelector(".close");
+
+                //OKボタン要素を取得
+                const submitBtn = document.getElementById("submitBtn");
+
+                //ユーザー入力フィールドを取得
+                const userInput = document.getElementById("userInput");
+                //const toggleSwich = document.getElementById("toggleSwich");
+
+                //モーダルを開く関数
+            function openModal() {
+                modal.style.display = "block";
+                    setTimeout(() =>  {
+
+                        //微小な遅延を設けてクラスを追加
+                        modal.classList.add("open");
+                    }, 10 );
+                }
+
+                //モーダルを閉じる関数
+                function closeModal(){
+                    modal.classList.remove("open");
+                        setTimeout(() => {
+
+                            //アニメーションの時間に合わせる
+                            modal.style.display ="none";
+                        },300);
+                }
+
+                openPopupBtns.forEach(btn => {
+                    btn.addEventListener('click',function(event) {
+                        event.preventDefault();
                         openModal();
-                    }
-                    btl2.onclick = function (){
-                        openModal();
-                    }
-                    submitBtn.onclick = function(){
-                        alert("入力されたテキスト:"+ userInput.value);
+                    });
+                });
+
+                closeBtn.addEventListener('click',function() {
+                    closeModal();
+               });
+
+                submitBtn.addEventListener ('click',function(){
+                    alert("入力されたテキスト:"+ userInput.value);
+                    closeModal();
+                });
+
+               /*window.addEventListener('click',function (event) {
+                    if (event.target == modal) {
                         closeModal();
                     }
-                    toggleswich.onchange = function() {
-                        if (toggleswich.checked){
-                            console.log("ON");
-                        } else {
-                            console.log("OFF");
-                        }
-                    }
-                    window.onclick = function(event) {
-                        if (event.terget == modal){
-                            closeModal();
-                        }
-                    }
                 });*/
+
+               toggleSwich.addEventListener('chage', function() {
+                    if (toggleSwich.cheaked) {
+                        console.log("ON");
+                    } else {
+                        console.log('OFF');
+                    }
+                });
+       });
 
 
             //カレンダー

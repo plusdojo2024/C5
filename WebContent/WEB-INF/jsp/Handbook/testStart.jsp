@@ -6,17 +6,21 @@
   <meta charset="UTF-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>テストスタート</title>
-<!--
-<link rel="stylesheet" type="text/css" href="style.css">
--->
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@100..900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" type="text/css" href="/C5/CSS/style.css">
+
+  <title>テストスタート</title>
 </head>
 <body>
 <h1 style="text-align:center">衣食住テスト</h1>
 <p style="text-align:center">ハンドブックの理解度をテストしてみよう！</p>
 
-<input type="button" value="テストを開始する" id="testButton">
-
+<form method="post" action="/C5/TestServlet">
+	<input type="button" value="テストを開始する" id="testButton">
+</form>
 
 
 <br>
@@ -24,19 +28,63 @@
 
 <p style="text-align:center">ハンドブックをチェック！</p>
 
-<input type="button" value="ハンドブックを確認する" class="#HandBookCheck">
+<form method="post" action="/C5/HandbookServlet">
+	<input type="button" value="ハンドブックを確認する" class="#HandBookCheck">
+</form>
 
 <br>
 <br>
 <br>
 
-<ul id="nav">
-    <li><a href="">ホーム</a></li>
-    <li><a href="">記録書</a></li>
-    <li><a href="">相談所</a></li>
-    <li><a href="">ハンドブック</a></li>
-  </ul>
+    <footer>
+        <table align="center">
+            <tr>
+                <td>
 
+                    <img src="../images/icons/home.png" id="fixedBar" alt="ホーム"></a>
+
+                </td>
+                <td>
+
+                    <img src="../images/icons/record.png" id="fixedBar" alt="記録書"></a>
+
+                </td>
+                <td>
+
+                    <img src="../images/icons/handbook.png" id="fixedBar" alt="ハンドブック"></a>
+
+                </td>
+                <td>
+
+                    <img src="../images/icons/consul.png" id="fixedBar" alt="相談所"></a>
+
+                </td>
+            </tr>
+
+            <tr>
+                <td>
+                	<form method="get" action="/C5/HomeServlet">
+                	<input type ="submit" id="" value="ホーム"></input>
+                	</form>
+                </td>
+                <td>
+                	<form method="get" action="/C5/RecordServlet">
+                	<input type ="submit" id="" value="記録書"></input>
+                	</form>
+                </td>
+                <td>
+                	<form method="get" action="/C5/HandbookServlet">
+                	<input type ="submit" id="" value="ハンドブック"></input>
+                	</form>
+                </td>
+                <td>
+                	<form method="get" action="/C5/ConsulServlet">
+                	<input type ="submit" id="" value="相談所"></input>
+                	</form>
+                </td>
+            </tr>
+        </table>
+    </footer>
 </body>
 
 </html>
