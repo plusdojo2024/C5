@@ -31,14 +31,16 @@
 <br>
 
 <p style="text-align:center">ハンドブックをチェック！</p>
-
-<input type="button" value="ハンドブックを確認する" class="#HandBookCheck">
+<form method="post" action="/C5/HandbookServlet">
+	<input type="button" value="ハンドブックを確認する" class="#HandBookCheck">
+</form>
 
 <br>
 <br>
-<p style="text-align:center">もう一度テストする？</p>
-<input type="button" value="再テスト" class="testButton">
-
+<form method="post" action="/C5/TestResultServlet">
+	<p style="text-align:center">もう一度テストする？</p>
+	<input type="button" value="再テスト" class="testButton">
+</form>
 <br>
 <br>
 <br>
