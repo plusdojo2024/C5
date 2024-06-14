@@ -63,6 +63,8 @@
 
        <input type ="button" id="shareQR" value="パートナーにシェア"></input>
 
+
+
                 <!--ポップアップダイアログ
                 <div id="popup" class="modal">
                     <div class="modal-content">
@@ -126,7 +128,6 @@
             </tr>
         </table>
     </footer>
-
         <script>
             //ポップアップ、トグルスイッチ
             /*document.addEventListener('DOMContentLoaded',(event)=> {
