@@ -27,11 +27,11 @@
 
     <div>
 	<form method="post" action="/C5/BookChoiceServlet">
-        <input type="button" name="1" value="①おむつの替え方">
+        <input type="submit" name="1" value="①おむつの替え方">
         <br>
-        <input type="button" name="2" value="②洗濯時の注意">
+        <input type="submit" name="2" value="②洗濯時の注意">
         <br>
-        <input type="button" name="3" value="③外出時の持ち物">
+        <input type="submit" name="3" value="③外出時の持ち物">
         <br>
         </form>
     </div>
