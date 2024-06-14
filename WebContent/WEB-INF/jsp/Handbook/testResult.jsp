@@ -43,12 +43,39 @@
 <br>
 <br>
 
-<ul id="nav">
-    <li><a href="">ホーム</a></li>
-    <li><a href="">記録書</a></li>
-    <li><a href="">相談所</a></li>
-    <li><a href="">ハンドブック</a></li>
-  </ul>
+    <footer>
+        <table align="center">
+            <tr>
+                <td>
+                	<form method="get" action="/C5/HomeServlet">
+                    <img src="../images/icons/home.png" id="fixedBar" alt=""></a>
+                    </form>
+                </td>
+                <td>
+                    <form method="get" action="/C5/RecordServlet">
+                    <img src="../images/icons/record.png" id="fixedBar" alt=""></a>
+                    </form>
+                </td>
+                <td>
+                    <form method="get" action="/C5/HandbookServlet">
+                    <img src="../images/icons/handbook.png" id="fixedBar" alt=""></a>
+                    </form>
+                </td>
+                <td>
+                    <form method="get" action="/C5/ConsulServlet">
+                    <img src="../images/icons/consul.png" id="fixedBar" alt=""></a>
+                    </form>
+                </td>
+            </tr>
+
+            <tr>
+                <td><input type ="submit" id="" value="ホーム"></input></td>
+                <td><input type ="submit" id="" value="記録書"></input></td>
+                <td><input type ="submit" id="" value="ハンドブック"></input></td>
+                <td><input type ="submit" id="" value="相談所"></input></td>
+            </tr>
+        </table>
+    </footer>
 
 </body>
 

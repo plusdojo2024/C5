@@ -50,23 +50,38 @@
 
 </body>
 
-<fotter class="#">
-  <table class="#">
-    <tr>
-      <td>
-        <a href="received.html" class="#">ホーム</a>
-      </td>
-      <td>
-        <a href="mine.html" class="#">記録書</a>
-      </td>
-      <td>
-        <a href="new.html" class="#">ハンドブック</a>
-      </td>
-      <td>
-        <a href="new.html" class="#">相談所</a>
-      </td>
-    </tr>
-  </table>
-</fotter>
+    <footer>
+        <table align="center">
+            <tr>
+                <td>
+                	<form method="get" action="/C5/HomeServlet">
+                    <img src="../images/icons/home.png" id="fixedBar" alt=""></a>
+                    </form>
+                </td>
+                <td>
+                    <form method="get" action="/C5/RecordServlet">
+                    <img src="../images/icons/record.png" id="fixedBar" alt=""></a>
+                    </form>
+                </td>
+                <td>
+                    <form method="get" action="/C5/HandbookServlet">
+                    <img src="../images/icons/handbook.png" id="fixedBar" alt=""></a>
+                    </form>
+                </td>
+                <td>
+                    <form method="get" action="/C5/ConsulServlet">
+                    <img src="../images/icons/consul.png" id="fixedBar" alt=""></a>
+                    </form>
+                </td>
+            </tr>
+
+            <tr>
+                <td><input type ="submit" id="" value="ホーム"></input></td>
+                <td><input type ="submit" id="" value="記録書"></input></td>
+                <td><input type ="submit" id="" value="ハンドブック"></input></td>
+                <td><input type ="submit" id="" value="相談所"></input></td>
+            </tr>
+        </table>
+    </footer>
 
 </html>
