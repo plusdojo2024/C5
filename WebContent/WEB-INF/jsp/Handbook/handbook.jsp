@@ -29,14 +29,14 @@
       		<form method="get" action="/C5/BookChoiceServlet">
 
 
-            <input type="button" name="cloth" value="衣">
+            <input type="submit" name="cloth" value="衣">
             <br>
-            <input type="button" name="meal" value="食">
+            <input type="submit" name="meal" value="食">
             <br>
-            <input type="button" name="shelter" value="住">
+            <input type="submit" name="shelter" value="住">
             <br>
             <br>
-            <input type="button" name="test" value="テスト">
+            <input type="submit" name="test" value="テスト">
 
 			</form>
 
