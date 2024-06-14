@@ -12,9 +12,5 @@
 	<input type="submit" value="ボタン">
 </form>
 
-<form  method="post" action="/C5/LoginServlet">
-	<input type="submit" value="ボタン">
-</form>
-
 </body>
 </html>
