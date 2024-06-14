@@ -1,12 +1,19 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-<<<<<<< HEAD
 	pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="ja">
 <div class="content">
-	<head>
-<meta charset="UTF-8">
-<title>サンプル</title>
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@100..900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" type="text/css" href="/C5/CSS/style.css">
+
+<title>相談所</title>
 <link rel="stylesheet" href="Home.css">
 	</head>
 	<body>
@@ -17,84 +24,27 @@
 		<li><a href="/C5/ConsulChannelsServlet">住</a></li>
 		<li><a href="/C5/ConsulChannelsServlet">その他</a></li>
 		</ul>
-		<footer>
-			<table align="center">
-				<tr>
-					<td><img src="../images/icons/home.png" id="fixedBar"
-						alt="ホーム"></a></td>
-					<td><img src="../images/icons/record.png" id="fixedBar"
-						alt="記録書"></a></td>
-					<td><img src="../images/icons/handbook.png" id="fixedBar"
-						alt="ハンドブック"></a></td>
-					<td><img src="../images/icons/consul.png" id="fixedBar"
-						alt="相談所"></a></td>
-				</tr>
-
-				<tr>
-					<td>
-						<form method="get" action="/C5/HomeServlet">
-							<input type="submit" id="" value="ホーム"></input>
-						</form>
-					</td>
-					<td>
-						<form method="get" action="/C5/RecordServlet">
-							<input type="submit" id="" value="記録書"></input>
-						</form>
-					</td>
-					<td>
-						<form method="get" action="/C5/HandbookServlet">
-							<input type="submit" id="" value="ハンドブック"></input>
-						</form>
-					</td>
-					<td>
-						<form method="get" action="/C5/ConsulServlet">
-							<input type="submit" id="" value="相談所"></input>
-						</form>
-					</td>
-				</tr>
-			</table>
-		</footer>
-	</body>
-</div>
-</html>
-=======
-    pageEncoding="UTF-8"%>
-    <!DOCTYPE html>
-    <html lang="ja">
-        <div class="content">
-    <head>
-        <meta charset="UTF-8">
-        <title>サンプル</title>
-        <link rel="stylesheet" href="Home.css">
-    </head>
-    <body>
-        <h1>ひろしninaru</h1>
-        <ul id="nav"></ul>
-        <li><a href="/C5/ConsulChannelsServlet">衣</a></li>
-        <li><a href="/C5/ConsulChannelsServlet">食</a></li>
-        <li><a href="/C5/ConsulChannelsServlet">住</a></li>
-        <li><a href="/C5/ConsulChannelsServlet">その他</a></li>
     <footer>
         <table align="center">
             <tr>
                 <td>
 
-                    <img src="../images/icons/home.png" id="fixedBar" alt="ホーム"></a>
+                    <img src="/C5/images/icons/home.png" class="FixedBar" alt="ホーム"></a>
 
                 </td>
                 <td>
 
-                    <img src="../images/icons/record.png" id="fixedBar" alt="記録書"></a>
+                    <img src="/C5/images/icons/record.png" class="FixedBar" alt="記録書"></a>
 
                 </td>
                 <td>
 
-                    <img src="../images/icons/handbook.png" id="fixedBar" alt="ハンドブック"></a>
+                    <img src="/C5/images/icons/handbook.png" class="FixedBar" alt="ハンドブック"></a>
 
                 </td>
                 <td>
 
-                    <img src="../images/icons/consul.png" id="fixedBar" alt="相談所"></a>
+                    <img src="/C5/images/icons/consul.png" class="FixedBar" alt="相談所"></a>
 
                 </td>
             </tr>
@@ -123,5 +73,6 @@
             </tr>
         </table>
     </footer>
-    </body>
->>>>>>> 1df65dd15b471160f549a8952bcaefb5a56e3187
+	</body>
+</div>
+</html>

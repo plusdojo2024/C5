@@ -4,10 +4,17 @@
 <html lang="ja">
 <div class="content">
 
-    <head>
-        <meta charset="UTF-8">
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@100..900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" type="text/css" href="/C5/CSS/style.css">
+
         <title>サンプル</title>
-        <link rel="stylesheet" href="consulChannels.css">
     </head>
 
     <body>
@@ -47,22 +54,22 @@
             <tr>
                 <td>
 
-                    <img src="../images/icons/home.png" id="fixedBar" alt="ホーム"></a>
+                    <img src="/C5/images/icons/home.png" class="FixedBar" alt="ホーム"></a>
 
                 </td>
                 <td>
 
-                    <img src="../images/icons/record.png" id="fixedBar" alt="記録書"></a>
+                    <img src="/C5/images/icons/record.png" class="FixedBar" alt="記録書"></a>
 
                 </td>
                 <td>
 
-                    <img src="../images/icons/handbook.png" id="fixedBar" alt="ハンドブック"></a>
+                    <img src="/C5/images/icons/handbook.png" class="FixedBar" alt="ハンドブック"></a>
 
                 </td>
                 <td>
 
-                    <img src="../images/icons/consul.png" id="fixedBar" alt="相談所"></a>
+                    <img src="/C5/images/icons/consul.png" class="FixedBar" alt="相談所"></a>
 
                 </td>
             </tr>
