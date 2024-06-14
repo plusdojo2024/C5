@@ -1,6 +1,7 @@
 package model;
 
 import java.io.Serializable;
+import java.sql.Date;
 
 //フィールドを増やした分だけ、下のコンストラクタを増やす
 public class Users implements Serializable {
@@ -8,12 +9,12 @@ public class Users implements Serializable {
 	private String user_name; /* ユーザー名 */
 	private String password; /* パスワード */
 	private int sum; /* 合計 */
-	private String child_birthday; /* 誕生日 */
+	private Date child_birthday; /* 誕生日 */
 	private String child_name; /* 子供の名前 */
 
 	//	引数のあるコンストラクタ
 	public Users(int id, String user_name, String password, int sum,
-			String child_birthday, String child_name) {
+			Date child_birthday, String child_name) {
 
 		this.id = id;
 		this.user_name = user_name;
@@ -25,12 +26,12 @@ public class Users implements Serializable {
 
 	//	引数のないコンストラクタ
 	public Users() {
-		this.id = 0;
-		this.user_name = "";
-		this.password = "";
-		this.sum = 0;
-		this.child_birthday = "";
-		this.child_name = "";
+//		this.id = 0;
+//		this.user_name = "";
+//		this.password = "";
+//		this.sum = 0;
+//		this.child_birthday = ;
+//		this.child_name = "";
 
 	}
 
@@ -66,11 +67,11 @@ public class Users implements Serializable {
 		this.sum = sum;
 	}
 
-	public String getChild_birthday() {
+	public Date getChild_birthday() {
 		return child_birthday;
 	}
 
-	public void setChild_birthday(String child_birthday) {
+	public void setChild_birthday(Date child_birthday) {
 		this.child_birthday = child_birthday;
 	}
 
