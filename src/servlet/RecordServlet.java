@@ -19,7 +19,7 @@ public class RecordServlet extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		//フォワード
-				RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/record.jsp");
+				RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/Record/record.jsp");
 				dispatcher.forward(request, response);
 	}
 
