@@ -35,10 +35,13 @@
             <br>
             <input type="submit" name="shelter" value="住">
             <br>
-            <br>
-            <input type="submit" name="test" value="テスト">
 
+            <br>
+            </form>
+            <form method="get" action="/C5/TestServlet">
+            <input type="submit" name="test" value="テスト">
 			</form>
+
 
       </div>
 
