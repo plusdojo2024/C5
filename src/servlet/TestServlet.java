@@ -33,9 +33,31 @@ public class TestServlet extends HttpServlet {
 		String correct = request.getParameter("correct");
 		String score = request.getParameter("score");
 
+<<<<<<< HEAD
 		//フォワード
 		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/Handbook/test.jsp");
 		dispatcher.forward(request, response);
+=======
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+
+
+
+//		// リクエストパラメータを取得する
+//		request.setCharacterEncoding("UTF-8");
+//		String id = request.getParameter("id");
+//		String pw = request.getParameter("pw");
+//
+//
+////		セッションスコープにIDを格納する
+//				HttpSession session = request.getSession();
+//				session.setAttribute("id", new LoginUser(id));
+
+		//フォワード
+				RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/Handbook/test.jsp");
+				dispatcher.forward(request, response);
+
+
+>>>>>>> 878316429725137be2049f13669b88259d827419
 	}
 
 }
