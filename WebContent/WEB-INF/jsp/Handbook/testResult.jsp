@@ -34,7 +34,7 @@
 <br>
 
 <p style="text-align:center">ハンドブックをチェック！</p>
-<form method="post" action="/C5/HandbookServlet">
+<form method="get" action="/C5/HandbookServlet">
 	<input type="submit" value="ハンドブックを確認する" class="#HandBookCheck">
 </form>
 
