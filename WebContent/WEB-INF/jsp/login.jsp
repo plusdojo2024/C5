@@ -15,18 +15,18 @@
       </h1>
 
     <div>
-    <!--  <form method="post" action="/simpleBC/LoginServlet"> -->
-<form method="get" action="/C5/HomeServlet">
-              <br>
-              <input type="text" name="username" placeholder="username">
-              <br>
-              <input type="password" name="password" placeholder="password">
-              <br>
-              <input type="submit" name="submit" value="ログイン"><br>
-              </form>
-              <form action="/C5/"></form>
-              <input type="reset" name="reset" value="新規登録">
-    <!--          <span id="error_message"></span> -->
+    	<form method="post" action="/C5/LoginServlet">
+          <br>
+          <input type="text" name="username" placeholder="username">
+          <br>
+          <input type="password" name="password" placeholder="password">
+          <br>
+          <input type="submit" name="submit" value="ログイン"><br>
+
+          <input type="reset" name="reset" value="新規登録">
+        </form>
+
+    	<!-- <span id="error_message"></span> -->
 
 
     </div>
