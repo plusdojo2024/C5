@@ -63,6 +63,20 @@
 
        <input type ="submit" class="shareQR" value="パートナーにシェア"></input>
 
+<<<<<<< HEAD
+
+
+                <!--ポップアップダイアログ
+                <div id="popup" class="modal">
+                    <div class="modal-content">
+                        <span class="close">&times;</span>
+                             <p>テキストを入力してください:</p>
+                                <label class="toggle-swich"></label>
+                                <input type="checkbox" id="toggle-swich">
+                                <span class="toggle-slibe"></span></label>
+                                <input type="text" id="userInput" placeholder="ここに入力">
+                                <button id="submitBtn">登録</button>
+=======
                 <!--ポップアップダイアログ-->
             <div id="popup" class="modal" style="display: none;">
             <div class="modal-content">
@@ -74,6 +88,7 @@
                     <label class="toggle-switch">
                     <input type="checkbox" id="toggleSwitch">
                     <span class="toggle-slider round"></span></label>
+>>>>>>> d22bbd540094533443c3e979f0e5af4b54edddf6
 
 
             </div>
@@ -128,7 +143,6 @@
             </tr>
         </table>
     </footer>
-
         <script>
       //ポップアップ、トグルスイッチ
         document.addEventListener('DOMContentLoaded',function (){

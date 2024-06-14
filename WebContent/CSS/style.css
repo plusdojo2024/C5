@@ -258,6 +258,120 @@ footer {
     background: #00cc5b;
   }
 
+  /*ヘッダー*/
+  header{
+    text-align: center;
+    margin-top: 0px;
+    padding: 5px;
+    background-color: #f9c146;
+    width: 100%;
+    }
+
+      /*「衣」ボタンのデザインコピペ*/
+      .cloth{
+        text-align: center;
+        display: block; 
+        /* vertical-align: middle; */
+        line-height: 20px;/*高さを中央値に*/
+        text-decoration: none;
+        width: 300px;
+        margin: auto;
+        padding: 1rem 2rem;
+        font-weight: bold;
+        background-image: linear-gradient(to right, #27acd9 0%, #b4e12b 100%);
+        border-radius: 100vh;
+        color: #fff;
+        border: 2px solid #fff;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, .2);
+        -webkit-box-shadow: 0 2px 5px rgba(0, 0, 0, .2);
+        transition: 0.5s;
+        }
+    
+        /*ホバーすると色が反転する*/
+        .cloth:hover {
+        color: #fff;
+        background-image: linear-gradient(to left, #27acd9 0%, #b4e12b 100%);
+        }
+        /*「食」ボタンのデザインコピペ*/
+        .meal{
+        text-align: center;
+        display: block;
+        /* vertical-align: middle;  */
+        line-height: 20px;
+        text-decoration: none;
+        width: 300px;
+        margin: auto;
+        padding: 1rem 2rem;
+        font-weight: bold;
+        background-image: linear-gradient(to right, #27acd9 0%, #b4e12b 100%);
+        border-radius: 100vh;
+        color: #fff;
+        border: 2px solid #fff;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, .2);
+        -webkit-box-shadow: 0 2px 5px rgba(0, 0, 0, .2);
+        transition: 0.5s;
+        }
+        /*ホバーすると色が反転する*/
+        .meal:hover {
+        color: #fff;
+        background-image: linear-gradient(to left, #27acd9 0%, #b4e12b 100%);
+        }
+    
+        /*「住」ボタンのデザインコピペ*/
+        .shelter{
+        text-align: center;
+        /* display: flex; */
+        vertical-align: middle;
+        text-decoration: none;
+        width: 300px;
+        margin: auto;
+        padding: 1rem 2rem;
+        font-weight: bold;
+        background-image: linear-gradient(to right, #27acd9 0%, #b4e12b 100%);
+        border-radius: 100vh;
+        color: #fff;
+        border: 2px solid #fff;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, .2);
+        -webkit-box-shadow: 0 2px 5px rgba(0, 0, 0, .2);
+        transition: 0.5s;
+        }
+        /*ホバーすると色が反転する*/
+        .shelter:hover {
+        color: #fff;
+        background-image: linear-gradient(to left, #27acd9 0%, #b4e12b 100%);
+        }
+        /*テスト開始ボタンのデザインコピペ*/
+        .testButton{
+        text-align: center;
+        /* display: flex; */
+        vertical-align: middle;
+        text-decoration: none;
+        width: 300px;
+        margin: auto;
+        padding: 2rem 5rem;
+        font-weight: bold;
+        background-image: linear-gradient(to right, #27acd9 0%, #b4e12b 100%);
+        border-radius: 100vh;
+        color: #fff;
+        border: 2px solid #fff;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, .2);
+        -webkit-box-shadow: 0 2px 5px rgba(0, 0, 0, .2);
+        transition: 0.5s;
+        }
+        /*ホバーすると色が反転する*/
+        .testButton:hover {
+        color: #fff;
+        background-image: linear-gradient(to left, #27acd9 0%, #b4e12b 100%);
+        }
+
+        #nav{
+            position: fixed;
+            bottom: 0; /* 上部から配置の基準位置を決める */
+            width: 100%; /* フッターの横幅を指定する */
+            height: 35px; /* フッターの高さを指定する */
+            }
+            
+
 /*---ハンドブック衣食住の各ページトップ----------------------------*/
 
 
