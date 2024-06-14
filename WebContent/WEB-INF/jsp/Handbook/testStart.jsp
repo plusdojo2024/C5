@@ -19,7 +19,7 @@
 <p style="text-align:center">ハンドブックの理解度をテストしてみよう！</p>
 
 <form method="post" action="/C5/TestServlet">
-	<input type="button" value="テストを開始する" id="testButton">
+	<input type="submit" value="テストを開始する" id="testButton">
 </form>
 
 
@@ -29,7 +29,7 @@
 <p style="text-align:center">ハンドブックをチェック！</p>
 
 <form method="post" action="/C5/HandbookServlet">
-	<input type="button" value="ハンドブックを確認する" class="#HandBookCheck">
+	<input type="submit" value="ハンドブックを確認する" class="#HandBookCheck">
 </form>
 
 <br>

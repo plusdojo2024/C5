@@ -35,14 +35,14 @@
 
 <p style="text-align:center">ハンドブックをチェック！</p>
 <form method="post" action="/C5/HandbookServlet">
-	<input type="button" value="ハンドブックを確認する" class="#HandBookCheck">
+	<input type="submit" value="ハンドブックを確認する" class="#HandBookCheck">
 </form>
 
 <br>
 <br>
 <form method="post" action="/C5/TestResultServlet">
 	<p style="text-align:center">もう一度テストする？</p>
-	<input type="button" value="再テスト" class="testButton">
+	<input type="submit" value="再テスト" class="testButton">
 </form>
 <br>
 <br>

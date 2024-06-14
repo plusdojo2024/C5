@@ -34,7 +34,7 @@
 <br>
 
 <form method="post" action="/C5/TestResultServlet">
-	<input type="button" value="次へ" class="next">
+	<input type="submit" value="次へ" class="next">
 </form>
 
 <!--
