@@ -29,7 +29,10 @@
       <img src="../images/Home-Hiroshi.png">
 
       <br>
-      <input type ="button" id="" value="体温を測る"></input>
+
+      <form>
+      	<input type ="button" id="" value="体温を測る"></input>
+	  </form>
 
       <h2>記録する</h2>
       <table align="center">
@@ -78,16 +81,24 @@
         <table align="center">
             <tr>
                 <td>
+                	<form method="get" action="/C5/HomeServlet">
                     <img src="../images/icons/home.png" id="fixedBar" alt=""></a>
+                    </form>
                 </td>
                 <td>
+                    <form method="get" action="/C5/RecordServlet">
                     <img src="../images/icons/record.png" id="fixedBar" alt=""></a>
+                    </form>
                 </td>
                 <td>
+                    <form method="get" action="/C5/HandbookServlet">
                     <img src="../images/icons/handbook.png" id="fixedBar" alt=""></a>
+                    </form>
                 </td>
                 <td>
+                    <form method="get" action="/C5/ConsulServlet">
                     <img src="../images/icons/consul.png" id="fixedBar" alt=""></a>
+                    </form>
                 </td>
             </tr>
 
