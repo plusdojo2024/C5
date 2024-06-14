@@ -15,7 +15,6 @@
         <li><a href="/C5/ConsulChannelsServlet">食</a></li>
         <li><a href="/C5/ConsulChannelsServlet">住</a></li>
         <li><a href="/C5/ConsulChannelsServlet">その他</a></li>
-        </form>
     <footer>
         <table align="center">
             <tr>
@@ -65,3 +64,4 @@
             </tr>
         </table>
     </footer>
+    </body>
