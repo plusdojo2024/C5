@@ -42,8 +42,8 @@ public class LoginServlet extends HttpServlet {
 		String pw = request.getParameter("pw");
 
 		// ログイン処理を行う。↓文字の型があっているかの確認
-		UsersDAO uDao = new UsersDAO();
-		if (uDao.isLoginOK(new Users(id, pw))) {	// ログイン成功
+		UsersDAO iDao = new UsersDAO();
+		if (iDao.isLoginOK(new Users(user_name, password))) {	// ログイン成功
 
 			// セッションスコープにIDを格納する
 			HttpSession session = request.getSession();
