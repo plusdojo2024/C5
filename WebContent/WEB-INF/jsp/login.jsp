@@ -1,12 +1,13 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-    <!doctype html>
-    <html>
-    <head>
+
+<!doctype html>
+<html>
+   <head>
     <meta charset="UTF-8">
     <title>ログイン</title>
 
-    </head>
+   </head>
 
     <body style="text-align: center;">
 
@@ -27,8 +28,6 @@
         </form>
 
     	<!-- <span id="error_message"></span> -->
-
-
-    </div>
-    </body>
-    </html>
+	</div>
+</body>
+</html>
