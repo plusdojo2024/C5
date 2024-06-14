@@ -25,17 +25,40 @@
 
 <p>ランダムで問題文表示</p>
 
-<input type="radio"  id="#">選択肢1<br><br>
-<input type="radio"  id="#">選択肢2<br><br>
-<input type="radio"  id="#">選択肢3<br><br>
-<input type="radio"  id="#">選択肢4<br>
+<table>
+<tr>
+<th><p>選択肢1</p></th>
+<th><p>選択肢2</p></th>
+<th><p>選択肢3</p></th>
+<th><p>選択肢4</p></th>
+</tr>
+<th><input type="radio"  id="#" name="1"></th>
+<th><input type="radio"  id="#" name="2"></th>
+<th><input type="radio"  id="#" name="3"></th>
+<th><input type="radio"  id="#" name="4"></th>
+<tr>
 
+</tr>
+</table>
+<form method="post" action="/C5/TestResultServlet">
+
+<input type="submit" value="次へ" class="next">
+</form>
+
+<!-- <input type="radio"  id="#" name="1">選択肢1<br><br>
+<input type="radio"  id="#"  name="2">選択肢2<br><br>
+<input type="radio"  id="#" name="3">選択肢3<br><br>
+<input type="radio"  id="#" name="4">選択肢4<br> -->
+<br>
+<br>
+<br>
+<br>
 <br>
 <br>
 
 <form method="post" action="/C5/TestResultServlet">
-	<input type="submit" value="次へ" class="next">
-</form>
+
+
 
 <!--
 問2以降は戻るボタンも
