@@ -33,7 +33,7 @@
 <br>
 <br>
 
-<form method="post" action="/C5/TestServlet">
+<form method="post" action="/C5/TestResultServlet">
 	<input type="button" value="次へ" class="next">
 </form>
 
