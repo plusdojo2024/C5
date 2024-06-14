@@ -8,7 +8,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@100..900&display=swap" rel="stylesheet">
-    <link rel="stylesheet" type="text/css" href="style.css">
+    <link rel="stylesheet" type="text/css" href="../css/style.css">
 
     <title>ログイン</title>
 </head>
@@ -21,7 +21,7 @@
       </h1>
 
         <div>
-        	<form method="post" action="/C5/LoginServlet">
+        	<form method="post" action="/C5/HomeServlet">
                 <br>
                 <input type="text" class="userInfo" name="username" placeholder="username">
                 <br>
@@ -29,7 +29,8 @@
                 <br>
                 <input type="submit" class="Login" name="submit" value="ログイン">
                 <br>
-
+            </form>
+			<form method="post" action="/C5/SignUpServlet">
               <input type="reset" class="SignUp" name="reset" value="新規登録">
             </form>
             <!-- <span id="error_message"></span> -->
