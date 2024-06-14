@@ -3,7 +3,7 @@
 <!DOCTYPE html>
 <html lang="ja">
 
-<div id="content">
+<div class="Content">
   <head>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -26,7 +26,7 @@
       <!--↓生年月日を表示する-->
       <p id="result"></p>
 
-      <img src="../images/Home-Hiroshi.png">
+      <img src="/C5/images/Home-Hiroshi.png">
 
       <br>
 
@@ -38,16 +38,16 @@
       <table align="center">
          <tr>
            <td>
-              <img src="../images/icons/poop.jpeg" id="recordIcon" alt="排泄">
+              <img src="/C5/images/icons/poop.jpeg" class="RecordIcon" alt="排泄">
            </td>
            <td>
-              <img src="../images/icons/sleepingHima.png" id="recordIcon" alt="睡眠">
+              <img src="/C5/images/icons/sleepingHima.png" class="RecordIcon" alt="睡眠">
            </td>
            <td>
-              <img src="../images/icons/milk.jpeg" id="recordIcon" alt="ごはん">
+              <img src="/C5/images/icons/milk.jpeg" class="RecordIcon" alt="ごはん">
            </td>
            <td>
-              <img src="../images/icons/photos.jpeg" id="recordIcon" alt="写真">
+              <img src="/C5/images/icons/photos.jpeg" class="RecordIcon" alt="写真">
            </td>
           </tr>
 
@@ -62,9 +62,6 @@
        	<br>
 
        <input type ="submit" class="shareQR" value="パートナーにシェア"></input>
-
-<<<<<<< HEAD
-
 
                 <!--ポップアップダイアログ
                 <div id="popup" class="modal">
@@ -88,8 +85,6 @@
                     <label class="toggle-switch">
                     <input type="checkbox" id="toggleSwitch">
                     <span class="toggle-slider round"></span></label>
->>>>>>> d22bbd540094533443c3e979f0e5af4b54edddf6
-
 
             </div>
     </div>
@@ -99,22 +94,22 @@
             <tr>
                 <td>
 
-                    <img src="../images/icons/home.png" id="fixedBar" alt="ホーム"></a>
+                    <img src="/C5/images/icons/home.png" class="FixedBar" alt="ホーム"></a>
 
                 </td>
                 <td>
 
-                    <img src="../images/icons/record.png" id="fixedBar" alt="記録書"></a>
+                    <img src="/C5/images/icons/record.png" class="FixedBar" alt="記録書"></a>
 
                 </td>
                 <td>
 
-                    <img src="../images/icons/handbook.png" id="fixedBar" alt="ハンドブック"></a>
+                    <img src="/C5/images/icons/handbook.png" class="FixedBar" alt="ハンドブック"></a>
 
                 </td>
                 <td>
 
-                    <img src="../images/icons/consul.png" id="fixedBar" alt="相談所"></a>
+                    <img src="/C5/images/icons/consul.png" class="FixedBar" alt="相談所"></a>
 
                 </td>
             </tr>
