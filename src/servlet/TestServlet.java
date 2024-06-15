@@ -1,6 +1,7 @@
 package servlet;
 
 import java.io.IOException;
+import java.util.List;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -9,6 +10,9 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import dao.GamesDAO;
+import model.Games;
+
 
 @WebServlet("/TestServlet")
 public class TestServlet extends HttpServlet {
@@ -16,6 +20,8 @@ public class TestServlet extends HttpServlet {
 
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+
+
 		//フォワード
 				RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/Handbook/testStart.jsp");
 				dispatcher.forward(request, response);
@@ -24,6 +30,21 @@ public class TestServlet extends HttpServlet {
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
+		// 検索処理を行う
+		GamesDAO gDao = new GamesDAO();
+		// ここを改造しました
+		List<Games> gameList = gDao.selectAll();
+
+		// 検索結果をリクエストスコープに格納する
+		request.setAttribute("gameList", gameList);
+
+		//フォワード
+		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/Handbook/test.jsp");
+		dispatcher.forward(request, response);
+
+
+}
+}
 
 
 //		// リクエストパラメータを取得する
@@ -36,11 +57,3 @@ public class TestServlet extends HttpServlet {
 //				HttpSession session = request.getSession();
 //				session.setAttribute("id", new LoginUser(id));
 
-		//フォワード
-				RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/Handbook/test.jsp");
-				dispatcher.forward(request, response);
-
-
-	}
-
-}
