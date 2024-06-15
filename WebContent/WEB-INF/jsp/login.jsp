@@ -29,6 +29,11 @@
                 <br>
                 <input type="submit" class="Login" name="submit" value="ログイン">
                 <br>
+
+                <h1>${result.title}</h1>
+				<hr>
+				<p>${result.message}</p>
+
             </form>
 			<form method="post" action="/C5/SignUpServlet">
               <input type="reset" class="SignUp" name="reset" value="新規登録">
