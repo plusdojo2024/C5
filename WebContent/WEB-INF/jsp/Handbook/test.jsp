@@ -7,6 +7,8 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
+  <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@100..900&display=swap" rel="stylesheet">
@@ -23,11 +25,13 @@
 <h1 style="text-align:center">衣食住テスト</h1>
 <p style="text-align:left">問1</p>
 
-<p>ランダムで問題文表示</p>
 
+<c:form method="post" action="/simpleBC/testServlet">
+<p>"${gameList.quiz}"</p>
+</c:form>
 <table>
 <tr>
-<th><p>選択肢1</p></th>
+<th><p>選択肢1："${card.choice_1 }"</p></th>
 <th><p>選択肢2</p></th>
 <th><p>選択肢3</p></th>
 <th><p>選択肢4</p></th>
