@@ -6,11 +6,12 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
+import model.Userpw;
 import model.Users;
 
 public class UsersDAO {
 	//ログイン
-	public boolean isLoginOK(Users idpw) {
+	public boolean isLoginOK(Userpw userpw) {
 		Connection conn = null;
 		boolean loginResult = false;
 
@@ -24,8 +25,8 @@ public class UsersDAO {
 			// SELECT文を準備する
 			String sql = "SELECT COUNT(*) FROM Users WHERE user_name = ? AND password = ?";
 			PreparedStatement pStmt = conn.prepareStatement(sql);
-			pStmt.setString(1, idpw.getUser_name());
-			pStmt.setString(2, idpw.getPassword());
+			pStmt.setString(1, userpw.getUser_name());
+			pStmt.setString(2, userpw.getPassword());
 
 			// SELECT文を実行し、結果表を取得する
 			ResultSet rs = pStmt.executeQuery();
@@ -35,14 +36,16 @@ public class UsersDAO {
 			if (rs.getInt("COUNT(*)") == 1) {
 				loginResult = true;
 			}
-		} catch (SQLException e) {
-			e.printStackTrace();
-			loginResult = false;
-		} catch (ClassNotFoundException e) {
-			e.printStackTrace();
-			loginResult = false;
-		} finally {
-			// データベースを切断
+
+			} catch (SQLException e) {
+				e.printStackTrace();
+				loginResult = false;
+			} catch (ClassNotFoundException e) {
+				e.printStackTrace();
+				loginResult = false;
+			} finally {
+
+				// データベースを切断
 			if (conn != null) {
 				try {
 					conn.close();
@@ -57,6 +60,7 @@ public class UsersDAO {
 		return loginResult;
 
 	}
+
 
 	//新規登録
 	public boolean insert(Users user) {
