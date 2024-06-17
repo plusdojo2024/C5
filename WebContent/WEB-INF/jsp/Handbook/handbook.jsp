@@ -26,14 +26,14 @@
             <img src="ハンドブックTOP画像.png" alt="">
 
             <p>ハンドブックを選ぶ↓</p>
+
       		<form method="get" action="/C5/BookChoiceServlet">
 
-
-            <input type="submit" name="cloth" value="衣">
+            <input type="submit" name="1" value="衣">
             <br>
-            <input type="submit" name="meal" value="食">
+            <input type="submit" name="2" value="食">
             <br>
-            <input type="submit" name="shelter" value="住">
+            <input type="submit" name="3" value="住">
             <br>
 
             </form>

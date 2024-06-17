@@ -14,17 +14,32 @@ import javax.servlet.http.HttpServletResponse;
 public class BookChoiceServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
-
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+
+		String button1 = request.getParameter("1");
+		String button2 = request.getParameter("2");
+		String button3 = request.getParameter("3");
+
+		System.out.println(button1);
+
+        if ("衣".equals(button1)) {
+            request.setAttribute("message", "衣");
+        } else if("食".equals(button2)) {
+            request.setAttribute("message", "食");
+        }else if ("住".equals(button3)) {
+            request.setAttribute("message", "住");
+        }
+
 		//フォワード
-				RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/Handbook/bookChoice.jsp");
-				dispatcher.forward(request, response);
+		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/Handbook/bookChoice.jsp");
+			dispatcher.forward(request, response);
 	}
 
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+
 		//フォワード
-				RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/Handbook/knowledge.jsp");
+				RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/Handbook/bookChoice.jsp");
 				dispatcher.forward(request, response);
 	}
 
