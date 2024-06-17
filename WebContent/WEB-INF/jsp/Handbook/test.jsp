@@ -22,25 +22,25 @@
 <header>
 	<h1>ひろしninaru</h1>
 </header>
-<c:forEach var="e" items="${gameList}">
-	<body>
-		<h1 style="text-align: center">衣食住テスト</h1>
-		<p style="text-align: left">問1</p>
-		<p>${e.quiz}</p>
-		<form method="post" action="/C5/TestServlet">
-			<table>
-				<tr>
-					<th><p>${e.choice_1}</p></th>
-					<th><p>${e.choice_2}</p></th>
-					<th><p>${e.choice_3}</p></th>
-					<th><p>${e.choice_4}</p></th>
-				</tr>
-				<th><input type="radio" id="#" name="1"></th>
-				<th><input type="radio" id="#" name="2"></th>
-				<th><input type="radio" id="#" name="3"></th>
-				<th><input type="radio" id="#" name="4"></th>
-			</table>
-</c:forEach>
+	<c:forEach var="e" items="${gameList}">
+		<body>
+			<h1 style="text-align: center">衣食住テスト</h1>
+			<p style="text-align: left">問1</p>
+			<p>${e.quiz}</p>
+			<form method="post" action="/C5/TestServlet">
+				<table>
+					<tr>
+						<th><p>${e.choice_1}</p></th>
+						<th><p>${e.choice_2}</p></th>
+						<th><p>${e.choice_3}</p></th>
+						<th><p>${e.choice_4}</p></th>
+					</tr>
+					<th><input type="radio" id="#" name="1"></th>
+					<th><input type="radio" id="#" name="2"></th>
+					<th><input type="radio" id="#" name="3"></th>
+					<th><input type="radio" id="#" name="4"></th>
+				</table>
+	</c:forEach>
 
 
 <input type="submit" value="次へ" class="next">
@@ -72,44 +72,43 @@
 -->
 
 	<br>
-</body>
+	</body>
 
-<footer>
-	<table align="center">
-		<tr>
-			<td><img src="/C5/images/icons/home.png" class="FixedBar"
-				alt="ホーム"></a></td>
-			<td><img src="/C5/images/icons/record.png" class="FixedBar"
-				alt="記録書"></a></td>
-			<td><img src="/C5/images/icons/handbook.png" class="FixedBar"
-				alt="ハンドブック"></a></td>
-			<td><img src="/C5/images/icons/consul.png" class="FixedBar"
-				alt="相談所"></a></td>
-		</tr>
+	<footer>
+		<table align="center">
+			<tr>
+				<td><img src="/C5/images/icons/home.png" class="FixedBar"
+					alt="ホーム"></a></td>
+				<td><img src="/C5/images/icons/record.png" class="FixedBar"
+					alt="記録書"></a></td>
+				<td><img src="/C5/images/icons/handbook.png" class="FixedBar"
+					alt="ハンドブック"></a></td>
+				<td><img src="/C5/images/icons/consul.png" class="FixedBar"
+					alt="相談所"></a></td>
+			</tr>
 
-		<tr>
-			<td>
-				<form method="get" action="/C5/HomeServlet">
-					<input type="submit" id="" value="ホーム"></input>
-				</form>
-			</td>
-			<td>
-				<form method="get" action="/C5/RecordServlet">
-					<input type="submit" id="" value="記録書"></input>
-				</form>
-			</td>
-			<td>
-				<form method="get" action="/C5/HandbookServlet">
-					<input type="submit" id="" value="ハンドブック"></input>
-				</form>
-			</td>
-			<td>
-				<form method="get" action="/C5/ConsulServlet">
-					<input type="submit" id="" value="相談所"></input>
-				</form>
-			</td>
-		</tr>
-	</table>
-</footer>
-
+			<tr>
+				<td>
+					<form method="get" action="/C5/HomeServlet">
+						<input type="submit" id="" value="ホーム"></input>
+					</form>
+				</td>
+				<td>
+					<form method="get" action="/C5/RecordServlet">
+						<input type="submit" id="" value="記録書"></input>
+					</form>
+				</td>
+				<td>
+					<form method="get" action="/C5/HandbookServlet">
+						<input type="submit" id="" value="ハンドブック"></input>
+					</form>
+				</td>
+				<td>
+					<form method="get" action="/C5/ConsulServlet">
+						<input type="submit" id="" value="相談所"></input>
+					</form>
+				</td>
+			</tr>
+		</table>
+	</footer>
 </html>
