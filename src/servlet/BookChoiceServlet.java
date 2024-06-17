@@ -20,8 +20,6 @@ public class BookChoiceServlet extends HttpServlet {
 		String button2 = request.getParameter("2");
 		String button3 = request.getParameter("3");
 
-		System.out.println(button1);
-
         if ("衣".equals(button1)) {
             request.setAttribute("message", "衣");
         } else if("食".equals(button2)) {
@@ -30,6 +28,14 @@ public class BookChoiceServlet extends HttpServlet {
             request.setAttribute("message", "住");
         }
 
+        
+        
+        
+        
+        
+        
+        
+        
 		//フォワード
 		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/Handbook/bookChoice.jsp");
 			dispatcher.forward(request, response);
