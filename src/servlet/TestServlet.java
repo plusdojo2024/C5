@@ -36,12 +36,17 @@ public class TestServlet extends HttpServlet {
 		// ここを改造しました
 		List<Games> gameList = gDao.selectAll();
 
+		//gameList = [Games, Games, Games, Games, Games]
 	    HttpSession session = request.getSession();
 	    session.setAttribute("gameList", gameList);
 
-
 		// 検索結果をリクエストスコープに格納する
-		/*request.setAttribute("gameList", gameList);*/
+	    //gameList = [Games, Games, Games, Games, Games]
+	    //				↓
+
+	    Games game = gameList.get(0);
+	    //game = Games;
+		request.setAttribute("game", game);
 
 		//フォワード
 		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/Handbook/test.jsp");

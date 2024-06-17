@@ -22,29 +22,29 @@
 <header>
 	<h1>ひろしninaru</h1>
 </header>
-	<c:forEach var="e" items="${gameList}">
-		<body>
-			<h1 style="text-align: center">衣食住テスト</h1>
-			<p style="text-align: left">問1</p>
-			<p>${e.quiz}</p>
-			<form method="post" action="/C5/TestServlet">
-				<table>
-					<tr>
-						<th><p>${e.choice_1}</p></th>
-						<th><p>${e.choice_2}</p></th>
-						<th><p>${e.choice_3}</p></th>
-						<th><p>${e.choice_4}</p></th>
-					</tr>
-					<th><input type="radio" id="#" name="1"></th>
-					<th><input type="radio" id="#" name="2"></th>
-					<th><input type="radio" id="#" name="3"></th>
-					<th><input type="radio" id="#" name="4"></th>
-				</table>
-	</c:forEach>
+	<body>
+		<h1 style="text-align: center">衣食住テスト</h1>
+		<p style="text-align: left">問1</p>
+		<p>${game.quiz}</p>
+		<form method="post" action="/C5/TestServlet">
+			<table>
+				<tr>
+					<th><p>${game.choice_1}</p></th>
+					<th><p>${game.choice_2}</p></th>
+					<th><p>${game.choice_3}</p></th>
+					<th><p>${game.choice_4}</p></th>
+				</tr>
+				<th><input type="radio" id="#" name="1"></th>
+				<th><input type="radio" id="#" name="2"></th>
+				<th><input type="radio" id="#" name="3"></th>
+				<th><input type="radio" id="#" name="4"></th>
+			</table>
+			<input type="submit" value="次へ" class="next">
+			</form>
 
 
-<input type="submit" value="次へ" class="next">
-</form>
+
+
 
 <!-- <input type="radio"  id="#" name="1">選択肢1<br><br>
 <input type="radio"  id="#"  name="2">選択肢2<br><br>
