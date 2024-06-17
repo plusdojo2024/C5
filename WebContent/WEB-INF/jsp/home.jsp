@@ -61,6 +61,10 @@
        </table>
        	<br>
 
+        <c:forEach var="child" items="${children}">
+            <p>${child.name}の記録を家族にシェアしましょう！</p>
+        </c:forEach>
+
        <input type ="submit" class="shareQR" value="パートナーにシェア"></input>
 
                 <!--ポップアップダイアログ

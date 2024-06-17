@@ -11,7 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import dao.UsersDAO;
-import model.Users;
+import model.Userpw;
 
 /**
  * Servlet implementation class LoginServlet
@@ -38,33 +38,29 @@ public class LoginServlet extends HttpServlet {
 
 		// リクエストパラメータを取得する
 		request.setCharacterEncoding("UTF-8");
-		String id = request.getParameter("id");
-		String pw = request.getParameter("pw");
+		String user_name = request.getParameter("user_name");
+		String password = request.getParameter("password");
 
 		// ログイン処理を行う。↓文字の型があっているかの確認
 		UsersDAO iDao = new UsersDAO();
-		if (iDao.isLoginOK(new Users(user_name, password))) {	// ログイン成功
+		System.out.println("ユーザー名: " + user_name + ", パスワード: " + password);
 
-			// セッションスコープにIDを格納する
-			HttpSession session = request.getSession();
-			session.setAttribute("id", new Users(id));
+		if (iDao.isLoginOK(new Userpw(user_name, password))) {    // ログイン成功
 
-			// メニューサーブレットにリダイレクトする
-			response.sendRedirect("/C5/HomeServlet");
+		    // セッションスコープにIDを格納する
+		    HttpSession session = request.getSession();
+		    session.setAttribute("user_name", user_name);
+
+		    // メニューサーブレットにリダイレクトする
+		    response.sendRedirect("/C5/HomeServlet");
+		} else {
+		    // ログイン失敗時の処理
+		    String errorMessage = "ユーザー名またはパスワードに間違いがあります。";
+		    request.setAttribute("errorMessage", errorMessage);
+
+		    // ログインページへフォワード
+		    RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/login.jsp");
+		    dispatcher.forward(request, response);
 		}
-		else {
-			// ログイン失敗したらJavaScriptで「user_nameまたはPWに間違いがあります。」と表示する。
-
-			//スコープへ格納する情報
-			  String message = "ユーザーネームまたはパスワードに間違いがあります。";
-
-			  System.out.println("HttpServletRequestに"+ message + "を設定");
-
-			//リクエストスコープへ格納
-			  request.setAttribute("message", message);
-
-			//ログインページへフォワード
-			RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/login.jsp");
-			dispatcher.forward(request, response);
 	}
 }

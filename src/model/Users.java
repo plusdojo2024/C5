@@ -5,6 +5,7 @@ import java.sql.Date;
 
 //フィールドを増やした分だけ、下のコンストラクタを増やす
 public class Users implements Serializable {
+
 	private int id;/* ユーザーID */
 	private String user_name; /* ユーザー名 */
 	private String password; /* パスワード */
