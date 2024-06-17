@@ -28,17 +28,10 @@ public class BookChoiceServlet extends HttpServlet {
             request.setAttribute("message", "住");
         }
 
-        
-        
-        
-        
-        
-        
-        
-        
 		//フォワード
 		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/Handbook/bookChoice.jsp");
 			dispatcher.forward(request, response);
+
 	}
 
 

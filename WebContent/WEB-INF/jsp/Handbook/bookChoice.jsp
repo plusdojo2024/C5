@@ -24,7 +24,7 @@
 
 <!--データベースからとってくる-->
 
-	<form method="get" action="/C5/BookChoiceServlet">
+	<form method="get" action="/C5/KnowledgeServlet">
 
     	<h2>${message}</h2>
 
