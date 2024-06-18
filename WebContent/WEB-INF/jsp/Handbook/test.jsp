@@ -35,9 +35,9 @@
 					<th><p>${game.choice_4}</p></th>
 				</tr>
 				<th><input type="radio" id="#" name="1"></th>
-				<th><input type="radio" id="#" name="2"></th>
-				<th><input type="radio" id="#" name="3"></th>
-				<th><input type="radio" id="#" name="4"></th>
+				<th><input type="radio" id="#" name="1"></th>
+				<th><input type="radio" id="#" name="1"></th>
+				<th><input type="radio" id="#" name="1"></th>
 			</table>
 			<input type="submit" value="次へ" class="next">
 			</form>
