@@ -13,17 +13,20 @@
   <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@100..900&display=swap" rel="stylesheet">
   <link rel="stylesheet" type="text/css" href="/C5/CSS/style.css">
 
-<title>相談所</title>
-<link rel="stylesheet" href="Home.css">
-	</head>
-	<body>
+	<title>相談所</title>
+
+</head>
+<body>
 		<h1>ひろしninaru</h1>
-		<ul id="nav">
-		<li><a href="/C5/ConsulChannelsServlet">衣</a></li>
-		<li><a href="/C5/ConsulChannelsServlet">食</a></li>
-		<li><a href="/C5/ConsulChannelsServlet">住</a></li>
-		<li><a href="/C5/ConsulChannelsServlet">その他</a></li>
-		</ul>
+		<nav>
+			<ul>
+				<li><a href="/C5/ConsulChannelsServlet">衣</a></li>
+				<li><a href="/C5/ConsulChannelsServlet">食</a></li>
+				<li><a href="/C5/ConsulChannelsServlet">住</a></li>
+				<li><a href="/C5/ConsulChannelsServlet">その他</a></li>
+			</ul>
+		</nav>
+
     <footer>
         <table align="center">
             <tr>
@@ -73,6 +76,6 @@
             </tr>
         </table>
     </footer>
-	</body>
+</body>
 </div>
 </html>

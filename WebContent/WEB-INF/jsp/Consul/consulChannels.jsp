@@ -2,53 +2,73 @@
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="ja">
+
 <div class="content">
 
 <head>
-  <meta charset="UTF-8" />
-  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  	<meta charset="UTF-8" />
+  	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@100..900&display=swap" rel="stylesheet">
-  <link rel="stylesheet" type="text/css" href="/C5/CSS/style.css">
+  	<link rel="preconnect" href="https://fonts.googleapis.com">
+  	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  	<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@100..900&display=swap" rel="stylesheet">
+  	<link rel="stylesheet" type="text/css" href="/C5/CSS/style.css">
 
-        <title>サンプル</title>
-    </head>
+    <title>相談所${message}チャンネル</title>
+</head>
 
-    <body>
+	<body>
 
         <header>
             <h3>ひろしninaru</h3>
         </header>
-        <input type="button" name="cloth" value="衣について">
+
+        <form>
+        <p>${message}について</p>
+        </form>
+
+		<c:forEach var="e" items="${questionList}" >
+        	<p>${question}</p>
+        </c:forEach>
+
         <br>
-        <textarea class="ta"></textarea> <br>
-        <input type="submit" value="コメント"><br>
-        <textarea class="ta"></textarea> <br>
-        <textarea class="ta"></textarea> <br>
-        <textarea class="ta"></textarea> <br>
 
+        <form method=post action=/C5/ConsulChannelsServlet>
 
-        <!--<input type ="submit" id="" value="衣について"></input>
-        <input type ="submit" id="" value="食について"></input>
-        <input type ="submit" id="" value="住について"></input>
-        <input type ="submit" id="" value="その他"></input><br>-->
-        <!--ポップアップダイアログ
-                <div id="popup" class="modal" style="display: none;">
-                <div class="modal-content">
-                    <span class="close">&times;</span>
-                    <p>テキストを入力してください:</p>
-                        <label class="toggle-swich"></label>
-                            <input type="checkbox" id="toggle-swich">
-                            <span class="toggle-slibe"></span></label>
-                            <input type="text" id="userInput" placeholder="ここに入力">
-                        <button id="submitBtn">登録</button>
+        	<textarea name="inputText" placeholder="質問内容を入力してください。"></textarea> <br>
 
+        	<input type="submit" value="送信"><br>
+
+        </form>
+
+      		<form method="get" action="/C5/BookChoiceServlet">
+
+            <input type="submit" name="1" value="衣">
+            <br>
+            <input type="submit" name="2" value="食">
+            <br>
+            <input type="submit" name="3" value="住">
+            <br>
+
+            </form>
+
+    <!--ポップアップダイアログ-->
+
+         <div id="popup" class="modal" style="display: none;">
+         <div class="modal-content">
+           <span class="close">&times;</span>
+               <p>テキストを入力してください:</p>
+                   <label class="toggle-swich"></label>
+                       <input type="checkbox" id="toggle-swich">
+                       <span class="toggle-slibe"></span></label>
+                       <input type="text" id="userInput" placeholder="ここに入力">
+                       <button id="submitBtn">登録</button>
                 </div>
-            </div>-->
-        <!-- <input type="submit" id="open" value="相談する"> -->
+            </div>
+
+       <!-- このボタンはなんのため？ <input type="submit" id="open" value="相談する">-->
+
     <footer>
         <table align="center">
             <tr>
@@ -98,8 +118,8 @@
             </tr>
         </table>
     </footer>
-    </body>
-    </biv>
+	</body>
+</div>
     <script>
         /*document.addEventListener('DOMContentLoaded'),function() {
             const modal = document.getElementById("popup");
@@ -110,3 +130,5 @@
             resultChange.innerHTML = e.target.value;
         });
     </script>
+
+</html>
