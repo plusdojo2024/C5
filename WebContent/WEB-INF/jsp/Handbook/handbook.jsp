@@ -38,7 +38,7 @@
 
             </form>
 
-            <form method="get" action="/C5/TestServlet">
+            <form method="post" action="/C5/HandbookServlet">
             	<input type="submit" name="test" value="テスト">
 			</form>
 

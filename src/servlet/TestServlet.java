@@ -34,11 +34,12 @@ public class TestServlet extends HttpServlet {
 		Games game = gameList.get(0);
 
 		//		セッションスコープに格納
-		request.setAttribute("game", game);
-
-		//gameList = [Games, Games, Games, Games, Games]
 		HttpSession session = request.getSession();
-		session.setAttribute("gameList", gameList);
+		session.setAttribute("game1", game);
+
+		//gameList = [Game, Game, Game, Game, Game]
+		HttpSession session2 = request.getSession();
+		session2.setAttribute("gameList", gameList);
 
 		//フォワード
 		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/Handbook/test.jsp");
@@ -54,11 +55,27 @@ public class TestServlet extends HttpServlet {
 
 		// リクエストパラメータを取得する
 		request.setCharacterEncoding("UTF-8");
-		String answer = request.getParameter("1");
+		String answer1 = request.getParameter("answer1");
+		String answer2 = request.getParameter("answer2");
+		String answer3 = request.getParameter("answer3");
+		String answer4 = request.getParameter("answer4");
+		String answer5 = request.getParameter("answer5");
 
-		//		セッションスコープからgameListを取り出す
+		//		回答をセッションスコープに格納する
 		HttpSession session = request.getSession();
-		List<Games> gameList = (List<Games>) session.getAttribute("gameList");
+		session.setAttribute("answer1", answer1);
+		session.setAttribute("answer2", answer2);
+		session.setAttribute("answer3", answer3);
+		session.setAttribute("answer4", answer4);
+		session.setAttribute("answer5", answer5);
+
+		if (answer1 == "あめりか") {
+			RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/Handbook/knowledge.jsp");
+			dispatcher.forward(request, response);
+		} else {
+		//		セッションスコープからgameListを取り出す
+		HttpSession session2 = request.getSession();
+		List<Games> gameList = (List<Games>) session2.getAttribute("gameList");
 		//		型 名前 = (型) session.getAttribute("属性名");
 
 		//int i をセッションスコープから取り出す
@@ -70,38 +87,45 @@ public class TestServlet extends HttpServlet {
 			session.setAttribute("i", i);
 
 			Games game = gameList.get(1);
-			request.setAttribute("game", game);
+			session.setAttribute("game2", game);
 
 		} else if (i == 1) {
 			i += 1;
 			Games game = gameList.get(2);
 			session.setAttribute("i", i);
 
-			request.setAttribute("game", game);
+			session.setAttribute("game3", game);
 
 		} else if (i == 2) {
 			i += 1;
 			Games game = gameList.get(3);
 			session.setAttribute("i", i);
 
-			request.setAttribute("game", game);
+			session.setAttribute("game4", game);
 
 		} else if (i == 3) {
 			i += 1;
 			Games game = gameList.get(4);
 			session.setAttribute("i", i);
 
-			request.setAttribute("game", game);
+			session.setAttribute("game5", game);
 
-		} else {
+		} else if (answer1 == "あめりか") {
+			RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/Handbook/knowledge.jsp");
+			dispatcher.forward(request, response);
+		} else if (i == 4) {
+
+			RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/Handbook/testResult.jsp");
+			dispatcher.forward(request, response);
 
 		}
 		//gameをセッションスコープに格納する→格納することでjspで利用可能になる
 		//request.setAttribute("game", game);
 
-		//フォワード
+		//		フォワード
 		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/Handbook/test.jsp");
 		dispatcher.forward(request, response);
-
+		//
 	}
+}
 }
