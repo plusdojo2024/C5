@@ -10,8 +10,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 
-@WebServlet("/BookChoiceServlet")
-public class BookChoiceServlet extends HttpServlet {
+@WebServlet("/KnowLedgeServlet")
+public class KnowLedgeServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -21,11 +21,19 @@ public class BookChoiceServlet extends HttpServlet {
 		String button3 = request.getParameter("3");
 
         if ("衣".equals(button1)) {
-            request.setAttribute("message", "衣");
+            request.setAttribute("title1", "衣1");
+            request.setAttribute("title1", "衣2");
+            request.setAttribute("title1", "衣3");
+
         } else if("食".equals(button2)) {
-            request.setAttribute("message", "食");
+            request.setAttribute("title2", "食1");
+            request.setAttribute("title2", "食2");
+            request.setAttribute("title2", "食3");
+
         }else if ("住".equals(button3)) {
-            request.setAttribute("message", "住");
+        	request.setAttribute("title3", "住1");
+        	request.setAttribute("title3", "住2");
+            request.setAttribute("title3", "住3");
         }
 
 		//フォワード

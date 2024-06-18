@@ -22,11 +22,12 @@ public class GamesDAO {
             Class.forName("org.h2.Driver");
 
             // データベースに接続する
-            conn = DriverManager.getConnection("jdbc:h2:file:C:/pleiades/workspace/data/simpleBC", "sa", "");
+            conn = DriverManager.getConnection("jdbc:h2:file:C:/pleiades/workspace/data/C5", "sa", "pw");
 
             // SQL文を準備する
-            String sql = "SELECT * FROM Games";
+            String sql = "SELECT * FROM GAMES ORDER BY RAND()";
             PreparedStatement pStmt = conn.prepareStatement(sql);
+
 
             // SQL文を実行し、結果表を取得する
             ResultSet rs = pStmt.executeQuery();

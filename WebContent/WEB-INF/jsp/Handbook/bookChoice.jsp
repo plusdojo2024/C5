@@ -23,18 +23,19 @@
     <h1>ハンドブック</h1>
 
 <!--データベースからとってくる-->
-    <h2>衣</h2>
 
-    <div>
-	<form method="post" action="/C5/BookChoiceServlet">
-        <input type="submit" name="1" value="①おむつの替え方">
+	<form method="get" action="/C5/KnowledgeServlet">
+
+    	<h2>${message}</h2>
+
+        <input type="submit" name="1" value="${title1}">
         <br>
-        <input type="submit" name="2" value="②洗濯時の注意">
+        <input type="submit" name="2"><p>${title2}</p>
         <br>
-        <input type="submit" name="3" value="③外出時の持ち物">
+        <input type="submit" name="3"><p>${title3}</p>
         <br>
-        </form>
-    </div>
+    </form>
+
 <!--ここまでデータベースからとってくる-->
 
 

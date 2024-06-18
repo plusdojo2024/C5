@@ -21,24 +21,28 @@
       </h1>
 
         <div>
-        	<form method="post" action="/C5/HomeServlet">
+        	 <%-- エラーメッセージが設定されている場合に表示する --%>
+				<% if (request.getAttribute("errorMessage") != null) { %>
+    			<p style="color: red;"><%= request.getAttribute("errorMessage") %></p>
+				<% } %>
+
+        	<form method="post" action="/C5/LoginServlet">
+
                 <br>
-                <input type="text" class="userInfo" name="username" placeholder="username">
+                <input type="text" class="userInfo" name="user_name" placeholder="user_name" required>
                 <br>
-                <input type="password" class="userInfo" name="password" placeholder="password">
+                <input type="password" class="userInfo" name="password" placeholder="password" required>
                 <br>
                 <input type="submit" class="Login" name="submit" value="ログイン">
                 <br>
 
-                <h1>${result.title}</h1>
-				<hr>
-				<p>${result.message}</p>
-
             </form>
+
 			<form method="post" action="/C5/SignUpServlet">
               <input type="reset" class="SignUp" name="reset" value="新規登録">
             </form>
-            <!-- <span id="error_message"></span> -->
+
+
         </div>
     </div>
 </body>
