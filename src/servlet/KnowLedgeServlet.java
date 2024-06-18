@@ -31,7 +31,7 @@ public class KnowLedgeServlet extends HttpServlet {
             request.setAttribute("title2", "Meal3");
 
         }else if ("住".equals(button3)) {
-        	request.setAttribute("title3", "Living");
+        	request.setAttribute("title3", "Living1");
         	request.setAttribute("title3", "Living2");
             request.setAttribute("title3", "Living3");
         }
