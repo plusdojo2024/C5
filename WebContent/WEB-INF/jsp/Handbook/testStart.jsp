@@ -18,7 +18,7 @@
 <h1 style="text-align:center">衣食住テスト</h1>
 <p style="text-align:center">ハンドブックの理解度をテストしてみよう！</p>
 
-<form method="post" action="/C5/TestServlet">
+<form method="get" action="/C5/TestServlet">
 	<input type="submit" value="テストを開始する" id="testButton">
 </form>
 

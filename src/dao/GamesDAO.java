@@ -13,7 +13,7 @@ import model.Games;
 public class GamesDAO {
 
     // Gamesテーブルからすべての情報を取得する
-    public List<Games> select(Games Game) {
+    public List<Games> selectAll() {
         Connection conn = null;
         List<Games> gameList = new ArrayList<>();
 

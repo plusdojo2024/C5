@@ -1,5 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+
+
+
 <!DOCTYPE html>
 <html lang="ja">
 <head>
@@ -20,11 +24,11 @@
 <p style="text-align:center">ハンドブックの理解度はどうだったかな？</p>
 
 
-<p>問1 問題文<br> 解答:選択肢1     ◎</p>
-<p>問2 問題文<br> 解答:選択肢1     △</p>
-<p>問3 問題文<br> 解答:選択肢1     ◎</p>
-<p>問4 問題文<br> 解答:選択肢1     △</p>
-<p>問5 問題文<br> 解答:選択肢1     ◎</p>
+<p>問1 ${game1.quiz}<br> 解答:選択肢1  ${answer1}   ◎</p>
+<p>問2  ${game2.quiz}<br> 解答:選択肢1${answer2}     △</p>
+<p>問3  ${game3.quiz}<br> 解答:選択肢1     ◎</p>
+<p>問4  ${game4.quiz}<br> 解答:選択肢1     △</p>
+<p>問5  ${game5.quiz}<br> 解答:選択肢1     ◎</p>
 
 <!--
 <img src="/JavaProg/testResult.png" width="600" height="600">
