@@ -30,9 +30,9 @@
 
         <input type="submit" name="1" value="${title1}">
         <br>
-        <input type="submit" name="2"><p>${title2}</p>
+        <input type="submit" name="2" value="${title2}">
         <br>
-        <input type="submit" name="3"><p>${title3}</p>
+        <input type="submit" name="3" value="${title3}">
         <br>
     </form>
 
