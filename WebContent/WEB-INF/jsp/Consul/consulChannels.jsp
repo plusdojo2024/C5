@@ -24,34 +24,27 @@
             <h3>ひろしninaru</h3>
         </header>
 
-        <form>
-        <p>${message}について</p>
-        </form>
-
-		<c:forEach var="e" items="${questionList}" >
-        	<p>${question}</p>
-        </c:forEach>
+        	<p>${post_content}</p>
 
         <br>
 
         <form method=post action=/C5/ConsulChannelsServlet>
+			<textarea name="inputText" placeholder="質問内容を入力してください。"></textarea> <br>
 
-        	<textarea name="inputText" placeholder="質問内容を入力してください。"></textarea> <br>
-
-        	<input type="submit" value="送信"><br>
+        	<input type="submit" name="1" value="送信"><br>
+        	<input type="hidden" name="channel_id" value="${channel_id}">
 
         </form>
 
-      		<form method="get" action="/C5/BookChoiceServlet">
-
+        <form method="get" action="/C5/ConsulChannelsServlet">
             <input type="submit" name="1" value="衣">
             <br>
             <input type="submit" name="2" value="食">
             <br>
             <input type="submit" name="3" value="住">
             <br>
-
-            </form>
+            <input type="submit" name="4" value="その他">
+        </form>
 
     <!--ポップアップダイアログ-->
 

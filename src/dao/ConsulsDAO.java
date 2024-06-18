@@ -5,76 +5,118 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.ArrayList;
-import java.util.List;
 
 import model.Consuls;
 
 	public class ConsulsDAO {
-		// 引数paramで検索項目を指定し、検索結果のリストを返す
-		public List<Consuls> select(Consuls question) {
-			Connection conn = null;
-			List<Consuls> infoList = new ArrayList<Consuls>();
 
-			try {
-				// JDBCドライバを読み込む
+		// 最大の投稿IDを取得するメソッド
+
+		public int getMaxPostId() {
+
+		    Connection conn = null;
+		    PreparedStatement pstmt = null;
+		    ResultSet rs = null;
+		    int maxPostId = 0;
+
+		    try {
+		    	// JDBCドライバを読み込む
 				Class.forName("org.h2.Driver");
 
 				// データベースに接続する
 				conn = DriverManager.getConnection("jdbc:h2:file:C:/pleiades/workspace/data/simpleBC", "sa", "");
 
 				// SQL文を準備する
-				String sql = "SELECT * FROM consuls WHERE post_content LIKE ?";
-				//↑検索で出てくるものを変更したかったらここを変更する。
+				String sql = "SELECT MAX(post_id) FROM consuls";
 
-				PreparedStatement pStmt = conn.prepareStatement(sql);
+		        pstmt = conn.prepareStatement(sql);
+		        rs = pstmt.executeQuery();
 
-				// SQL文を完成させる
-				if (question.getPost_content() != null) {
-					pStmt.setString(1, "%" + question.getPost_content() + "%");
-				}
-				else {
-					pStmt.setString(1, "%");
-				}
+		        if (rs.next()) {
+		            maxPostId = rs.getInt(1);
+		        }
+		    } catch (ClassNotFoundException | SQLException e) {
 
-				// SQL文を実行し、結果表を取得する
-				ResultSet rs = pStmt.executeQuery();
+		        e.printStackTrace();
 
-				// 結果表をコレクションにコピーする
-					while (rs.next()) {
-						Consuls record = new Consuls(
-						);
-						infoList.add(record);
-					}
-				}
+		    } finally {
 
-			catch (SQLException e) {
-				e.printStackTrace();
-				infoList = null;
-			}
-			catch (ClassNotFoundException e) {
-				e.printStackTrace();
-				infoList = null;
-			}
-			finally {
-				// データベースを切断
-				if (conn != null) {
-					try {
-						conn.close();
-					}
-					catch (SQLException e) {
-						e.printStackTrace();
-						infoList = null;
-					}
-				}
-			}
+		    }
 
-			// 結果を返す
-			return infoList;
+		    return maxPostId;
 		}
 
-		// 引数cardで指定されたレコードを登録し、成功したらtrueを返す
+
+		// 投稿IDの登録（consulsテーブルを検索して、投稿IDのMax値を検索して、その値に+1をする。）
+
+	    public int insertAndGetGeneratedPostId(Consuls consuls) {
+
+	        Connection conn = null;
+	        PreparedStatement pstmt = null;
+	        ResultSet rs = null;
+	        int generatedPostId = -1;
+
+	        try {
+	        	// JDBCドライバを読み込む
+				Class.forName("org.h2.Driver");
+
+				// データベースに接続する
+				conn = DriverManager.getConnection("jdbc:h2:file:C:/pleiades/workspace/data/simpleBC", "sa", "");
+
+				// 現在の最大の投稿IDを取得
+				int maxPostId = getMaxPostId();
+
+				// 新しい投稿IDを生成
+				int newPostId = maxPostId + 1;
+
+				// SQL文を準備する
+	            String sql = "INSERT INTO consuls (post_id, user_id, channel_id, post_number, post_content, post_time) VALUES (?, ?, ?, ?, ?, ?)";
+
+	            pstmt = conn.prepareStatement(sql);
+
+	            pstmt.setInt(1, newPostId);// 投稿ID
+	            pstmt.setInt(2, consuls.getUser_id());// ユーザーID
+	            pstmt.setInt(3, consuls.getChannel_id());// チャンネルID
+	            pstmt.setInt(4, consuls.getPost_number());// 投稿番号
+	            pstmt.setString(5, consuls.getPost_content());// 投稿内容
+	            pstmt.setTimestamp(6, consuls.getPost_time());// 投稿時間
+
+
+				// SQL文を実行し、影響を受けた行数を取得
+				int affectedRows = pstmt.executeUpdate();
+
+				// 影響を受けた行があれば、生成された投稿IDを設定
+				if (affectedRows > 0) {
+				     	generatedPostId = newPostId;
+				}
+			} catch (ClassNotFoundException | SQLException e) {
+				    	e.printStackTrace();
+
+			} finally {
+
+				try {
+				         if (rs != null) {
+				               rs.close();
+				         }
+				         if (pstmt != null) {
+				               pstmt.close();
+				         }
+				         if (conn != null) {
+				               conn.close();
+				         }
+				} catch (SQLException e) {
+				         e.printStackTrace();
+				}
+			}
+	        // 生成された投稿IDを返す
+	        return generatedPostId;
+	    }
+
+
+		// 引数questionで指定された質問＆返信を登録し、成功したらtrueを返す
+
 		public boolean insert(Consuls question) {
+
 			Connection conn = null;
 			boolean result = false;
 
@@ -83,14 +125,12 @@ import model.Consuls;
 				// JDBCドライバを読み込む
 				Class.forName("org.h2.Driver");
 
-
 				// データベースに接続する
 				conn = DriverManager.getConnection("jdbc:h2:file:C:/pleiades/workspace/data/simpleBC", "sa", "");
 
-
 				// SQL文を準備する（AUTO_INCREMENTのNUMBER列にはNULLを指定する）
-				//NULLは自動生成のナンバーのこと↓
 				String sql = "INSERT INTO Consuls VALUES (NULL,?,?,?,?,?,CURRENT_TIMESTAMP)";
+
 				PreparedStatement pStmt = conn.prepareStatement(sql);
 
 				// SQL文を完成させる
@@ -100,7 +140,6 @@ import model.Consuls;
 				else {
 					pStmt.setString(1, "（未設定）");
 				}
-
 
 				// SQL文を実行する
 				if (pStmt.executeUpdate() == 1) {
@@ -124,13 +163,16 @@ import model.Consuls;
 					}
 				}
 			}
-
 			// 結果を返す
 			return result;
 		}
 
-		// 引数cardで指定されたレコードを更新し、成功したらtrueを返す
+
+
+		// 引数questionで指定された質問＆返信を更新し、成功したらtrueを返す
+
 		public boolean update(Consuls question) {
+
 			Connection conn = null;
 			boolean result = false;
 
@@ -180,7 +222,10 @@ import model.Consuls;
 			return result;
 		}
 
-		// 引数numberで指定されたレコードを削除し、成功したらtrueを返す
+
+
+		// 引数numberで指定された質問＆返信を削除し、成功したらtrueを返す
+
 		public boolean delete(int number) {
 			Connection conn = null;
 			boolean result = false;

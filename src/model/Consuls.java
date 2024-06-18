@@ -5,6 +5,7 @@ import java.sql.Timestamp;
 
 //フィールドを増やした分だけ、下のコンストラクタを増やす
 public class Consuls implements Serializable {
+
 	private int id;/* 相談ID */
 	private int user_id;/* ユーザーID */
 	private int channel_id;/* チャンネルID */
