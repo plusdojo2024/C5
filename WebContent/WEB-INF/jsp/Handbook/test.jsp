@@ -111,7 +111,7 @@
 
 
 										<c:if test="${i == 0}">
-											<th><input type="radio" name="answer1" value= "あめりか"></th>
+											<th><input type="radio" name="answer1" value="あめりか"></th>
 											<th><input type="radio" name="answer1" value="あめりか"></th>
 											<th><input type="radio" name="answer1" value="あめりか"></th>
 											<th><input type="radio" name="answer1" value="あめりか"></th>
