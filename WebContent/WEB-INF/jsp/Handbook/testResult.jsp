@@ -24,11 +24,13 @@
 <p style="text-align:center">ハンドブックの理解度はどうだったかな？</p>
 
 
-<p>問1 ${game1.quiz}<br> 解答:選択肢1  ${answer1}   ◎</p>
-<p>問2  ${game2.quiz}<br> 解答:選択肢1${answer2}     △</p>
-<p>問3  ${game3.quiz}<br> 解答:選択肢1     ◎</p>
-<p>問4  ${game4.quiz}<br> 解答:選択肢1     △</p>
-<p>問5  ${game5.quiz}<br> 解答:選択肢1     ◎</p>
+<p>問1  ${game1.quiz}<br> 解答:     ${問1}</p>
+<p>問2  ${game2.quiz}<br> 解答:     ${問2}</p>
+<p>問3  ${game3.quiz}<br> 解答:     ${問3}</p>
+<p>問4  ${game4.quiz}<br> 解答:     ${問4}</p>
+<p>問5  ${game5.quiz}<br> 解答:     ${問5}</p>
+
+<%--<p>問1  ${game1.quiz}<br> 解答:選択肢${answer1}     ${問1}</p>--%>
 
 <!--
 <img src="/JavaProg/testResult.png" width="600" height="600">
@@ -36,8 +38,8 @@
 
 <br>
 <br>
-
-<p style="text-align:center">ハンドブックをチェック！</p>
+<p>${perfect}</p>
+<p style="text-align:center">まだまだ勉強不足！間違えた箇所はハンドブックをチェックしよう</p>
 <form method="get" action="/C5/HandbookServlet">
 	<input type="submit" value="ハンドブックを確認する" class="#HandBookCheck">
 </form>

@@ -23,31 +23,25 @@ public class TestServlet extends HttpServlet {
 
 		//		int i をセッションスコープに入れる
 		int i = 0;
-		HttpSession session1 = request.getSession();
-		session1.setAttribute("i", i);
+		HttpSession session = request.getSession();
+		session.setAttribute("i", i);
 
 		// 検索処理を行う
 		GamesDAO gDao = new GamesDAO();
 		// ここを改造しました
 		List<Games> gameList = gDao.selectAll();
-		//初期値を設定
-		Games game1 = gameList.get(0);
 
-		//		セッションスコープに格納
-		HttpSession session = request.getSession();
+		//問１を定義する
+		Games game1 = gameList.get(0);
+		//セッションスコープに格納
 		session.setAttribute("game1", game1);
 
-		//gameList = [Game, Game, Game, Game, Game]
-		HttpSession session2 = request.getSession();
-		session2.setAttribute("gameList", gameList);
+
+		session.setAttribute("gameList", gameList);
 
 		//フォワード
 		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/Handbook/test.jsp");
 		dispatcher.forward(request, response);
-
-		//		//フォワード
-		//				RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/Handbook/testStart.jsp");
-		//				dispatcher.forward(request, response);
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
@@ -55,38 +49,28 @@ public class TestServlet extends HttpServlet {
 
 		// リクエストパラメータを取得する
 		request.setCharacterEncoding("UTF-8");
-		String answer1 = request.getParameter("answer1");
-		String answer2 = request.getParameter("answer2");
-		String answer3 = request.getParameter("answer3");
-		String answer4 = request.getParameter("answer4");
-		String answer5 = request.getParameter("answer5");
-
-		//		回答をセッションスコープに格納する
-		HttpSession session = request.getSession();
-		session.setAttribute("answer1", answer1);
-		session.setAttribute("answer2", answer2);
-		session.setAttribute("answer3", answer3);
-		session.setAttribute("answer4", answer4);
-		session.setAttribute("answer5", answer5);
-//		 if ("あめりか".equals(answer1)) {
-//			RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/Handbook/knowledge.jsp");
-//			dispatcher.forward(request, response);
-//		 }
-
-//		if(answer1.equals(get(1).correct)) {
-//			RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/Handbook/knowledge.jsp");
-//			dispatcher.forward(request, response);
-//		 }
-
-		//		セッションスコープからgameListを取り出す
-		HttpSession session2 = request.getSession();
-		List<Games> gameList = (List<Games>) session2.getAttribute("gameList");
-		//		型 名前 = (型) session.getAttribute("属性名");
+		String answer = request.getParameter("answer");
 
 		//int i をセッションスコープから取り出す
-		HttpSession session1 = request.getSession();
-		int i = (int) session1.getAttribute("i");
+		HttpSession session = request.getSession();
+		int i = (int) session.getAttribute("i");
 
+		//		回答をセッションスコープに格納する
+		if (i == 0) {
+			session.setAttribute("answer1", answer);
+		} else if (i == 1) {
+			session.setAttribute("answer2", answer);
+		} else if (i == 2) {
+			session.setAttribute("answer3", answer);
+		} else if (i == 3) {
+			session.setAttribute("answer4", answer);
+		} else if (i == 4) {
+			session.setAttribute("answer5", answer);
+		}
+
+		//		セッションスコープからgameListを取り出す
+		List<Games> gameList = (List<Games>) session.getAttribute("gameList");
+		//		型 名前 = (型) session.getAttribute("属性名");
 
 
 		if (i == 0) {
@@ -95,10 +79,6 @@ public class TestServlet extends HttpServlet {
 
 			Games game = gameList.get(1);
 			session.setAttribute("game2", game);
-			if(answer2.equals("game2.correct")) {
-				RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/Handbook/knowledge.jsp");
-				dispatcher.forward(request, response);
-			 }
 
 		} else if (i == 1) {
 			i += 1;
@@ -106,10 +86,7 @@ public class TestServlet extends HttpServlet {
 			session.setAttribute("i", i);
 
 			session.setAttribute("game3", game);
-			if("game2".equals(gameList.get(1))) {
-				RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/Handbook/knowledge.jsp");
-				dispatcher.forward(request, response);
-			 }
+
 		} else if (i == 2) {
 			i += 1;
 			Games game = gameList.get(3);
@@ -117,32 +94,114 @@ public class TestServlet extends HttpServlet {
 
 			session.setAttribute("game4", game);
 
-			session.setAttribute("answer1", answer1);
-
-		}  else if (i == 3) {
+		} else if (i == 3) {
 			i += 1;
 			Games game = gameList.get(4);
 			session.setAttribute("i", i);
 
 			session.setAttribute("game5", game);
 
-		} else if (answer1.equals("あめりか")) {
-			RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/Handbook/knowledge.jsp");
-			dispatcher.forward(request, response);
-
+			//i==4は実質機能していない
 		} else if (i == 4) {
 
+			// パパの回答を取得
+			String userAnswer1 = (String) session.getAttribute("answer1");
+			String userAnswer2 = (String) session.getAttribute("answer2");
+			String userAnswer3 = (String) session.getAttribute("answer3");
+			String userAnswer4 = (String) session.getAttribute("answer4");
+			String userAnswer5 = (String) session.getAttribute("answer5");
+
+			// 正解を取得
+			String correctAnswer1 = gameList.get(0).getCorrect();
+			String correctAnswer2 = gameList.get(1).getCorrect();
+			String correctAnswer3 = gameList.get(2).getCorrect();
+			String correctAnswer4 = gameList.get(3).getCorrect();
+			String correctAnswer5 = gameList.get(4).getCorrect();
+
+			int sum =0;
+			session.setAttribute("sum", sum);
+			//問１の答え合わせ
+			if (userAnswer1.equals(correctAnswer1)) {
+
+				String Cheack1 = "◎";
+				session.setAttribute("問1", Cheack1);
+//				List<Games> gameList = (List<Games>) session.getAttribute("gameList");
+				sum+=1;
+				session.setAttribute("sum", sum);
+			} else {
+				String Cheack1 = "✖";
+				session.setAttribute("問1", Cheack1);
+			}
+
+			//問２の答え合わせ
+			if (userAnswer2.equals(correctAnswer2)) {
+
+				String Cheack2 = "◎";
+				session.setAttribute("問2", Cheack2);
+
+				sum+=1;
+				session.setAttribute("sum", sum);
+			} else {
+				String Cheack2 = "✖";
+				session.setAttribute("問2", Cheack2);
+			}
+
+			//問３の答え合わせ
+			if (userAnswer3.equals(correctAnswer3)) {
+
+				String Cheack3 = "◎";
+				session.setAttribute("問3", Cheack3);
+
+				sum+=1;
+				session.setAttribute("sum", sum);
+			} else {
+				String Cheack3 = "✖";
+				session.setAttribute("問3", Cheack3);
+			}
+
+			//問４の答え合わせ
+			if (userAnswer4.equals(correctAnswer4)) {
+
+				String Cheack4 = "◎";
+				session.setAttribute("問4", Cheack4);
+
+				sum+=1;
+				session.setAttribute("sum", sum);
+			} else {
+				String Cheack4 = "✖";
+				session.setAttribute("問4", Cheack4);
+			}
+
+			//問５の答え合わせ
+			if (userAnswer5.equals(correctAnswer5)) {
+
+				String Cheack5 = "◎";
+				session.setAttribute("問5", Cheack5);
+
+				sum+=1;
+				session.setAttribute("sum", sum);
+			} else {
+				String Cheack5 = "✖";
+				session.setAttribute("問5", Cheack5);
+			}
+
+			if(sum == 5) {
+				String Perfect = "全問正解！！！！！おめでとう～🎉";
+				session.setAttribute("perfect", Perfect);
+			}else if(sum==4) {
+				String Perfect = "惜しい！！";
+				session.setAttribute("perfect", Perfect);
+			}else {
+				String Perfect = "まだまだ勉強不足！間違えた箇所はハンドブックをチェックしよう";
+				session.setAttribute("perfect", Perfect);
+			}
 			RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/Handbook/testResult.jsp");
 			dispatcher.forward(request, response);
 
 		}
-		//gameをセッションスコープに格納する→格納することでjspで利用可能になる
-		//request.setAttribute("game", game);
-
 		//		フォワード
 		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/Handbook/test.jsp");
 		dispatcher.forward(request, response);
-		//
+
 	}
 }
-
