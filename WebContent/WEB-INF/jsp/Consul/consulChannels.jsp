@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html lang="ja">
 
@@ -28,19 +29,20 @@
         	<p>${result}</p>
 
         <br>
-<c:forEach var="e" items="${cardList}">
-				<form method="get" action="/simpleBC/ConsulChannelsServlet">
-
+		<c:forEach var="e" items="${cardList}">
+				<form method="get" action="/C5/ConsulChannelsServlet">
 
 					<p>${e.post_content}</p>
 					<br>
 
-
 				</form>
 				<hr>
-			</div>
 
 		</c:forEach>
+
+		<p>${e.post_content}</p>
+		<p>${e.post_content}</p>
+
         <form method=post action=/C5/ConsulChannelsServlet>
 			<input type=text name="inputText" placeholder="質問内容を入力してください。"><br>
 
