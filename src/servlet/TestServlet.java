@@ -31,11 +31,11 @@ public class TestServlet extends HttpServlet {
 		// ここを改造しました
 		List<Games> gameList = gDao.selectAll();
 		//初期値を設定
-		Games game = gameList.get(0);
+		Games game1 = gameList.get(0);
 
 		//		セッションスコープに格納
 		HttpSession session = request.getSession();
-		session.setAttribute("game1", game);
+		session.setAttribute("game1", game1);
 
 		//gameList = [Game, Game, Game, Game, Game]
 		HttpSession session2 = request.getSession();
@@ -68,11 +68,16 @@ public class TestServlet extends HttpServlet {
 		session.setAttribute("answer3", answer3);
 		session.setAttribute("answer4", answer4);
 		session.setAttribute("answer5", answer5);
+//		 if ("あめりか".equals(answer1)) {
+//			RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/Handbook/knowledge.jsp");
+//			dispatcher.forward(request, response);
+//		 }
 
-		if (answer1 == "あめりか") {
-			RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/Handbook/knowledge.jsp");
-			dispatcher.forward(request, response);
-		} else {
+//		if(answer1.equals(get(1).correct)) {
+//			RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/Handbook/knowledge.jsp");
+//			dispatcher.forward(request, response);
+//		 }
+
 		//		セッションスコープからgameListを取り出す
 		HttpSession session2 = request.getSession();
 		List<Games> gameList = (List<Games>) session2.getAttribute("gameList");
@@ -82,12 +87,18 @@ public class TestServlet extends HttpServlet {
 		HttpSession session1 = request.getSession();
 		int i = (int) session1.getAttribute("i");
 
+
+
 		if (i == 0) {
 			i += 1;
 			session.setAttribute("i", i);
 
 			Games game = gameList.get(1);
 			session.setAttribute("game2", game);
+			if(answer2.equals("game2.correct")) {
+				RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/Handbook/knowledge.jsp");
+				dispatcher.forward(request, response);
+			 }
 
 		} else if (i == 1) {
 			i += 1;
@@ -95,7 +106,10 @@ public class TestServlet extends HttpServlet {
 			session.setAttribute("i", i);
 
 			session.setAttribute("game3", game);
-
+			if("game2".equals(gameList.get(1))) {
+				RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/Handbook/knowledge.jsp");
+				dispatcher.forward(request, response);
+			 }
 		} else if (i == 2) {
 			i += 1;
 			Games game = gameList.get(3);
@@ -103,16 +117,19 @@ public class TestServlet extends HttpServlet {
 
 			session.setAttribute("game4", game);
 
-		} else if (i == 3) {
+			session.setAttribute("answer1", answer1);
+
+		}  else if (i == 3) {
 			i += 1;
 			Games game = gameList.get(4);
 			session.setAttribute("i", i);
 
 			session.setAttribute("game5", game);
 
-		} else if (answer1 == "あめりか") {
+		} else if (answer1.equals("あめりか")) {
 			RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/Handbook/knowledge.jsp");
 			dispatcher.forward(request, response);
+
 		} else if (i == 4) {
 
 			RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/Handbook/testResult.jsp");
@@ -128,4 +145,4 @@ public class TestServlet extends HttpServlet {
 		//
 	}
 }
-}
+
