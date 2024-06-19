@@ -27,6 +27,9 @@ public class GamesDAO {
 //            "jdbc:h2:file:C:/pleiades/workspace/data/C5", "sa", "pw"
             // SQL文を準備する
             String sql = "SELECT * FROM GAMES ORDER BY RAND()";
+            
+            
+        
             PreparedStatement pStmt = conn.prepareStatement(sql);
 
 

@@ -1,6 +1,7 @@
 package servlet;
 
 import java.io.IOException;
+import java.util.List;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -19,19 +20,31 @@ public class ConsulChannelsServlet extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
+		// 検索処理を行う
+				ConsulsDAO bDao = new ConsulsDAO();
+				// ここを改造しました
+				List<Consuls> cardList = bDao.select(new Consuls());
+
+				// 検索結果をリクエストスコープに格納する
+				request.setAttribute("cardList", cardList);
+
 		//フォワード
 		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/Consul/consulChannels.jsp");
 		dispatcher.forward(request, response);
 	}
+
+
+
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
         // セッションスコープからユーザーID（user_id）を取得
         HttpSession session = request.getSession();
         request.setCharacterEncoding("UTF-8");
-        String user_id = (String) session.getAttribute("users_id");
+        String user_id = (String) session.getAttribute("user_id");
 
-        System.out.println("ユーザーID（user_id）を取得");
+        System.out.println("ユーザーID（user_id）を取得" + user_id);
+
 
  		//チャンネルID（channel_id）画面でどのボタンを押したかによってチャンネル番号を判断＆取得する。
         //衣→１、食→２、住→３，その他→４
@@ -54,6 +67,7 @@ public class ConsulChannelsServlet extends HttpServlet {
         }
 
         //チャンネル名の表示をこれで行う
+        String channelName = "";
 
         if ("衣".equals(button1)) {
             request.setAttribute("channel_id", "衣");
@@ -65,17 +79,20 @@ public class ConsulChannelsServlet extends HttpServlet {
             request.setAttribute("channel_id", "その他");
         }
 
+        request.setAttribute("channel_id", channelName);
+
         System.out.println("チャンネル名を取得");
 
- 		//投稿ID（post_id）投稿した質問につく番号。他の質問との区別を行う。
+
+        //投稿ID（post_id）投稿した質問につく番号。他の質問との区別を行う。
  		//データベースから生成する。自分でつける。
  		//consulsテーブルを検索して、投稿IDのMax値を検索して、その値に+1をする。
 
         ConsulsDAO cDao = new ConsulsDAO();
-        int maxPostId = cDao.getMaxPostId();
-        int newPostId = maxPostId + 1;
+        int maxPost_Id = cDao.getMaxPostId();
+        int post_id = maxPost_Id + 1;
 
-        request.setAttribute("newPostId", newPostId);
+        request.setAttribute("post_id", post_id);
 
         System.out.println("投稿ID（post_id）を取得");
 
@@ -85,64 +102,55 @@ public class ConsulChannelsServlet extends HttpServlet {
 
         int post_number = 0;
 
-        String Question = request.getParameter("1");
-        String Reply = request.getParameter("2");
+        String question = request.getParameter("1");
+        String reply = request.getParameter("2");
 
-        if ("Question".equals(Question)) {
+        if ("Question".equals(question)) {
         	post_number = 1;
-        } else if ("Reply".equals(Reply)) {
+        } else if ("Reply".equals(reply)) {
         	post_number = 2;
         }
 
         System.out.println("投稿NO（post_number）を取得");
 
-
  		//投稿内容（post_content）
  		String post_content = request.getParameter("inputText");
 
- 		System.out.println("投稿内容（post_content）を取得");
-
-
- 		// 投稿時間は自動生成（CURRENT_TIMESTAMP）だから格納は不要。
-
  		//DAOを経由して、データベースに格納する。
+ 		Consuls consuls = new Consuls();
+ 		consuls.setId(0);
+ 		consuls.setPost_content(post_content);
 
+ 		ConsulsDAO consulsDao = new ConsulsDAO();
+ 		consulsDao.insertAndGetGeneratedPostId(consuls);
 
         // 投稿IDを生成してセットする
-        ConsulsDAO consulsDao = new ConsulsDAO();
-        Consuls c = new Consuls();
+		/*        ConsulsDAO consulsDao = new ConsulsDAO();
+		Consuls c = new Consuls();
 
-        	c.setUser_id(0);
-        	c.setChannel_id(0);
-        	c.setPost_id(0);
-        	c.setPost_number(0);
-        	c.setPost_content("");
+		c.setUser_id(0);
+		    	c.setChannel_id(0);
+		    	c.setPost_id(0);
+		    	c.setPost_number(0);
+		    	c.setPost_content("");
 
-		if (consulsDao.insert(c)) {
-		//if (cDao.insert(new Consuls(0,user_id,channel_id,0,0,post_content,0))) {
+		    	if (consulsDao.insertAndGetGeneratedPostId(c) == 1) {
+		    		//if (cDao.insert(new Consuls(0,user_id,channel_id,0,0,post_content,0))) {// 登録成功時の処理
+		    request.setAttribute("result", "投稿完了");
+		} else {
+		    // 登録失敗時の処理
+		    request.setAttribute("result", "投稿に失敗しました");
+		}*/
 
-			// 登録成功時の処理
-            request.setAttribute("result", "投稿完了");
-        } else {
-            // 登録失敗時の処理
-            request.setAttribute("result", "投稿に失敗しました");
-        }
+		 //---------ここからデータ表示に移る↓------------
 
+		 //DAOを経由して、データベースの値を取得する。
+		 // 投稿内容をリクエストに保存
 
- 		//---------ここからデータ表示に移る↓------------
-
- 		//DAOを経由して、データベースの値を取得する。
-
- 		// 登録成功時の処理
- 		request.setAttribute("result", "投稿完了");
-
- 		// 投稿内容をリクエストに保存
- 		request.setAttribute("post_content", post_content);
 
       //フォワード
   		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/Consul/consulChannels.jsp");
   		dispatcher.forward(request, response);
-
 
     }
 }

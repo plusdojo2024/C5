@@ -25,13 +25,26 @@
         </header>
 
         	<p>${post_content}</p>
+        	<p>${result}</p>
 
         <br>
+<c:forEach var="e" items="${cardList}">
+				<form method="get" action="/simpleBC/ConsulChannelsServlet">
 
+
+					<p>${e.post_content}</p>
+					<br>
+
+
+				</form>
+				<hr>
+			</div>
+
+		</c:forEach>
         <form method=post action=/C5/ConsulChannelsServlet>
-			<textarea name="inputText" placeholder="質問内容を入力してください。"></textarea> <br>
+			<input type=text name="inputText" placeholder="質問内容を入力してください。"><br>
 
-        	<input type="submit" name="1" value="送信"><br>
+        	<input type="submit"  value="送信"><br>
         	<input type="hidden" name="channel_id" value="${channel_id}">
 
         </form>

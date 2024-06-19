@@ -111,38 +111,38 @@
 
 
 										<c:if test="${i == 0}">
-											<th><input type="radio" name="answer1" value="あめりか"></th>
-											<th><input type="radio" name="answer1" value="あめりか"></th>
-											<th><input type="radio" name="answer1" value="あめりか"></th>
-											<th><input type="radio" name="answer1" value="あめりか"></th>
+											<th><input type="radio" name="answer" value="1"></th>
+											<th><input type="radio" name="answer" value="2"></th>
+											<th><input type="radio" name="answer" value="3"></th>
+											<th><input type="radio" name="answer" value="4"></th>
 										</c:if>
 
 										<c:if test="${i == 1}">
-											<th><input type="radio" id="#" name="answer2" value="1"></th>
-											<th><input type="radio" id="#" name="answer2" value="2"></th>
-											<th><input type="radio" id="#" name="answer2" value="3"></th>
-											<th><input type="radio" id="#" name="answer2" value="4"></th>
+											<th><input type="radio" id="#" name="answer" value="1"></th>
+											<th><input type="radio" id="#" name="answer" value="2"></th>
+											<th><input type="radio" id="#" name="answer" value="3"></th>
+											<th><input type="radio" id="#" name="answer" value="4"></th>
 										</c:if>
 
 										<c:if test="${i == 2}">
-											<th><input type="radio" id="#" name="answer3" value="1"></th>
-											<th><input type="radio" id="#" name="answer3" value="2"></th>
-											<th><input type="radio" id="#" name="answer3" value="3"></th>
-											<th><input type="radio" id="#" name="answer3" value="4"></th>
+											<th><input type="radio" id="#" name="answer" value="1"></th>
+											<th><input type="radio" id="#" name="answer" value="2"></th>
+											<th><input type="radio" id="#" name="answer" value="3"></th>
+											<th><input type="radio" id="#" name="answer" value="4"></th>
 										</c:if>
 
 										<c:if test="${i == 3}">
-											<th><input type="radio" id="#" name="answer4" value="1"></th>
-											<th><input type="radio" id="#" name="answer4" value="2"></th>
-											<th><input type="radio" id="#" name="answer4" value="3"></th>
-											<th><input type="radio" id="#" name="answer4" value="4"></th>
+											<th><input type="radio" id="#" name="answer" value="1"></th>
+											<th><input type="radio" id="#" name="answer" value="2"></th>
+											<th><input type="radio" id="#" name="answer" value="3"></th>
+											<th><input type="radio" id="#" name="answer" value="4"></th>
 										</c:if>
 
 										<c:if test="${i == 4}">
-											<th><input type="radio" id="#" name="answer5" value="1"></th>
-											<th><input type="radio" id="#" name="answer5" value="2"></th>
-											<th><input type="radio" id="#" name="answer5" value="3"></th>
-											<th><input type="radio" id="#" name="answer5" value="4"></th>
+											<th><input type="radio" id="#" name="answer" value="1"></th>
+											<th><input type="radio" id="#" name="answer" value="2"></th>
+											<th><input type="radio" id="#" name="answer" value="3"></th>
+											<th><input type="radio" id="#" name="answer" value="4"></th>
 										</c:if>
 
 
@@ -152,8 +152,7 @@
 							<c:if test="${i < 4 }">
 								<input type="submit" value="次へ" class="next">
 							</c:if>
-	</form>
-	<form method="post" action="/C5/TestServlet">
+
 		<c:if test="${i == 4 }">
 			<input type="submit" value="終了" class="next">
 		</c:if>
