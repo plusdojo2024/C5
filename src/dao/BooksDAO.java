@@ -1,5 +1,14 @@
 package dao;
 
+//import java.sql.Connection;
+//import java.sql.DriverManager;
+//import java.sql.PreparedStatement;
+//import java.util.ArrayList;
+//import java.util.List;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -13,13 +22,65 @@ public class BooksDAO {
 
 	public List<Books> getChannelBooks(int channel_id) {
 		List<Books> booksList = new ArrayList<Books>();
+		Connection conn = null;
 
-		//SELECT item_name FROM handbook WHERE channel_id = ?;
+		try {
+
+			// JDBCドライバを読み込む
+			Class.forName("org.h2.Driver");
+
+			// データベースに接続する
+			conn = DriverManager.getConnection("jdbc:h2:file:C:/pleiades/workspace/data/C5", "sa", "pw");
+
+			// SQL文を準備する
+			String sql = "SELECT item_name FROM handbook WHERE channel_id = ?";
+			PreparedStatement pStmt = conn.prepareStatement(sql);
 
 
-		//SELECT item_name FROM handbook WHERE channel_id = 1;
-		//SELECT item_name FROM handbook WHERE channel_id = 2;
-		//SELECT item_name FROM handbook WHERE channel_id = 3;
+			//SELECT item_name FROM handbook WHERE channel_id = 1;
+			//SELECT item_name FROM handbook WHERE channel_id = 2;
+			//SELECT item_name FROM handbook WHERE channel_id = 3;
+
+			// SQL文を完成させる
+			pStmt.setInt(1, channel_id);
+
+
+//			if (channel_id == 1) {
+//			pStmt.setInt(1, 1 );
+//			}
+//			else if (channel_id.getChannel_id() == 2) {
+//			pStmt.setInt(1, 2);
+//			}
+//			else if (channel_id.getChannel_id() == 3) {
+//			pStmt.setInt(1, 3);
+//			}
+
+
+
+		}
+		catch (SQLException e) {
+			e.printStackTrace();
+			booksList = null;
+		}
+		catch (ClassNotFoundException e) {
+			e.printStackTrace();
+			booksList = null;
+		}
+		finally {
+			// データベースを切断
+			if (conn != null) {
+				try {
+					conn.close();
+				}
+				catch (SQLException e) {
+					e.printStackTrace();
+					booksList = null;
+				}
+			}
+		}
+
+
+
 
 		return booksList;
 	}
