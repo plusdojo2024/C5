@@ -1,6 +1,7 @@
 package servlet;
 
 import java.io.IOException;
+import java.util.List;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -19,10 +20,21 @@ public class ConsulChannelsServlet extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
+		// 検索処理を行う
+				ConsulsDAO bDao = new ConsulsDAO();
+				// ここを改造しました
+				List<Consuls> cardList = bDao.select(new Consuls());
+
+				// 検索結果をリクエストスコープに格納する
+				request.setAttribute("cardList", cardList);
+
 		//フォワード
 		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/Consul/consulChannels.jsp");
 		dispatcher.forward(request, response);
 	}
+
+
+
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 

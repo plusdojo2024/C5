@@ -5,6 +5,8 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 
 import model.Consuls;
 
@@ -122,5 +124,66 @@ import model.Consuls;
 	    public static void main1(String[] args) {
 			ConsulsDAO dao = new ConsulsDAO();
 			System.out.println(dao.insertAndGetGeneratedPostId(null));
+		}
+
+
+		// searchServletで検索項目を指定し、検索結果のリストを返す
+		public List<Consuls> select(Consuls card) {
+			Connection conn = null;
+			List<Consuls> cardList = new ArrayList<Consuls>();
+
+			try {
+				// JDBCドライバを読み込む
+				Class.forName("org.h2.Driver");
+
+				// データベースに接続する
+//				conn = DriverManager.getConnection("jdbc:h2:file:C:/pleiades/workspace/data/C5", "sa", "pw");
+				conn = DriverManager.getConnection("jdbc:h2:file:C:/pleiades/workspace/data/simpleBC", "sa", "pw");
+
+				// SQL文を準備する
+				String sql = "SELECT * FROM Consuls";
+				PreparedStatement pStmt = conn.prepareStatement(sql);
+
+				// SQL文を実行し、結果表を取得する
+				ResultSet rs = pStmt.executeQuery();
+
+				// 結果表をコレクションにコピーする
+				while (rs.next()) {
+					Consuls record = new Consuls(
+					rs.getInt("id"),
+					rs.getInt("user_id"),
+					rs.getInt("channel_id"),
+					rs.getInt("post_id"),
+					rs.getInt("post_number"),
+					rs.getString("post_content"),
+					rs.getTimestamp("post_time")
+
+					);
+					cardList.add(record);
+				}
+			}
+			catch (SQLException e) {
+				e.printStackTrace();
+				cardList = null;
+			}
+			catch (ClassNotFoundException e) {
+				e.printStackTrace();
+				cardList = null;
+			}
+			finally {
+				// データベースを切断
+				if (conn != null) {
+					try {
+						conn.close();
+					}
+					catch (SQLException e) {
+						e.printStackTrace();
+						cardList = null;
+					}
+				}
+			}
+
+			// 結果を返す
+			return cardList;
 		}
 	}

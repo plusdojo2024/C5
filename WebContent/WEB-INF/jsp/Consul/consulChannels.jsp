@@ -28,7 +28,19 @@
         	<p>${result}</p>
 
         <br>
+<c:forEach var="e" items="${cardList}">
+				<form method="get" action="/simpleBC/ConsulChannelsServlet">
 
+
+					<p>${e.post_content}</p>
+					<br>
+
+
+				</form>
+				<hr>
+			</div>
+
+		</c:forEach>
         <form method=post action=/C5/ConsulChannelsServlet>
 			<input type=text name="inputText" placeholder="質問内容を入力してください。"><br>
 
