@@ -28,6 +28,22 @@ public class BookChoiceServlet extends HttpServlet {
             request.setAttribute("message", "住");
         }
 
+        if ("衣".equals(button1)) {
+            request.setAttribute("title1", "おむつの替え方");
+            request.setAttribute("title2", "洗濯時の注意");
+            request.setAttribute("title3", "外出時の持ち物");
+
+        } else if("食".equals(button2)) {
+            request.setAttribute("message", "食");
+            request.setAttribute("message", "衣");
+            request.setAttribute("message", "衣");
+
+        }else if ("住".equals(button3)) {
+            request.setAttribute("message", "住");
+            request.setAttribute("message", "衣");
+            request.setAttribute("message", "衣");
+        }
+
 		//フォワード
 		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/Handbook/bookChoice.jsp");
 			dispatcher.forward(request, response);

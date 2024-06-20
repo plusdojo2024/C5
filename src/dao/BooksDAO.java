@@ -1,13 +1,9 @@
 package dao;
 
-//import java.sql.Connection;
-//import java.sql.DriverManager;
-//import java.sql.PreparedStatement;
-//import java.util.ArrayList;
-//import java.util.List;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
@@ -33,13 +29,9 @@ public class BooksDAO {
 			conn = DriverManager.getConnection("jdbc:h2:file:C:/pleiades/workspace/data/C5", "sa", "pw");
 
 			// SQL文を準備する
-			String sql = "SELECT item_name FROM handbook WHERE channel_id = ?";
+			String sql = "SELECT item_name FROM handbook WHERE  channel_id = ?";
 			PreparedStatement pStmt = conn.prepareStatement(sql);
 
-
-			//SELECT item_name FROM handbook WHERE channel_id = 1;
-			//SELECT item_name FROM handbook WHERE channel_id = 2;
-			//SELECT item_name FROM handbook WHERE channel_id = 3;
 
 			// SQL文を完成させる
 			pStmt.setInt(1, channel_id);
@@ -55,6 +47,22 @@ public class BooksDAO {
 //			pStmt.setInt(1, 3);
 //			}
 
+			// SQL文を実行し、結果表を取得する
+			ResultSet rs = pStmt.executeQuery();
+
+
+			// 結果表をコレクションにコピーする
+			while (rs.next()) {
+				Books item = new Books(
+						rs.getInt("id"),
+						rs.getInt("channel_id"),
+						rs.getInt("item_id"),
+						rs.getString("item_name"),
+						rs.getString("item_icon"),
+						rs.getString("explanation")
+						);
+				booksList.add(item);
+			}
 
 
 		}
