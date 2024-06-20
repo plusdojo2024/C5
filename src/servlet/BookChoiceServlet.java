@@ -34,14 +34,14 @@ public class BookChoiceServlet extends HttpServlet {
             request.setAttribute("title3", "外出時の持ち物");
 
         } else if("食".equals(button2)) {
-            request.setAttribute("message", "食");
-            request.setAttribute("message", "衣");
-            request.setAttribute("message", "衣");
+        	request.setAttribute("title1", "食べてはいけないもの");
+            request.setAttribute("title2", "栄養バランス");
+            request.setAttribute("title3", "ミルクについて");
 
         }else if ("住".equals(button3)) {
-            request.setAttribute("message", "住");
-            request.setAttribute("message", "衣");
-            request.setAttribute("message", "衣");
+        	request.setAttribute("title1", "温度・湿度について");
+            request.setAttribute("title2", "お風呂の入れ方");
+            request.setAttribute("title3", "注意する家具");
         }
 
 		//フォワード
