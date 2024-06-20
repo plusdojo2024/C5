@@ -12,15 +12,28 @@ import java.util.List;
 import model.Childinfo;
 
 public class ChildDAO {
+	/*
+		    private Connection con;
 
-	    private Connection con;
+		    public ChildDAO(Connection con) {
+		        this.con = con;
+		    }*/
 
-	    public ChildDAO(Connection con) {
-	        this.con = con;
-	    }
+
+		//idを指定して、子供の情報を取得する。
+
+		//     戻り値の型       メソッド名 ( 引数の型と引数名)
+		public List<Childinfo> select (int id ) {
+	    	Connection con = null;
+	    	List<Childinfo> children = new ArrayList<Childinfo>();
+
+
+
+			return children;
+		}
 
 	    // ユーザーIDに紐づく子供のリストを取得するメソッド
-	    public List<Childinfo> getChildrenByUserId(int id){
+	    public List<Childinfo> select(Childinfo ci){
 	    	Connection con = null;
 	    	List<Childinfo> children = new ArrayList<Childinfo>();
 
@@ -37,6 +50,7 @@ public class ChildDAO {
 	    		PreparedStatement ps = con.prepareStatement(sql);
 
 
+	    		// SQL文を実行する
 	    		try (ResultSet rs = ps.executeQuery()) {
 
 	    			while (rs.next()) {
@@ -47,7 +61,6 @@ public class ChildDAO {
 	    			}
 	    		}
 
-	    	// SQL文を実行する
 
 		}
 		catch (SQLException e) {
@@ -72,4 +85,3 @@ public class ChildDAO {
         return children;
         }
     }
-

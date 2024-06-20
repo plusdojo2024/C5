@@ -18,7 +18,7 @@
             <input type="submit" class="Logout" name="logout" value="ログアウト">
         </form>
 
-        <form method="post" action="/C5/LogoutServlet">
+        <form method="post" action="/C5/LoginServlet">
             <input type="submit" class="Cancel" name="cancel" value="キャンセル">
         </form>
     </div>

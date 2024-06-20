@@ -2,38 +2,29 @@
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="ja">
-
 <div class="Content">
   <head>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@100..900&display=swap" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="/C5/CSS/style.css">
-
     <title>ホーム</title>
   </head>
-
 	<body>
       <header>
         <h3 id="AppLogo">ひろしninaru</h3>
       </header>
 
-      <form id="birthdateForm">
          <label for="birthdate">生年月日を選択してください:</label>
          <input type ="date" id="birthdate" name = "birthdate">
       </form>
-
       <!--↓生年月日を表示する-->
       <p id="result"></p>
-
       <img src="/C5/images/Home-Hiroshi.png">
-
       <br>
-
       <form>
       	<input type ="submit" class="openPopupBtn" value="体温を測る"></input>
 	  </form>
-
       <h2>記録する</h2>
       <table align="center">
          <tr>
@@ -50,23 +41,18 @@
               <img src="/C5/images/icons/photos.jpeg" class="RecordIcon" alt="写真">
            </td>
           </tr>
-
           <tr>
             <td><input type ="submit" class="openPopupBtn" value="排泄"></input></td>
             <td><input type ="submit" class="openPopupBtn" value="睡眠"></input></td>
             <td><input type ="submit" class="openPopupBtn" value="ごはん"></input></td>
             <td><input type ="submit" class="openPopupBtn" value="写真"></input></td>
           </tr>
-
        </table>
        	<br>
-
         <c:forEach var="child" items="${children}">
             <p>${child.name}の記録を家族にシェアしましょう！</p>
         </c:forEach>
-
        <input type ="submit" class="shareQR" value="パートナーにシェア"></input>
-
                 <!--ポップアップダイアログ
                 <div id="popup" class="modal">
                     <div class="modal-content">
@@ -79,45 +65,28 @@
                                 <button id="submitBtn">登録</button>
 =======
                 <!--ポップアップダイアログ-->
-            <div id="popup" class="modal" style="display: none;">
+            <div id="popup" class="modal">
             <div class="modal-content">
                 <span class="close">&times;</span>
-                <p>テキストを入力してください:</p>
-                <input type="text" id="userInput" placeholder="ここに入力">
-                <button id="submitBtn">登録</button>
-                <!-- トグルスイッチ -->
-                    <label class="toggle-switch">
-                    <input type="checkbox" id="toggleSwitch">
-                    <span class="toggle-slider round"></span></label>
-
+                <div id="popupContent"></div>
             </div>
     </div>
-
     <footer>
         <table align="center">
             <tr>
                 <td>
-
                     <img src="/C5/images/icons/home.png" class="FixedBar" alt="ホーム"></a>
-
                 </td>
                 <td>
-
                     <img src="/C5/images/icons/record.png" class="FixedBar" alt="記録書"></a>
-
                 </td>
                 <td>
-
                     <img src="/C5/images/icons/handbook.png" class="FixedBar" alt="ハンドブック"></a>
-
                 </td>
                 <td>
-
                     <img src="/C5/images/icons/consul.png" class="FixedBar" alt="相談所"></a>
-
                 </td>
             </tr>
-
             <tr>
                 <td>
                 	<form method="get" action="/C5/HomeServlet">
@@ -142,69 +111,55 @@
             </tr>
         </table>
     </footer>
-        <script>
+       <script>
       //ポップアップ、トグルスイッチ
         document.addEventListener('DOMContentLoaded',function (){
             //モーダル要素を取得
             const modal = document.getElementById("popup");
-
             //ポップアップ表示ボタンを取得
                 const openPopupBtns = document.querySelectorAll(".openPopupBtn");
-
                 //const btn2 = document.getElementById("openPopupBtn2");
-
                 //閉じるボタン要素を取得
                 const closeBtn = document.querySelector(".close");
-
                 //OKボタン要素を取得
                 const submitBtn = document.getElementById("submitBtn");
-
                 //ユーザー入力フィールドを取得
                 const userInput = document.getElementById("userInput");
                 //const toggleSwich = document.getElementById("toggleSwich");
-
                 //モーダルを開く関数
             function openModal() {
                 modal.style.display = "block";
                     setTimeout(() =>  {
-
                         //微小な遅延を設けてクラスを追加
                         modal.classList.add("open");
                     }, 10 );
                 }
-
                 //モーダルを閉じる関数
                 function closeModal(){
                     modal.classList.remove("open");
                         setTimeout(() => {
-
                             //アニメーションの時間に合わせる
                             modal.style.display ="none";
                         },300);
                 }
-
                 openPopupBtns.forEach(btn => {
                     btn.addEventListener('click',function(event) {
                         event.preventDefault();
                         openModal();
                     });
                 });
-
                 closeBtn.addEventListener('click',function() {
                     closeModal();
                });
-
                 submitBtn.addEventListener ('click',function(){
                     alert("入力されたテキスト:"+ userInput.value);
                     closeModal();
                 });
-
                /*window.addEventListener('click',function (event) {
                     if (event.target == modal) {
                         closeModal();
                     }
                 });*/
-
                toggleSwich.addEventListener('chage', function() {
                     if (toggleSwich.cheaked) {
                         console.log("ON");
@@ -213,15 +168,11 @@
                     }
                 });
        });
-
-
             //カレンダー
             document.addEventListener('DOMContentLoaded',function(){
                 const birthdateInput = document.getElementById('birthdate');
-
                 birthdateInput.addEventListener('input',calculateAge);
             });
-
             function calculateAge(){
                 const birthdateInput = document.getElementById('birthdate').value;
                 if (!birthdateInput){
@@ -230,23 +181,18 @@
                 }
                 const birthdate = new Date(birthdateInput);
                 const today = new Date();
-
                 let years = today.getFullYear() - birthdate.getFullYear();
                 let months = today.getMonth() - birthdate.getMonth();
                 let days = today.getDate() - birthdate.getDate();
-
-
                 if (days < 0 ){
                     months -= 1;
                     const previousMonth = new Date(today.getFullYear(),today.getMonth(),0);
                     days += previousMonth.getDate();
                 }
-
                 if (months < 0){
                     years -= 1;
                     months += 12;
                 }
-
                 let result = `生後`;
                 if (years > 0) {
                     result += `${years}年`;
@@ -258,7 +204,6 @@
                     document.getElementById('result').textContent = result;
             }
         </script>
-
     </div>
 </body>
 </html>
