@@ -6,23 +6,19 @@ import java.io.Serializable;
 public class Channels implements Serializable {
 	private int id;/* チャンネルID */
 	private String channel_name;/* チャンネル名 */
-	private String channel_color;/* カラー */
 
 	//	引数のあるコンストラクタ
-	public Channels(int id, String channel_name, String channel_color){
+	public Channels(int id, String channel_name){
 
 
 		this.id = id;
 		this.channel_name = channel_name;
-		this.channel_color = channel_color;
-
 	}
 
 	//	引数のないコンストラクタ
 	public Channels() {
 		this.id = 0;
 		this.channel_name = "";
-		this.channel_color = "";
 	}
 
 	public int getId() {
@@ -39,13 +35,5 @@ public class Channels implements Serializable {
 
 	public void setChannel_name(String channel_name) {
 		this.channel_name = channel_name;
-	}
-
-	public String getChannel_color() {
-		return channel_color;
-	}
-
-	public void setChannel_color(String channel_color) {
-		this.channel_color = channel_color;
 	}
 }
