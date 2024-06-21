@@ -20,9 +20,6 @@ public class HomeServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
 
-    	//homeサーブレットの中でDAOを呼び出す必要なデータをリクエストスコープに格納する
-
-
             // ホーム画面にフォワードする
             RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/home.jsp");
             dispatcher.forward(request, response);
