@@ -38,8 +38,8 @@
 
             </form>
 
-			<form method="post" action="/C5/SignUpServlet">
-              <input type="reset" class="SignUp" name="reset" value="新規登録">
+			<form method="get" action="/C5/SignUpServlet">
+              <input type="submit" class="SignUp" name="reset" value="新規登録">
             </form>
 
 

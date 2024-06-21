@@ -12,6 +12,7 @@ import javax.servlet.http.HttpSession;
 
 import dao.UsersDAO;
 import model.Userpw;
+import model.Users;
 
 /**
  * Servlet implementation class LoginServlet
@@ -34,7 +35,8 @@ public class LoginServlet extends HttpServlet {
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	protected void doPost(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
 
 		// リクエストパラメータを取得する
 		request.setCharacterEncoding("UTF-8");
@@ -44,23 +46,32 @@ public class LoginServlet extends HttpServlet {
 		// ログイン処理を行う。↓文字の型があっているかの確認
 		UsersDAO iDao = new UsersDAO();
 		System.out.println("ユーザー名: " + user_name + ", パスワード: " + password);
+		Users user = iDao.isLoginOK(new Userpw(user_name, password));
+		if (user != null) { // ログイン成功
 
-		if (iDao.isLoginOK(new Userpw(user_name, password))) {    // ログイン成功
+			// セッションスコープにIDを格納する
+			HttpSession session = request.getSession();
+			session.setAttribute("user_id", user.getId());
+			session.setAttribute("child_birthday",user.getChild_birthday());
+			session.setAttribute("user_name", user.getUser_name());
+			session.setAttribute("child_name", user.getChild_name());
 
-		    // セッションスコープにIDを格納する
-		    HttpSession session = request.getSession();
-		    session.setAttribute("user_name", user_name);
+			/*			HttpSession session1 = request.getSession();
+						session1.setAttribute("id", id);*/
 
-		    // メニューサーブレットにリダイレクトする
-		    response.sendRedirect("/C5/HomeServlet");
+			int users_id = (int) session.getAttribute("user_id");
+			System.out.println(users_id);
+
+			// メニューサーブレットにリダイレクトする
+			response.sendRedirect("/C5/HomeServlet");
 		} else {
-		    // ログイン失敗時の処理
-		    String errorMessage = "ユーザー名またはパスワードに間違いがあります。";
-		    request.setAttribute("errorMessage", errorMessage);
+			// ログイン失敗時の処理
+			String errorMessage = "ユーザー名またはパスワードに間違いがあります。";
+			request.setAttribute("errorMessage", errorMessage);
 
-		    // ログインページへフォワード
-		    RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/login.jsp");
-		    dispatcher.forward(request, response);
+			// ログインページへフォワード
+			RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/login.jsp");
+			dispatcher.forward(request, response);
 		}
 	}
 }
