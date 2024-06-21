@@ -34,6 +34,7 @@
 				<form method="get" action="/C5/ConsulChannelsServlet">
 
 					<p>${e.post_content}</p>
+					<input type="submit" name="komento" value="コメント">
 					<br>
 
 				</form>
@@ -41,13 +42,12 @@
 
 		</c:forEach>
 
-		<p>${e.post_content}</p>
-		<p>${e.post_content}</p>
+		<hr>
 
         <form method=post action=/C5/ConsulChannelsServlet>
 			<input type=text name="inputText" placeholder="質問内容を入力してください。"><br>
 
-        	<input type="submit"  value="送信"><br>
+        	<input type="submit" name="touko" value="送信"><br>
         	<input type="hidden" name="channel_id" value="${channel_id}">
 
         </form>

@@ -35,6 +35,7 @@ public class BookChoiceServlet extends HttpServlet {
 
         } else if("食".equals(button2)) {
 <<<<<<< HEAD
+<<<<<<< HEAD
             request.setAttribute("message", "食");
             request.setAttribute("message", "衣");
             request.setAttribute("message", "衣");
@@ -44,6 +45,8 @@ public class BookChoiceServlet extends HttpServlet {
             request.setAttribute("message", "衣");
             request.setAttribute("message", "衣");
 =======
+=======
+>>>>>>> eaf24b5303bca1ec7d0bd3d6a149b30b5ceb9c51
         	request.setAttribute("title1", "食べてはいけないもの");
             request.setAttribute("title2", "栄養バランス");
             request.setAttribute("title3", "ミルクについて");
@@ -52,7 +55,10 @@ public class BookChoiceServlet extends HttpServlet {
         	request.setAttribute("title1", "温度・湿度について");
             request.setAttribute("title2", "お風呂の入れ方");
             request.setAttribute("title3", "注意する家具");
+<<<<<<< HEAD
 >>>>>>> 096450f686fb3ac6feeb1c2e4ff4cb790c82599b
+=======
+>>>>>>> eaf24b5303bca1ec7d0bd3d6a149b30b5ceb9c51
         }
 
 		//フォワード
