@@ -17,7 +17,6 @@ public class BooksDAOTest {
         List<Books> booksList = booksDAO.getChannelBooks(channelId);
 
         // 取得した本のリストを拡張for文で表示
-        System.out.println("Channel ID は " + channelId + ".衣のページ");
         for (Books book : booksList) {
             System.out.println(book.getItem_name()); // Booksクラスに適切なgetItemName()メソッドを仮定
         }

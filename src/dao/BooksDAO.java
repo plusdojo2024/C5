@@ -1,6 +1,7 @@
 package dao;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 //import java.sql.Connection;
 //import java.sql.DriverManager;
 //import java.sql.PreparedStatement;
@@ -10,11 +11,16 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 =======
+=======
+>>>>>>> 8f971ccbedd2ff001e7237f8716ba3ae94397eee
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+<<<<<<< HEAD
 >>>>>>> 096450f686fb3ac6feeb1c2e4ff4cb790c82599b
+=======
+>>>>>>> 8f971ccbedd2ff001e7237f8716ba3ae94397eee
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
@@ -41,6 +47,7 @@ public class BooksDAO {
 
 			// SQL文を準備する
 <<<<<<< HEAD
+<<<<<<< HEAD
 			String sql = "SELECT item_name FROM handbook WHERE channel_id = ?";
 			PreparedStatement pStmt = conn.prepareStatement(sql);
 
@@ -50,11 +57,16 @@ public class BooksDAO {
 			//SELECT item_name FROM handbook WHERE channel_id = 3;
 
 =======
+=======
+>>>>>>> 8f971ccbedd2ff001e7237f8716ba3ae94397eee
 			String sql = "SELECT item_name FROM handbook WHERE  channel_id = ?";
 			PreparedStatement pStmt = conn.prepareStatement(sql);
 
 
+<<<<<<< HEAD
 >>>>>>> 096450f686fb3ac6feeb1c2e4ff4cb790c82599b
+=======
+>>>>>>> 8f971ccbedd2ff001e7237f8716ba3ae94397eee
 			// SQL文を完成させる
 			pStmt.setInt(1, channel_id);
 
@@ -70,12 +82,28 @@ public class BooksDAO {
 //			}
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
+=======
+>>>>>>> 8f971ccbedd2ff001e7237f8716ba3ae94397eee
 			// SQL文を実行し、結果表を取得する
 			ResultSet rs = pStmt.executeQuery();
 
 
 			// 結果表をコレクションにコピーする
+<<<<<<< HEAD
+			while (rs.next()) {
+				Books item = new Books(
+						rs.getInt("id"),
+						rs.getInt("channel_id"),
+						rs.getInt("item_id"),
+						rs.getString("item_name"),
+						rs.getString("item_icon"),
+						rs.getString("explanation")
+						);
+				booksList.add(item);
+			}
+=======
 			/*			while (rs.next()) {
 							Books item = new Books(
 									rs.getInt("id"),

@@ -1,9 +1,13 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+<<<<<<< HEAD
+    pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html lang="ja">
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> 8f971ccbedd2ff001e7237f8716ba3ae94397eee
 
 <div class="content">
 
@@ -30,23 +34,24 @@
         	<p>${result}</p>
 
         <br>
-<c:forEach var="e" items="${cardList}">
-				<form method="get" action="/simpleBC/ConsulChannelsServlet">
-
+		<c:forEach var="e" items="${cardList}">
+				<form method="get" action="/C5/ConsulChannelsServlet">
 
 					<p>${e.post_content}</p>
+					<input type="submit" name="komento" value="コメント">
 					<br>
-
 
 				</form>
 				<hr>
-			</div>
 
 		</c:forEach>
+
+		<hr>
+
         <form method=post action=/C5/ConsulChannelsServlet>
 			<input type=text name="inputText" placeholder="質問内容を入力してください。"><br>
 
-        	<input type="submit"  value="送信"><br>
+        	<input type="submit" name="touko" value="送信"><br>
         	<input type="hidden" name="channel_id" value="${channel_id}">
 
         </form>
@@ -140,6 +145,13 @@
     </script>
 
 =======
+<<<<<<< HEAD
+=======
+	pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<!DOCTYPE html>
+<html lang="ja">
+>>>>>>> 8f971ccbedd2ff001e7237f8716ba3ae94397eee
 
 <head>
 <meta charset="UTF-8" />
