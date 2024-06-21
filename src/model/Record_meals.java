@@ -1,53 +1,58 @@
 package model;
 
 import java.io.Serializable;
+import java.sql.Time;
 import java.sql.Timestamp;
 
 //フィールドを増やした分だけ、下のコンストラクタを増やす
 public class Record_meals implements Serializable {
-	private int record_id;/* 記録書ID */
-	private Timestamp meal_time;/* 食事時間 */
+	private int meal_id;/* 記録書ID */
+	private int user_id;
+	private Time meal_time;/* 食事時間 */
 	private Boolean milk;/* ミルク */
 	private Boolean baby_food;/* 離乳食 */
 	private String milk_quantity;/* ミルク量 */
 	private String meal_comment;/* 備考*/
+	private Timestamp meal_timestamp;
 
 	//	引数のあるコンストラクタ
-	public Record_meals(int record_id, Timestamp meal_time,
-			Boolean milk, Boolean baby_food, String milk_quantity, String meal_comment) {
+	public Record_meals(int meal_id,int user_id, Time meal_time,
+			Boolean milk, Boolean baby_food, String milk_quantity, String meal_comment, Timestamp meal_timestamp) {
 
-		this.record_id = record_id;
+		this.meal_id = meal_id;
+		this.user_id = user_id;
 		this.meal_time = meal_time;
 		this.milk = milk;
 		this.baby_food=baby_food;
 		this.milk_quantity = milk_quantity;
 		this.meal_comment = meal_comment;
+		this.meal_timestamp = meal_timestamp;
 
 	}
 
 	//	引数のないコンストラクタ
 	public Record_meals() {
-		this.record_id = 0;
-		this.meal_time=new Timestamp(System.currentTimeMillis());
+		this.meal_id = 0;
+//		this.meal_time="";
 		this.milk=false;
 		this.baby_food=false;
 		this.milk_quantity="";
 		this.meal_comment="";
 	}
 
-	public int getRecord_id() {
-		return record_id;
+	public int getMeal_id() {
+		return meal_id;
 	}
 
-	public void setRecord_id(int record_id) {
-		this.record_id = record_id;
+	public void setMeal_id(int meal_id) {
+		this.meal_id = meal_id;
 	}
 
-	public Timestamp getMeal_time() {
+	public Time getMeal_time() {
 		return meal_time;
 	}
 
-	public void setMeal_time(Timestamp meal_time) {
+	public void setMeal_time(Time meal_time) {
 		this.meal_time = meal_time;
 	}
 
@@ -82,4 +87,44 @@ public class Record_meals implements Serializable {
 	public void setMeal_comment(String meal_comment) {
 		this.meal_comment = meal_comment;
 	}
+
+	//Stringの配列に一致する文字列があれば、sampleCheckBoxのBooleanをTrueにする
+	public void setExcretionCheckBox(String[] values) {
+		//一度全部、falseにする。
+		this.milk = false;
+		this.baby_food = false;
+
+		if (values == null) {
+			return;
+		}
+
+		//一致した文字列のフィールドのみ、trueにする
+		for(String s : values) {
+			switch (s) {
+			case "milk":
+				this.milk = true;
+				break;
+			case "baby_food":
+				this.baby_food = true;
+			default:
+			}
+		}
 	}
+
+	public Timestamp getMeal_timestamp() {
+		return meal_timestamp;
+	}
+
+	public void setMeal_timestamp(Timestamp meal_timestamp) {
+		this.meal_timestamp = meal_timestamp;
+	}
+
+	public int getUser_id() {
+		return user_id;
+	}
+
+	public void setUser_id(int user_id) {
+		this.user_id = user_id;
+	}
+}
+

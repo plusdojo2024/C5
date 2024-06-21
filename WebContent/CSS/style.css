@@ -455,8 +455,281 @@ h3{
 }
 
 
+/* ポップアップ */
+#click-btn {
+	display: block;
+	margin: 20px auto;
+	background-color: rgb(61, 60, 61);
+	color: white;
+	border: 0;
+	padding: 6px 10px;
+}
+
+#popup-wrapper {
+	background-color: rgba(0, 0, 0, .5);
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	display: none;
+}
+
+#popup-inside {
+	text-align: center;
+	width: 100%;
+	max-width: 300px;
+	background: white;
+	margin: 10% auto;
+	padding: 20px;
+	position: relative;
+}
 
 
+
+#message a {
+	background: rgb(61, 60, 61);
+	color: white;
+	text-decoration: none;
+	padding: 6px 10px;
+}
+
+#close {
+	position: absolute;
+	top: 0;
+	right: 5px;
+	cursor: pointer;
+}
+
+
+#click-btn1 {
+	display: block;
+	margin: 20px auto;
+	background-color: rgb(61, 60, 61);
+	color: white;
+	border: 0;
+	padding: 6px 10px;
+}
+
+#popup-wrapper1 {
+	background-color: rgba(0, 0, 0, .5);
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	display: none;
+}
+
+#popup-inside1 {
+	text-align: center;
+	width: 100%;
+	max-width: 300px;
+	background: white;
+	margin: 10% auto;
+	padding: 20px;
+	position: relative;
+}
+
+
+
+#message1 a {
+	background: rgb(61, 60, 61);
+	color: white;
+	text-decoration: none;
+	padding: 6px 10px;
+}
+
+#close1 {
+	position: absolute;
+	top: 0;
+	right: 5px;
+	cursor: pointer;
+}
+
+#click-btn2 {
+	display: block;
+	margin: 20px auto;
+	background-color: rgb(61, 60, 61);
+	color: white;
+	border: 0;
+	padding: 6px 10px;
+}
+
+#popup-wrapper2 {
+	background-color: rgba(0, 0, 0, .5);
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	display: none;
+}
+
+#popup-inside2 {
+	text-align: center;
+	width: 100%;
+	max-width: 300px;
+	background: white;
+	margin: 10% auto;
+	padding: 20px;
+	position: relative;
+}
+
+
+
+#message2 a {
+	background: rgb(61, 60, 61);
+	color: white;
+	text-decoration: none;
+	padding: 6px 10px;
+}
+
+#close2 {
+	position: absolute;
+	top: 0;
+	right: 5px;
+	cursor: pointer;
+}
+
+#click-btn3 {
+	display: block;
+	margin: 20px auto;
+	background-color: rgb(61, 60, 61);
+	color: white;
+	border: 0;
+	padding: 6px 10px;
+}
+
+#popup-wrapper3 {
+	background-color: rgba(0, 0, 0, .5);
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	display: none;
+}
+
+#popup-inside3 {
+	text-align: center;
+	width: 100%;
+	max-width: 300px;
+	background: white;
+	margin: 10% auto;
+	padding: 20px;
+	position: relative;
+}
+
+
+
+#message3 a {
+	background: rgb(61, 60, 61);
+	color: white;
+	text-decoration: none;
+	padding: 6px 10px;
+}
+
+#close3 {
+	position: absolute;
+	top: 0;
+	right: 5px;
+	cursor: pointer;
+}
+
+#click-btn4 {
+	display: block;
+	margin: 20px auto;
+	background-color: rgb(61, 60, 61);
+	color: white;
+	border: 0;
+	padding: 6px 10px;
+}
+
+#popup-wrapper4 {
+	background-color: rgba(0, 0, 0, .5);
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	display: none;
+}
+
+#popup-inside4 {
+	text-align: center;
+	width: 100%;
+	max-width: 300px;
+	background: white;
+	margin: 10% auto;
+	padding: 20px;
+	position: relative;
+}
+
+
+
+#message4 a {
+	background: rgb(61, 60, 61);
+	color: white;
+	text-decoration: none;
+	padding: 6px 10px;
+}
+
+#close4 {
+	position: absolute;
+	top: 0;
+	right: 5px;
+	cursor: pointer;
+}
+
+#click-btn5 {
+	display: block;
+	margin: 20px auto;
+	background-color: rgb(61, 60, 61);
+	color: white;
+	border: 0;
+	padding: 6px 10px;
+}
+
+#popup-wrapper5 {
+	background-color: rgba(0, 0, 0, .5);
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	display: none;
+}
+
+#popup-inside5 {
+	text-align: center;
+	width: 100%;
+	max-width: 300px;
+	background: white;
+	margin: 10% auto;
+	padding: 20px;
+	position: relative;
+}
+
+
+
+#message5 a {
+	background: rgb(61, 60, 61);
+	color: white;
+	text-decoration: none;
+	padding: 6px 10px;
+}
+
+#close5 {
+	position: absolute;
+	top: 0;
+	right: 5px;
+	cursor: pointer;
+}
+
+.ct {
+	text-align: center;
+}
 
 
 
