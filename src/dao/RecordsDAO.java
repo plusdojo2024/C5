@@ -10,11 +10,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import model.RecordTime;
-<<<<<<< HEAD
-public class RecordsDAO {
-	// 記録書に指定の日付の時間データを表示する
-	public List<RecordTime> select(RecordTime card) {
-=======
 import model.Record_excretions;
 import model.Record_meals;
 import model.Record_sleeps;
@@ -24,7 +19,6 @@ import model.UploadFile;
 public class RecordsDAO {
 	// 記録書に指定の日付のデータを表示する
 	public List<RecordTime> select(Date date) {
->>>>>>> 096450f686fb3ac6feeb1c2e4ff4cb790c82599b
 		Connection conn = null;
 		List<RecordTime> cardList = new ArrayList<RecordTime>();
 
@@ -38,19 +32,11 @@ public class RecordsDAO {
 			// SQL文を準備する
 			String sql = "select * from records "
 					+ "left join users on records.user_id = users.id "
-<<<<<<< HEAD
-					+"left join record_times on  records.id = record_times.record_id "
-					+"left join record_meals on records.id = record_meals.record_id "
-					+"left join record_sleeps on records.id = record_sleeps.record_id "
-					+"left join record_excretions on records.id = record_excretions.record_id "
-					+"order by records.id";
-=======
 					+ "left join record_meals on records.user_id = record_meals.user_id "
 					+ "left join record_sleeps on records.user_id = record_sleeps.user_id "
 					+ "left join record_excretions on records.user_id = record_excretions.user_id "
 					+ "where date = ? "
 					+ "order by records.id ";
->>>>>>> 096450f686fb3ac6feeb1c2e4ff4cb790c82599b
 			PreparedStatement pStmt = conn.prepareStatement(sql);
 
 			//SQLを完成させる
@@ -62,15 +48,9 @@ public class RecordsDAO {
 
 			// 結果表をjavaが扱いやすいコレクション（リスト）に変換する
 			while (rs.next()) {
-<<<<<<< HEAD
-			//	System.out.println(rs.getString("record_id"));
-//				System.out.println(rs.getString("excretion_comment"));
-//				System.out.println("-------------------");
-=======
 				//	System.out.println(rs.getString("record_id"));
 				//				System.out.println(rs.getString("excretion_comment"));
 				//				System.out.println("-------------------");
->>>>>>> 096450f686fb3ac6feeb1c2e4ff4cb790c82599b
 
 				//RecordTime
 				//	time
@@ -80,15 +60,6 @@ public class RecordsDAO {
 				RecordTime record = new RecordTime();
 
 				//ごはん
-<<<<<<< HEAD
-				if( rs.getTimestamp("meal_time") != null ) {
-					record.setTime( rs.getTimestamp("meal_time") );
-					if( rs.getBoolean("milk") == true ) {
-						record.setWork("ミルク");
-						record.setMilk_quantity(rs.getString("milk_quantity"));
-						record.setComment(rs.getString("meal_comment"));
-					}else {
-=======
 				if (rs.getTimestamp("meal_timestamp") != null) {
 					record.setTime(rs.getTimestamp("meal_timestamp"));
 					if (rs.getBoolean("milk") == true) {
@@ -96,40 +67,25 @@ public class RecordsDAO {
 						record.setMilk_quantity(rs.getString("milk_quantity") + "ml");
 						record.setComment(rs.getString("meal_comment"));
 					} else {
->>>>>>> 096450f686fb3ac6feeb1c2e4ff4cb790c82599b
 						record.setWork("離乳食");
 						record.setComment(rs.getString("meal_comment"));
 					}
 				}
 
 				//排泄
-<<<<<<< HEAD
-				else if(rs.getTimestamp("excretion_time") != null) {
-					record.setTime( rs.getTimestamp("excretion_time") );
-					if( rs.getBoolean("poop") == true ) {
-						record.setWork("うんち");
-						record.setComment(rs.getString("excretion_comment"));
-					}else {
-=======
 				else if (rs.getTimestamp("excretion_timestamp") != null) {
 					record.setTime(rs.getTimestamp("excretion_timestamp"));
 					if (rs.getBoolean("poop") == true) {
 						record.setWork("うんち");
 						record.setComment(rs.getString("excretion_comment"));
 					} else {
->>>>>>> 096450f686fb3ac6feeb1c2e4ff4cb790c82599b
 						record.setWork("おしっこ");
 						record.setComment(rs.getString("excretion_comment"));
 					}
 				}
 				//睡眠
-<<<<<<< HEAD
-				else if(rs.getTimestamp("sleep_time") != null) {
-					record.setTime(rs.getTimestamp("sleep_time"));
-=======
 				else if (rs.getTimestamp("sleep_timestamp") != null) {
 					record.setTime(rs.getTimestamp("sleep_timestamp"));
->>>>>>> 096450f686fb3ac6feeb1c2e4ff4cb790c82599b
 					record.setComment(rs.getString("sleep_comment"));
 
 				}
@@ -138,33 +94,17 @@ public class RecordsDAO {
 					break;
 				}
 
-<<<<<<< HEAD
-
-=======
->>>>>>> 096450f686fb3ac6feeb1c2e4ff4cb790c82599b
 				cardList.add(record);
 			}
 		}
 
-<<<<<<< HEAD
-
-
-
-
-=======
->>>>>>> 096450f686fb3ac6feeb1c2e4ff4cb790c82599b
 		catch (SQLException e) {
 			e.printStackTrace();
 			cardList = null;
 		} catch (ClassNotFoundException e) {
 			e.printStackTrace();
 			cardList = null;
-<<<<<<< HEAD
-		}
-	finally {
-=======
 		} finally {
->>>>>>> 096450f686fb3ac6feeb1c2e4ff4cb790c82599b
 			// データベースを切断
 			if (conn != null) {
 				try {
@@ -175,13 +115,11 @@ public class RecordsDAO {
 				}
 
 			}
-	}
+		}
 
 		// 結果を返す
 		return cardList;
 	}
-<<<<<<< HEAD
-=======
 
 	// 記録書登録
 	public boolean insert(Records record) {
@@ -445,6 +383,4 @@ public class RecordsDAO {
 		return result;
 	}
 
->>>>>>> 096450f686fb3ac6feeb1c2e4ff4cb790c82599b
 }
-

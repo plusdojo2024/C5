@@ -34,12 +34,9 @@
 					<p>体温検査</p>
 					<form action="/C5/RecordServlet" method="post">
 						<table>
-<<<<<<< HEAD
-=======
 						<tr>
 						<th><input type="date" name="date"></th>
 						</tr>
->>>>>>> 096450f686fb3ac6feeb1c2e4ff4cb790c82599b
 							<tr>
 								<th class="ct"><input type="text" name="temperature">℃</th>
 							</tr>
@@ -178,16 +175,6 @@
 						<div id="popup-inside4">
 							<div id="close4">x</div>
 							<div id="message4">
-<<<<<<< HEAD
-								<p>体温検査</p>
-								<form action="/C5/RecordServlet" method="post">
-									<table>
-										<tr>
-											<th class="ct"><input type="text" name="temperature">℃</th>
-										</tr>
-										<tr>
-											<th><input type="submit" value="記録する" name="syasin"></th>
-=======
 								<p>写真の追加</p>
 								<form action="/C5/RecordServlet" method="post" enctype="multipart/form-data">
 									<table>
@@ -196,7 +183,6 @@
 										</tr>
 										<tr>
 											<th><input type="submit" value="保存する" name="syasin" ></th>
->>>>>>> 096450f686fb3ac6feeb1c2e4ff4cb790c82599b
 										</tr>
 									</table>
 								</form>
@@ -206,13 +192,6 @@
 			</tr>
 		</table>
 
-<<<<<<< HEAD
-		<br>
-		<c:forEach var="child" items="${children}">
-			<p>${child.name}の記録を家族にシェアしましょう！</p>
-		</c:forEach>
-		<input type="submit" class="shareQR" value="パートナーにシェア"></input>
-=======
 
 		<!-- 画像出力の実験 -->
 
@@ -231,7 +210,6 @@
 		<p>${child_name}の記録をシェアしよう</p>
 		<input type="submit" class="shareQR" value="パートナーにシェア"> <br>
 		<br> <br> <br> <br>
->>>>>>> 096450f686fb3ac6feeb1c2e4ff4cb790c82599b
 		<!--ポップアップダイアログ
                 <div id="popup" class="modal">
                     <div class="modal-content">
@@ -244,29 +222,17 @@
                                 <button id="submitBtn">登録</button>
 =======
                 <!--ポップアップダイアログ-->
-<<<<<<< HEAD
-		<div id="popup" class="modal" style="display: none;">
-=======
 		<!-- 		<div id="popup" class="modal" style="display: none;">
->>>>>>> 096450f686fb3ac6feeb1c2e4ff4cb790c82599b
 			<div class="modal-content">
 				<span class="close">&times;</span>
 				<p>テキストを入力してください:</p>
 				<input type="text" id="userInput" placeholder="ここに入力">
 				<button id="submitBtn">登録</button>
-<<<<<<< HEAD
-				<!-- トグルスイッチ -->
-				<label class="toggle-switch"> <input type="checkbox"
-					id="toggleSwitch"> <span class="toggle-slider round"></span></label>
-			</div>
-		</div>
-=======
 				トグルスイッチ
 				<label class="toggle-switch"> <input type="checkbox"
 					id="toggleSwitch"> <span class="toggle-slider round"></span></label>
 			</div>
 		</div> -->
->>>>>>> 096450f686fb3ac6feeb1c2e4ff4cb790c82599b
 		<footer>
 			<table align="center">
 				<tr>

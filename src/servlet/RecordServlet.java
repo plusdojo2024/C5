@@ -2,10 +2,7 @@ package servlet;
 
 import java.io.IOException;
 import java.util.List;
-<<<<<<< HEAD
-=======
 import java.util.stream.Collectors;
->>>>>>> 096450f686fb3ac6feeb1c2e4ff4cb790c82599b
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -25,8 +22,6 @@ import model.Record_sleeps;
 import model.Records;
 import model.UploadFile;
 
-import dao.RecordsDAO;
-import model.RecordTime;
 /**
  * Servlet implementation class RecordServlet
  */
@@ -197,10 +192,6 @@ public class RecordServlet extends HttpServlet {
 		dispatcher.forward(request, response);
 	}
 
-<<<<<<< HEAD
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
-=======
 
 	    private String getSubmittedFileName(Part part) {
 
@@ -214,18 +205,5 @@ public class RecordServlet extends HttpServlet {
 	    	}
 	    return null;
 	    }
->>>>>>> 096450f686fb3ac6feeb1c2e4ff4cb790c82599b
 
-
-	//データを取得する
-	RecordsDAO dao = new RecordsDAO();
-	List<RecordTime> cardList = dao.select(new RecordTime());
-
-	//リクエストスコープに格納
-	request.setAttribute("cardList", cardList);
-
-	//フォワード
-	RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/Record/record.jsp");
-	dispatcher.forward(request, response);
-	}
 }

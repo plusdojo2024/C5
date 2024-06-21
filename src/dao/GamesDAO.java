@@ -24,12 +24,8 @@ public class GamesDAO {
             // データベースに接続する
             conn = DriverManager.getConnection("jdbc:h2:file:C:/pleiades/workspace/data/C5", "sa", "pw");
 
-//            "jdbc:h2:file:C:/pleiades/workspace/data/C5", "sa", "pw"
             // SQL文を準備する
             String sql = "SELECT * FROM GAMES ORDER BY RAND()";
-            
-            
-        
             PreparedStatement pStmt = conn.prepareStatement(sql);
 
 

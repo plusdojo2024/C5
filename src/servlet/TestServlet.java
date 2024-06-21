@@ -191,14 +191,10 @@ public class TestServlet extends HttpServlet {
 			}else if(sum==4) {
 				String Perfect = "惜しい！！";
 				session.setAttribute("perfect", Perfect);
-<<<<<<< HEAD
-			}else {
-=======
 			}else if(sum==0) {
 				String Perfect = "え、１問も正解できなかったの、、";
 				session.setAttribute("perfect", Perfect);
 			}	else {
->>>>>>> 096450f686fb3ac6feeb1c2e4ff4cb790c82599b
 				String Perfect = "まだまだ勉強不足！間違えた箇所はハンドブックをチェックしよう";
 				session.setAttribute("perfect", Perfect);
 			}
@@ -211,8 +207,4 @@ public class TestServlet extends HttpServlet {
 		dispatcher.forward(request, response);
 
 	}
-<<<<<<< HEAD
 }
-=======
-}
->>>>>>> 096450f686fb3ac6feeb1c2e4ff4cb790c82599b
