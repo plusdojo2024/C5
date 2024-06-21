@@ -52,6 +52,7 @@ public class BooksDAO {
 
 
 			// 結果表をコレクションにコピーする
+<<<<<<< HEAD
 			while (rs.next()) {
 				Books item = new Books(
 						rs.getInt("id"),
@@ -63,6 +64,19 @@ public class BooksDAO {
 						);
 				booksList.add(item);
 			}
+=======
+			/*			while (rs.next()) {
+							Books item = new Books(
+									rs.getInt("id"),
+									rs.getInt("channel_id"),
+									rs.getInt("item_id"),
+									rs.getString("item_name"),
+									rs.getString("item_icon"),
+									rs.getString("explanation")
+									);
+							booksList.add(item);
+						}*/
+>>>>>>> 096450f686fb3ac6feeb1c2e4ff4cb790c82599b
 
 
 		}
