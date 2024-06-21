@@ -11,19 +11,19 @@ import model.Users;
 
 public class UsersDAO {
 	//ログイン
-	public boolean isLoginOK(Userpw userpw) {
+	public Users isLoginOK(Userpw userpw) {
 		Connection conn = null;
-		boolean loginResult = false;
-
+//		boolean loginResult = false;
+		Users user = new Users();
 		try {
 			// JDBCドライバを読み込む
 			Class.forName("org.h2.Driver");
 
 			// データベースに接続する
-			conn = DriverManager.getConnection("jdbc:h2:file:C:/pleiades/workspace/data/simpleBC", "sa", "pw");
+			conn = DriverManager.getConnection("jdbc:h2:file:C:/pleiades/workspace/data/C5", "sa", "pw");
 
 			// SELECT文を準備する
-			String sql = "SELECT COUNT(*) FROM Users WHERE user_name = ? AND password = ?";
+			String sql = "SELECT * ,COUNT(*) FROM Users WHERE user_name = ? AND password = ?";
 			PreparedStatement pStmt = conn.prepareStatement(sql);
 			pStmt.setString(1, userpw.getUser_name());
 			pStmt.setString(2, userpw.getPassword());
@@ -34,15 +34,21 @@ public class UsersDAO {
 			// ユーザーIDとパスワードが一致するユーザーがいたかどうかをチェックする
 			rs.next();
 			if (rs.getInt("COUNT(*)") == 1) {
-				loginResult = true;
+//				loginResult = true;
+				user.setId(rs.getInt("id"));
+				user.setUser_name(rs.getString("user_name"));
+				user.setChild_name(rs.getString("child_name"));
+				user.setChild_birthday(rs.getDate("child_birthday"));
+//				user.setUser_name(rs.getString("user_name"));
+
 			}
 
 			} catch (SQLException e) {
 				e.printStackTrace();
-				loginResult = false;
+//				loginResult = false;
 			} catch (ClassNotFoundException e) {
 				e.printStackTrace();
-				loginResult = false;
+//				loginResult = false;
 			} finally {
 
 				// データベースを切断
@@ -51,13 +57,13 @@ public class UsersDAO {
 					conn.close();
 				} catch (SQLException e) {
 					e.printStackTrace();
-					loginResult = false;
+//					loginResult = false;
 				}
 			}
 		}
 
 		// 結果を返す
-		return loginResult;
+		return user;
 
 	}
 
@@ -72,32 +78,19 @@ public class UsersDAO {
 			Class.forName("org.h2.Driver");
 
 			// データベースに接続する
-			conn = DriverManager.getConnection("jdbc:h2:file:C:/pleiades/workspace/data/simpleBC", "sa", "pw");
+			conn = DriverManager.getConnection("jdbc:h2:file:C:/pleiades/workspace/data/C5", "sa", "pw");
 
 			// SQL文を準備する（AUTO_INCREMENTのNUMBER列にはNULLを指定する）
-			String sql = "INSERT INTO Users VALUES (NULL,?,?,?,?)";
+			String sql = "INSERT INTO Users(id,user_name,password,child_name,child_birthday) VALUES (NULL,?,?,?,?)";
 			PreparedStatement pStmt = conn.prepareStatement(sql);
 			//String child_birthday = new SimpleDateFormat("yyyy-MM-dd").format(user.getChild_birthday());
 
 			// 登録：SQL文を完成させる→名前などを入力するところ
-			if (user.getUser_name() != null && !user.getUser_name().equals("")) {
 				pStmt.setString(1, user.getUser_name());
-			}
-			if (user.getPassword() != null && !user.getPassword().equals("")) {
 				pStmt.setString(2, user.getPassword());
-			}
-			if (user.getChild_birthday() != null && !user.getChild_birthday().equals("")) {
-				pStmt.setDate(3,user.getChild_birthday());
-			} else {
-				pStmt.setString(3, "（未設定）");
+				pStmt.setString(3, user.getChild_name());
+				pStmt.setDate(4,user.getChild_birthday());
 
-			}
-			if (user.getChild_name() != null && !user.getChild_name().equals("")) {
-				pStmt.setString(4, user.getChild_name());
-			} else {
-				pStmt.setString(4, "（未設定）");
-
-			}
 			// SQL文を実行する
 			if (pStmt.executeUpdate() == 1) {
 				result = true;

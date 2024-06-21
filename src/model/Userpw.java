@@ -3,16 +3,16 @@ import java.io.Serializable;
 
 public class Userpw implements Serializable {
 	private String user_name;	// ID
-	private String pw;	// PW
+	private String password;	// PW
 
-	public Userpw(String user_name, String pw) {
+	public Userpw(String user_name, String password) {
 		this.user_name = user_name;
-		this.pw = pw;
+		this.password = password;
 	}
 
 	public Userpw() {
 		this.user_name = "";
-		this.pw = "";
+		this.password = "";
 	}
 
 	public String getUser_name() {
@@ -24,10 +24,10 @@ public class Userpw implements Serializable {
 	}
 
 	public String getPassword() {
-		return pw;
+		return password;
 	}
 
-	public void setPassword(String pw) {
-		this.pw = pw;
+	public void setPassword(String password) {
+		this.password = password;
 	}
 }
