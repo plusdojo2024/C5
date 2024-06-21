@@ -1,27 +1,23 @@
 package model;
 
 import java.io.Serializable;
-import java.util.Date;
+import java.sql.Date;
 
 //フィールドを増やした分だけ、下のコンストラクタを増やす
 public class Records implements Serializable {
 	private int id;/* 記録書ID */
 	private int user_id; /* ユーザーID */
-	private String photo;/* 写真 */
-	private Date date; /* 日付 */
 	private String temperature;/* 体温 */
-	private String comment; /* 自由欄 */
+	private Date date;
 
 	//	引数のあるコンストラクタ
-	public Records(int id, int user_id, String photo,
-			Date date, String temperature, String comment) {
+	public Records(int id, int user_id,
+			String temperature,String records_comment,Date date) {
 
 		this.id = id;
 		this.user_id = user_id;
-		this.photo = photo;
-		this.date = date;
 		this.temperature = temperature;
-		this.comment = comment;
+		this.date = date;
 
 	}
 
@@ -29,12 +25,7 @@ public class Records implements Serializable {
 	public Records() {
 		this.id = 0;
 		this.user_id = 0;
-		this.photo="";
-		this.date=new Date();
-		this.temperature="";
-		this.comment="";
-
-
+		this.temperature = "";
 	}
 
 	public int getId() {
@@ -53,12 +44,12 @@ public class Records implements Serializable {
 		this.user_id = user_id;
 	}
 
-	public String getPhoto() {
-		return photo;
+	public String getTemperature() {
+		return temperature;
 	}
 
-	public void setPhoto(String photo) {
-		this.photo = photo;
+	public void setTemperature(String temperature) {
+		this.temperature = temperature;
 	}
 
 	public Date getDate() {
@@ -69,19 +60,5 @@ public class Records implements Serializable {
 		this.date = date;
 	}
 
-	public String getTemperature() {
-		return temperature;
-	}
 
-	public void setTemperature(String temperature) {
-		this.temperature = temperature;
-	}
-
-	public String getComment() {
-		return comment;
-	}
-
-	public void setComment(String comment) {
-		this.comment = comment;
-	}
 }
