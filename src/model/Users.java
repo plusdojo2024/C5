@@ -9,30 +9,30 @@ public class Users implements Serializable {
 	private int id;/* ユーザーID */
 	private String user_name; /* ユーザー名 */
 	private String password; /* パスワード */
-	private int sum; /* 合計 */
+	/*	private int sum;  合計 */
 	private Date child_birthday; /* 誕生日 */
 	private String child_name; /* 子供の名前 */
 
 	//	引数のあるコンストラクタ
-	public Users(int id, String user_name, String password, int sum,
+	public Users(int id, String user_name, String password,
 			Date child_birthday, String child_name) {
 
 		this.id = id;
 		this.user_name = user_name;
 		this.password = password;
-		this.sum = sum;
+		/*		this.sum = sum;*/
 		this.child_birthday = child_birthday;
 		this.child_name = child_name;
 	}
 
 	//	引数のないコンストラクタ
 	public Users() {
-//		this.id = 0;
-//		this.user_name = "";
-//		this.password = "";
-//		this.sum = 0;
-//		this.child_birthday = ;
-//		this.child_name = "";
+		//		this.id = 0;
+		//		this.user_name = "";
+		//		this.password = "";
+		//		this.sum = 0;
+		//		this.child_birthday = ;
+		//		this.child_name = "";
 
 	}
 
@@ -60,13 +60,13 @@ public class Users implements Serializable {
 		this.password = password;
 	}
 
-	public int getSum() {
-		return sum;
-	}
+	/*	public int getSum() {
+			return sum;
+		}
 
-	public void setSum(int sum) {
-		this.sum = sum;
-	}
+		public void setSum(int sum) {
+			this.sum = sum;
+		}*/
 
 	public Date getChild_birthday() {
 		return child_birthday;
