@@ -190,6 +190,17 @@ public class RecordsDAO {
 			conn = DriverManager.getConnection("jdbc:h2:file:C:/pleiades/workspace/data/C5", "sa", "pw");
 
 			// SQL文を準備する（AUTO_INCREMENTのNUMBER列にはNULLを指定する）
+			String record_sql = "INSERT INTO Records(id) "
+					+ "VALUES (NULL)";
+			PreparedStatement record_pStmt = conn.prepareStatement(record_sql);
+
+
+
+			// SQL文を実行する
+			if (record_pStmt.executeUpdate() == 1) {
+				result = true;
+			}
+
 			String sql = "INSERT INTO Record_excretions (excretion_id,user_id,excretion_time,excretion_comment,poop,pee,excretion_timestamp) "
 					+ "VALUES (NULL,?,?,?,?,?,CURRENT_TIMESTAMP)";
 			PreparedStatement pStmt = conn.prepareStatement(sql);
@@ -238,6 +249,17 @@ public class RecordsDAO {
 			conn = DriverManager.getConnection("jdbc:h2:file:C:/pleiades/workspace/data/C5", "sa", "pw");
 
 			// SQL文を準備する
+			String record_sql = "INSERT INTO Records(id) "
+					+ "VALUES (NULL)";
+			PreparedStatement record_pStmt = conn.prepareStatement(record_sql);
+
+
+
+			// SQL文を実行する
+			if (record_pStmt.executeUpdate() == 1) {
+				result = true;
+			}
+
 			String sql = "INSERT INTO Record_meals (meal_id,user_id,meal_time,milk,baby_food,milk_quantity,meal_comment,meal_timestamp) "
 					+ "VALUES (NULL,?,?,?,?,?,?,CURRENT_TIMESTAMP)";
 			PreparedStatement pStmt = conn.prepareStatement(sql);
@@ -284,6 +306,17 @@ public class RecordsDAO {
 			conn = DriverManager.getConnection("jdbc:h2:file:C:/pleiades/workspace/data/C5", "sa", "pw");
 
 			// SQL文を準備する
+			String record_sql = "INSERT INTO Records(id) "
+					+ "VALUES (NULL)";
+			PreparedStatement record_pStmt = conn.prepareStatement(record_sql);
+
+
+
+			// SQL文を実行する
+			if (record_pStmt.executeUpdate() == 1) {
+				result = true;
+			}
+
 			String sql = "INSERT INTO Record_sleeps (sleep_id,user_id,sleep_time,sleep_comment,sleep_timestamp) "
 					+ "VALUES (NULL,?,?,?,CURRENT_TIMESTAMP)";
 			PreparedStatement pStmt = conn.prepareStatement(sql);

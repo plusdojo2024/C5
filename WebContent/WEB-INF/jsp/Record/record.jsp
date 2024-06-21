@@ -21,7 +21,9 @@
 	</header>
 	<h2 class="title">育児記録書</h2>
 	<h3 class="calendar">
-		<input type="date" id="record_date" name="birthdate">
+		<form action="/C5/RecordServlet" method="get">
+			<input type="date" id="record_date" name="date">
+		</form>
 	</h3>
 	<!--<a href="home.html"></a>-->
 	<img src="ごはん中のしんのすけ.jpg" width="250" height="160">
@@ -29,7 +31,7 @@
 		<hr>
 		<!--c:forEachで取得したデータを繰り返し表示-->
 		<c:forEach var="e" items="${list}">
-			<p class="RecordData">${e.timeFormat}${e.work} ${e.milk_quantity}
+			<p class="RecordData">${e.timeFormat}${e.work}${e.milk_quantity}
 				${e.comment}</p>
 		</c:forEach>
 		<!--
