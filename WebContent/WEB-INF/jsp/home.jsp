@@ -18,6 +18,9 @@
 	<div class="Content">
 		<header>
 			<h3 id="AppLogo">ひろしninaru</h3>
+			<form method="get" action="/C5/LogoutServlet">
+				<input type="submit" value="ログアウト">
+			</form>
 		</header>
 		<form id="birthdateForm">
 			<label for="birthdate">生年月日を選択してください:</label> <input type="date"
@@ -34,9 +37,9 @@
 					<p>体温検査</p>
 					<form action="/C5/RecordServlet" method="post">
 						<table>
-						<tr>
-						<th><input type="date" name="date"></th>
-						</tr>
+							<tr>
+								<th><input type="date" name="date"></th>
+							</tr>
 							<tr>
 								<th class="ct"><input type="text" name="temperature">℃</th>
 							</tr>
@@ -176,13 +179,15 @@
 							<div id="close4">x</div>
 							<div id="message4">
 								<p>写真の追加</p>
-								<form action="/C5/RecordServlet" method="post" enctype="multipart/form-data">
+								<form action="/C5/RecordServlet" method="post"
+									enctype="multipart/form-data">
 									<table>
 										<tr>
-											<th class="ct"><input type="file" name="img" id="files" multiple></th>
+											<th class="ct"><input type="file" name="img" id="files"
+												multiple></th>
 										</tr>
 										<tr>
-											<th><input type="submit" value="保存する" name="syasin" ></th>
+											<th><input type="submit" value="保存する" name="syasin"></th>
 										</tr>
 									</table>
 								</form>
@@ -195,14 +200,14 @@
 
 		<!-- 画像出力の実験 -->
 
-		    <hr/>
-            <div class="upload">
-                <p>アップロードファイル：画像</p>
-                	<img class="uploadFile" src="<%= request.getContextPath() %>${result.imgPath1}" width=200 height=200>
-                	<img class="uploadFile" src="<%= request.getContextPath() %>${result.imgPath2}" width=200 height=200>
-                	<img class="uploadFile" src="<%= request.getContextPath() %>${result.imgPath3}" width=200 height=200>
-            </div>
-            <hr/>
+		<hr />
+		<div class="upload">
+			<p>アップロードファイル：画像</p>
+			<img class="uploadFile" src="${upload.imgPath1}" width=200 height=200>
+			<img class="uploadFile" src="${upload.imgPath2}" width=200 height=200>
+			<img class="uploadFile" src="${upload.imgPath3}" width=200 height=200>
+		</div>
+		<hr />
 
 		<!-- 画像出力の実験 -->
 

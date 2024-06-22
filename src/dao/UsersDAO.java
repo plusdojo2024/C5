@@ -41,6 +41,8 @@ public class UsersDAO {
 				user.setChild_birthday(rs.getDate("child_birthday"));
 //				user.setUser_name(rs.getString("user_name"));
 
+			}else {
+				user = null;
 			}
 
 			} catch (SQLException e) {

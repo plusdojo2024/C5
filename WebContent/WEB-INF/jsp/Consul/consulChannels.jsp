@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <!DOCTYPE html>
 <html lang="ja">
 
@@ -22,31 +23,51 @@
 		<header>
 			<h3>ひろしninaru</h3>
 		</header>
-		<p>${post_content}</p>
-		<p>${result}</p>
-		<br>
+		<c:set var="c" value="0"></c:set>
+
 		<c:forEach var="e" items="${cardList}">
-			<p>${e.post_content}</p>
-			<button id="click-btn5">コメント</button>
-			<div id="popup-wrapper5">
-				<div id="popup-inside5">
-					<div id="close5">x</div>
-					<div id="message5">
-						<p>コメント欄</p>
-						<form method="get" action="/C5/ConsulChannelsServlet">
-							<table align="center">
-								<tr>
-									<th><input type="text" name="inputText"></th>
-								</tr>
-								<tr>
-									<th><input type="submit" name="toko" value="送信"></th>
-								</tr>
-							</table>
-						</form>
+			<c:if test="${c != e.consul_id or e.consul_id == 0}">
+				<c:set var="c" value="${e.consul_id }"></c:set>
+				<h6>
+					${e.consul_name}
+					<fmt:formatDate value="${e.consul_time}" type="DATE"
+						pattern="MM月dd日（E） kk時mm分" />
+				</h6>
+				<h3>${e.consul_content}</h3>
+				<c:if test="${c != 0 }">
+					<c:forEach var="a" items="${cardList}">
+						<c:if test="${c == a.id}">
+							<h6>
+								${a.comment_name}
+								<fmt:formatDate value="${a.comment_time}" type="DATE"
+									pattern="MM月dd日（E） kk時mm分" />
+							</h6>
+							<p>${a.comment_content}</p>
+						</c:if>
+					</c:forEach>
+				</c:if>
+				<!-- 				<button id="click-btn5">コメント</button>
+				<div id="popup-wrapper5">
+					<div id="popup-inside5">
+						<div id="close5">x</div>
+						<div id="message5">
+							<p>コメント欄</p> -->
+				<form method="post" action="/C5/ConsulChannelsServlet">
+					<table align="center">
+						<tr>
+							<th><input type="text" name="commentText"></th>
+						</tr>
+						<tr>
+							<th><input type="submit" name="koment" value="送信"> <input
+								type="hidden" name="channel_id" value="${channel_id }">
+								<input type="hidden" name="consul_id" value="${e.id}"></th>
+						</tr>
+					</table>
+				</form>
+				<!-- 						</div>
 					</div>
-				</div>
-			</div>
-			<script>
+				</div> -->
+				<script>
 
 			const clickBtn5 = document.getElementById('click-btn5');
         const popupWrapper5 = document.getElementById('popup-wrapper5');
@@ -65,20 +86,40 @@
         });
 
     </script>
-			<hr>
+				<hr>
+			</c:if>
 		</c:forEach>
 		<hr>
-		<form method="get" action="/C5/ConsulChannelsServlet">
-			<input type=text name="inputText" placeholder="質問内容を入力してください。"><br>
+		<form method="post" action="/C5/ConsulChannelsServlet">
+			<input type=text name="consulText" placeholder="質問内容を入力してください。"><br>
 			<input type="submit" name="touko" value="送信"><br> <input
 				type="hidden" name="channel_id" value="${channel_id}">
 		</form>
-		<form method="get" action="/C5/ConsulChannelsServlet">
-			<input type="submit" name="1" value="衣"> <br> <input
-				type="submit" name="2" value="食"> <br> <input
-				type="submit" name="3" value="住"> <br> <input
-				type="submit" name="4" value="その他">
-		</form>
+		<c:choose>
+  <c:when test="${channel_id == 1 }">
+    <p>衣</p>
+  </c:when>
+  <c:when test="${channel_id == 2 }">
+     <p>食</p>
+  </c:when>
+    <c:when test="${channel_id == 3 }">
+     <p>住</p>
+  </c:when>
+  <c:otherwise>
+     <p>その他</p>
+  </c:otherwise>
+</c:choose>
+		<nav>
+			<ul>
+				<li><a href="/C5/ConsulChannelsServlet?channel_id=1">衣</a></li>
+				<li><a href="/C5/ConsulChannelsServlet?channel_id=2">食</a></li>
+				<li><a href="/C5/ConsulChannelsServlet?channel_id=3">住</a></li>
+				<li><a href="/C5/ConsulChannelsServlet?channel_id=4">その他</a></li>
+			</ul>
+		</nav>
+		<br>
+		<br>
+		<br>
 		<!--ポップアップダイアログ-->
 		<div id="popup" class="modal" style="display: none;">
 			<div class="modal-content">

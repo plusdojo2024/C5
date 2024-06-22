@@ -22,10 +22,10 @@
 		<h1>ひろしninaru</h1>
 		<nav>
 			<ul>
-				<li><a href="/C5/ConsulChannelsServlet" name="1">衣</a></li>
-				<li><a href="/C5/ConsulChannelsServlet" name="2">食</a></li>
-				<li><a href="/C5/ConsulChannelsServlet" name="3">住</a></li>
-				<li><a href="/C5/ConsulChannelsServlet" name="4">その他</a></li>
+				<li><a href="/C5/ConsulChannelsServlet?channel_id=1">衣</a></li>
+				<li><a href="/C5/ConsulChannelsServlet?channel_id=2">食</a></li>
+				<li><a href="/C5/ConsulChannelsServlet?channel_id=3">住</a></li>
+				<li><a href="/C5/ConsulChannelsServlet?channel_id=4">その他</a></li>
 			</ul>
 		</nav>
 

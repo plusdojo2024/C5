@@ -18,7 +18,7 @@ import model.UploadFile;
 
 public class RecordsDAO {
 	// 記録書に指定の日付のデータを表示する
-	public List<RecordTime> select(Date date) {
+	public List<RecordTime> select(Date date, int user_id) {
 		Connection conn = null;
 		List<RecordTime> cardList = new ArrayList<RecordTime>();
 
@@ -30,72 +30,83 @@ public class RecordsDAO {
 			conn = DriverManager.getConnection("jdbc:h2:file:C:/pleiades/workspace/data/C5", "sa", "pw");
 
 			// SQL文を準備する
-			String sql = "select * from records "
-					+ "left join users on records.user_id = users.id "
-					+ "left join record_meals on records.user_id = record_meals.user_id "
-					+ "left join record_sleeps on records.user_id = record_sleeps.user_id "
-					+ "left join record_excretions on records.user_id = record_excretions.user_id "
-					+ "where date = ? "
-					+ "order by records.id ";
+			String sql = "select * from record_meals "
+					+ "where cast(meal_timestamp as date) = ? AND user_id = ? ";
 			PreparedStatement pStmt = conn.prepareStatement(sql);
 
 			//SQLを完成させる
 
 			pStmt.setDate(1, date);
+			pStmt.setInt(2, user_id);
 
 			// SQL文を実行し、結果表を取得する
 			ResultSet rs = pStmt.executeQuery();
 
+
 			// 結果表をjavaが扱いやすいコレクション（リスト）に変換する
 			while (rs.next()) {
-				//	System.out.println(rs.getString("record_id"));
-				//				System.out.println(rs.getString("excretion_comment"));
-				//				System.out.println("-------------------");
-
-				//RecordTime
-				//	time
-				//  work
-				//  remarks
-
 				RecordTime record = new RecordTime();
-
 				//ごはん
-				if (rs.getTimestamp("meal_timestamp") != null) {
-					record.setTime(rs.getTimestamp("meal_timestamp"));
-					if (rs.getBoolean("milk") == true) {
-						record.setWork("ミルク");
-						record.setMilk_quantity(rs.getString("milk_quantity") + "ml");
-						record.setComment(rs.getString("meal_comment"));
-					} else {
-						record.setWork("離乳食");
-						record.setComment(rs.getString("meal_comment"));
-					}
+				record.setTime(rs.getTimestamp("meal_timestamp"));
+				if (rs.getBoolean("milk") == true) {
+					record.setWork("ミルク");
+					record.setMilk_quantity(rs.getString("milk_quantity") + "ml");
+					record.setComment(rs.getString("meal_comment"));
+				} else {
+					record.setWork("離乳食");
+					record.setComment(rs.getString("meal_comment"));
 				}
-
-				//排泄
-				else if (rs.getTimestamp("excretion_timestamp") != null) {
-					record.setTime(rs.getTimestamp("excretion_timestamp"));
-					if (rs.getBoolean("poop") == true) {
-						record.setWork("うんち");
-						record.setComment(rs.getString("excretion_comment"));
-					} else {
-						record.setWork("おしっこ");
-						record.setComment(rs.getString("excretion_comment"));
-					}
-				}
-				//睡眠
-				else if (rs.getTimestamp("sleep_timestamp") != null) {
-					record.setTime(rs.getTimestamp("sleep_timestamp"));
-					record.setComment(rs.getString("sleep_comment"));
-
-				}
-
-				else {
-					break;
-				}
-
 				cardList.add(record);
 			}
+
+
+			//排泄
+			sql = "select * from record_excretions "
+					+ "where cast(excretion_timestamp as date)= ? AND user_id = ? ";
+			pStmt = conn.prepareStatement(sql);
+
+			//SQLを完成させる
+
+			pStmt.setDate(1, date);
+			pStmt.setInt(2, user_id);
+
+			// SQL文を実行し、結果表を取得する
+			rs = pStmt.executeQuery();
+
+			while (rs.next()) {
+				RecordTime record = new RecordTime();
+				record.setTime(rs.getTimestamp("excretion_timestamp"));
+				if (rs.getBoolean("poop") == true) {
+					record.setWork("うんち");
+					record.setComment(rs.getString("excretion_comment"));
+				} else {
+					record.setWork("おしっこ");
+					record.setComment(rs.getString("excretion_comment"));
+				}
+				cardList.add(record);
+			}
+
+
+			//睡眠
+			sql = "select * from record_sleeps "
+					+ "where cast(sleep_timestamp as date) = ? AND user_id = ? ";
+			pStmt = conn.prepareStatement(sql);
+
+			//SQLを完成させる
+
+			pStmt.setDate(1, date);
+			pStmt.setInt(2, user_id);
+
+			// SQL文を実行し、結果表を取得する
+			rs = pStmt.executeQuery();
+
+			while (rs.next()) {
+				RecordTime record = new RecordTime();
+				record.setTime(rs.getTimestamp("sleep_timestamp"));
+				record.setComment(rs.getString("sleep_comment"));
+				cardList.add(record);
+			}
+
 		}
 
 		catch (SQLException e) {
@@ -194,8 +205,6 @@ public class RecordsDAO {
 					+ "VALUES (NULL)";
 			PreparedStatement record_pStmt = conn.prepareStatement(record_sql);
 
-
-
 			// SQL文を実行する
 			if (record_pStmt.executeUpdate() == 1) {
 				result = true;
@@ -253,8 +262,6 @@ public class RecordsDAO {
 					+ "VALUES (NULL)";
 			PreparedStatement record_pStmt = conn.prepareStatement(record_sql);
 
-
-
 			// SQL文を実行する
 			if (record_pStmt.executeUpdate() == 1) {
 				result = true;
@@ -309,8 +316,6 @@ public class RecordsDAO {
 			String record_sql = "INSERT INTO Records(id) "
 					+ "VALUES (NULL)";
 			PreparedStatement record_pStmt = conn.prepareStatement(record_sql);
-
-
 
 			// SQL文を実行する
 			if (record_pStmt.executeUpdate() == 1) {

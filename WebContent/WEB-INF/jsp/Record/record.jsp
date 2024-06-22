@@ -23,6 +23,7 @@
 	<h3 class="calendar">
 		<form action="/C5/RecordServlet" method="get">
 			<input type="date" id="record_date" name="date">
+			<input type="submit" value="日付送信">
 		</form>
 	</h3>
 	<!--<a href="home.html"></a>-->

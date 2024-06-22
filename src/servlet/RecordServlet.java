@@ -1,6 +1,8 @@
 package servlet;
 
 import java.io.IOException;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -34,21 +36,20 @@ public class RecordServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 
-		//データを取得する
-		//RecordsDAO dao = new RecordsDAO();
-		//List<RecordTime> cardList = dao.select(new RecordTime());
-		//リクエストスコープに格納
-		//request.setAttribute("cardList", cardList);
-		//リクエストから日付を取得
 		String userInputDate = request.getParameter("date");
-		//DAOに日付を渡すための処理
-		//RecordTime input = new RecordTime();
-		//Date.valueOf(sample_date)
-		//input.setSampleDate(java.sql.Date.valueOf(userInputDate));
-		RecordsDAO dao = new RecordsDAO();
-		List<RecordTime> list = dao.select(java.sql.Date.valueOf(userInputDate));
-		//
-		//		RecordTime time1 = list.get(0);
+		List<RecordTime> list = null;
+
+		if (userInputDate != null) {
+			HttpSession session = request.getSession();
+			RecordsDAO dao = new RecordsDAO();
+			list = dao.select(java.sql.Date.valueOf(userInputDate), (int) session.getAttribute("user_id"));
+			Collections.sort(list, new Comparator<RecordTime>() {
+				@Override
+				public int compare(RecordTime o1, RecordTime o2) {
+					return o1.getTime().compareTo(o2.getTime());
+				}
+			});
+		}
 		//リクエストスコープに格納
 		request.setAttribute("list", list);
 		//フォワード
@@ -130,80 +131,80 @@ public class RecordServlet extends HttpServlet {
 			RecordsDAO rDao = new RecordsDAO();
 			rDao.insert3(input3);
 
+		} else if (syasin != null) {
 
-		}else if(syasin != null) {
+			String imgPath1 = request.getPart("img").getSubmittedFileName();
+			String imgPath2 = request.getPart("img").getSubmittedFileName();
+			String imgPath3 = request.getPart("img").getSubmittedFileName();
+			String imgPath4 = request.getPart("img").getSubmittedFileName();
+			String imgPath5 = request.getPart("img").getSubmittedFileName();
 
-	    	String imgPath1=request.getPart("img").getSubmittedFileName();
-	    	String imgPath2=request.getPart("img").getSubmittedFileName();
-	    	String imgPath3=request.getPart("img").getSubmittedFileName();
-	    	String imgPath4=request.getPart("img").getSubmittedFileName();
-	    	String imgPath5=request.getPart("img").getSubmittedFileName();
+			UploadFile upload = new UploadFile();
 
-	    	UploadFile upload = new UploadFile();
+			upload.setUser_id(users_id);
+			upload.setImgPath1(imgPath1);
+			upload.setImgPath2(imgPath2);
+			upload.setImgPath3(imgPath3);
+			upload.setImgPath4(imgPath4);
+			upload.setImgPath5(imgPath5);
 
-	    	upload.setUser_id(users_id);
-	    	upload.setImgPath1(imgPath1);
-	    	upload.setImgPath2(imgPath2);
-	    	upload.setImgPath3(imgPath3);
-	    	upload.setImgPath4(imgPath4);
-	    	upload.setImgPath5(imgPath5);
+			RecordsDAO uDao = new RecordsDAO();
+			uDao.insert(upload);
 
-	 		RecordsDAO uDao = new RecordsDAO();
-	 		uDao.insert(upload);
+			List<Part> fileParts = request.getParts().stream()
+					.filter(part -> "img".equals(part.getName()) && part.getSize() > 0)
+					.collect(Collectors.toList());
 
-	        List<Part> fileParts = request.getParts().stream()
-	                .filter(part -> "img".equals(part.getName()) && part.getSize() > 0)
-	                .collect(Collectors.toList());
+			for (int i = 0; i < fileParts.size(); i++) {
 
-	        	for (int i = 0; i < fileParts.size(); i++) {
+				Part part = fileParts.get(i);
+				String submittedFileName = getSubmittedFileName(part);
+				String fileName = new String(submittedFileName.getBytes("UTF-8"), "UTF-8");
+				String filePath = "/images/icons/" + fileName;
 
-	        		Part part = fileParts.get(i);
-	        		String submittedFileName = getSubmittedFileName(part);
-	        		String fileName = new String(submittedFileName.getBytes("UTF-8"), "UTF-8");
-	        		String filePath = "/upload/" + fileName;
+				// ここでファイルを保存する処理を追加
+				part.write(getServletContext().getRealPath(filePath));
 
-	        		// ここでファイルを保存する処理を追加
-	        		part.write(getServletContext().getRealPath(filePath));
-
-	        		// imgPath1 〜 imgPath5 の適切なフィールドにファイルパスを設定する
-	        		switch (i) {
-	        		case 0:
-	        			upload.setImgPath1(filePath);
-	        			break;
-	        		case 1:
-	        			upload.setImgPath2(filePath);
-	        			break;
-	        		case 2:
-	        			upload.setImgPath3(filePath);
-	        			break;
-	        		case 3:
-	        			upload.setImgPath4(filePath);
-	        			break;
-	        		case 4:
-	        			upload.setImgPath5(filePath);
-	        			break;
-	        		default:
-	        			break;
-	        		}
-	        	}
+				// imgPath1 〜 imgPath5 の適切なフィールドにファイルパスを設定する
+				switch (i) {
+				case 0:
+					upload.setImgPath1(filePath);
+					break;
+				case 1:
+					upload.setImgPath2(filePath);
+					break;
+				case 2:
+					upload.setImgPath3(filePath);
+					break;
+				case 3:
+					upload.setImgPath4(filePath);
+					break;
+				case 4:
+					upload.setImgPath5(filePath);
+					break;
+				default:
+					break;
+				}
+			}
+			request.setAttribute("upload", upload);
 		}
+
 		//フォワード
 		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/home.jsp");
 		dispatcher.forward(request, response);
 	}
 
+	private String getSubmittedFileName(Part part) {
 
-	    private String getSubmittedFileName(Part part) {
+		for (String cd : part.getHeader("content-disposition").split(";")) {
 
-	    	for (String cd : part.getHeader("content-disposition").split(";")) {
+			if (cd.trim().startsWith("filename")) {
 
-	    		if (cd.trim().startsWith("filename")) {
-
-	    			String fileName = cd.substring(cd.indexOf('=') + 1).trim().replace("\"", "");
-	    			return fileName.substring(fileName.lastIndexOf('/') + 1).substring(fileName.lastIndexOf('\\') + 1);
-	    		}
-	    	}
-	    return null;
-	    }
+				String fileName = cd.substring(cd.indexOf('=') + 1).trim().replace("\"", "");
+				return fileName.substring(fileName.lastIndexOf('/') + 1).substring(fileName.lastIndexOf('\\') + 1);
+			}
+		}
+		return null;
+	}
 
 }

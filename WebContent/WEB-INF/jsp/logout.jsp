@@ -14,11 +14,12 @@
 <body>
     <div class="WhiteBox">
         <p>ログアウトしますか？</p>
-        <form method="post" action="/C5/LoginServlet">
+        <form method="post" action="/C5/LogoutServlet">
             <input type="submit" class="Logout" name="logout" value="ログアウト">
         </form>
 
-        <form method="post" action="/C5/LogoutServlet">
+
+        <form method="post" action="/C5/LoginServlet">
             <input type="submit" class="Cancel" name="cancel" value="キャンセル">
         </form>
     </div>
