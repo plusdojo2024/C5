@@ -202,10 +202,12 @@
 
 		<hr />
 		<div class="upload">
-			<p>アップロードファイル：画像</p>
-			<img class="uploadFile" src="${upload.imgPath1}" width=200 height=200>
-			<img class="uploadFile" src="${upload.imgPath2}" width=200 height=200>
-			<img class="uploadFile" src="${upload.imgPath3}" width=200 height=200>
+                <p>アップロードファイル：画像</p>
+                	<img class="uploadFile" src="<%= request.getContextPath() %>${upload.imgPath1}" width=200 height=200>
+                	<img class="uploadFile" src="<%= request.getContextPath() %>${upload.imgPath2}" width=200 height=200>
+                	<img class="uploadFile" src="<%= request.getContextPath() %>${upload.imgPath3}" width=200 height=200>
+                	<img class="uploadFile" src="<%= request.getContextPath() %>${upload.imgPath4}" width=200 height=200>
+                	<img class="uploadFile" src="<%= request.getContextPath() %>${upload.imgPath5}" width=200 height=200>
 		</div>
 		<hr />
 
