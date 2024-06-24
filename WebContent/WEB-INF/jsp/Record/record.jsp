@@ -27,7 +27,17 @@
 		</form>
 	</h3>
 	<!--<a href="home.html"></a>-->
-	<img src="ごはん中のしんのすけ.jpg" width="250" height="160">
+		<hr />
+		<div class="upload">
+                <p>アップロードファイル：画像</p>
+					<img class="uploadFile" src="<%= request.getContextPath() %>${upload.imgPath1}" width=200 height=200>
+                	<img class="uploadFile" src="<%= request.getContextPath() %>${upload.imgPath2}" width=200 height=200>
+                	<img class="uploadFile" src="<%= request.getContextPath() %>${upload.imgPath3}" width=200 height=200>
+                	<img class="uploadFile" src="<%= request.getContextPath() %>${upload.imgPath4}" width=200 height=200>
+                	<img class="uploadFile" src="<%= request.getContextPath() %>${upload.imgPath5}" width=200 height=200>
+		</div>
+		<hr />
+
 	<div class="TimeRecord">
 		<hr>
 		<!--c:forEachで取得したデータを繰り返し表示-->

@@ -148,15 +148,6 @@ public class RecordsDAO {
 			// データベースに接続する
 			conn = DriverManager.getConnection("jdbc:h2:file:C:/pleiades/workspace/data/C5", "sa", "pw");
 
-			/*				String sqls = "INSERT INTO Records(user_id) VALUES(?)";
-							PreparedStatement pStmts = conn.prepareStatement(sqls);
-							Users user = new Users();
-
-							pStmts.setInt(1,record.getUser_id());
-
-							if (pStmts.executeUpdate() == 1) {
-								result = true;
-							}*/
 
 			// SQL文を準備する（AUTO_INCREMENTのNUMBER列にはNULLを指定する）
 			String sql = "INSERT INTO Records(id,user_id,date,temperature) "
@@ -381,23 +372,6 @@ public class RecordsDAO {
 			pStmt.setString(5, upload.getImgPath4());
 			pStmt.setString(6, upload.getImgPath5());
 
-			// 登録：SQL文を完成させる
-			//				if (upload.getImgPath1() != null && !upload.getImgPath1().equals("")) {
-			//					pStmt.setString(1, upload.getImgPath1());
-			//				}
-			//				if (upload.getImgPath2() != null && !upload.getImgPath2().equals("")) {
-			//					pStmt.setString(2, upload.getImgPath2());
-			//				}
-			//				if (upload.getImgPath3() != null && !upload.getImgPath3().equals("")) {
-			//					pStmt.setString(3, upload.getImgPath3());
-			//				}
-			//				if (upload.getImgPath4() != null && !upload.getImgPath4().equals("")) {
-			//					pStmt.setString(4, upload.getImgPath4());
-			//				}
-			//				if (upload.getImgPath5() != null && !upload.getImgPath5().equals("")) {
-			//					pStmt.setString(5, upload.getImgPath5());
-			//				}
-
 			// SQL文を実行する
 			if (pStmt.executeUpdate() == 1) {
 				result = true;
@@ -423,6 +397,121 @@ public class RecordsDAO {
 
 		// 結果を返す
 		return result;
+	}
+
+	// 記録書に指定の日付のデータを表示する
+	public List<RecordTime> select(Date date, int user_id) {
+		Connection conn = null;
+		List<RecordTime> cardList = new ArrayList<RecordTime>();
+
+		try {
+			// JDBCドライバを読み込む
+			Class.forName("org.h2.Driver");
+
+			// データベースに接続する
+			conn = DriverManager.getConnection("jdbc:h2:file:C:/pleiades/workspace/data/C5", "sa", "pw");
+
+			// SQL文を準備する
+			String sql = "select * from record_meals "
+					+ "where cast(meal_timestamp as date) = ? AND user_id = ? ";
+			PreparedStatement pStmt = conn.prepareStatement(sql);
+
+			//SQLを完成させる
+
+			pStmt.setDate(1, date);
+			pStmt.setInt(2, user_id);
+
+			// SQL文を実行し、結果表を取得する
+			ResultSet rs = pStmt.executeQuery();
+
+
+			// 結果表をjavaが扱いやすいコレクション（リスト）に変換する
+			while (rs.next()) {
+				RecordTime record = new RecordTime();
+				//ごはん
+				record.setTime(rs.getTimestamp("meal_timestamp"));
+				if (rs.getBoolean("milk") == true) {
+					record.setWork("ミルク");
+					record.setMilk_quantity(rs.getString("milk_quantity") + "ml");
+					record.setComment(rs.getString("meal_comment"));
+				} else {
+					record.setWork("離乳食");
+					record.setComment(rs.getString("meal_comment"));
+				}
+				cardList.add(record);
+			}
+
+
+			//排泄
+			sql = "select * from record_excretions "
+					+ "where cast(excretion_timestamp as date)= ? AND user_id = ? ";
+			pStmt = conn.prepareStatement(sql);
+
+			//SQLを完成させる
+
+			pStmt.setDate(1, date);
+			pStmt.setInt(2, user_id);
+
+			// SQL文を実行し、結果表を取得する
+			rs = pStmt.executeQuery();
+
+			while (rs.next()) {
+				RecordTime record = new RecordTime();
+				record.setTime(rs.getTimestamp("excretion_timestamp"));
+				if (rs.getBoolean("poop") == true) {
+					record.setWork("うんち");
+					record.setComment(rs.getString("excretion_comment"));
+				} else {
+					record.setWork("おしっこ");
+					record.setComment(rs.getString("excretion_comment"));
+				}
+				cardList.add(record);
+			}
+
+
+			//睡眠
+			sql = "select * from record_sleeps "
+					+ "where cast(sleep_timestamp as date) = ? AND user_id = ? ";
+			pStmt = conn.prepareStatement(sql);
+
+			//SQLを完成させる
+
+			pStmt.setDate(1, date);
+			pStmt.setInt(2, user_id);
+
+			// SQL文を実行し、結果表を取得する
+			rs = pStmt.executeQuery();
+
+			while (rs.next()) {
+				RecordTime record = new RecordTime();
+				record.setTime(rs.getTimestamp("sleep_timestamp"));
+				record.setComment(rs.getString("sleep_comment"));
+				cardList.add(record);
+			}
+
+		}
+
+		catch (SQLException e) {
+			e.printStackTrace();
+			cardList = null;
+		} catch (ClassNotFoundException e) {
+			e.printStackTrace();
+			cardList = null;
+		} finally {
+			// データベースを切断
+			if (conn != null) {
+				try {
+					conn.close();
+				} catch (SQLException e) {
+					e.printStackTrace();
+					cardList = null;
+				}
+
+			}
+		}
+
+		// 結果を返す
+		return cardList;
 	}
 
 }
