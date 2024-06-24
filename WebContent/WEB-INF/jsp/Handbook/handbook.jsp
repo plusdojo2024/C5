@@ -6,6 +6,7 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="/C5/CSS/style.css">
   <title>衣食住のハンドブック</title>
 
   <style>
@@ -44,8 +45,8 @@
 
 /* is-activeがついている時のスタイル */
 .tab__menu-item.is-active {
-  background-color: rgba(48, 172, 249);
-  color: #ffffff;
+  background-color:#0068b7;
+  color: #FFFFFF;
   padding: 12px 5px;
 }
 
@@ -61,17 +62,17 @@
 }
 
 .tab__panel-box001 {
-  background-color: rgb(205, 246, 246);
+  background-color: #e6e6fa;
   display: none;
 }
 
 .tab__panel-box002 {
-  background-color: rgb(249 227 243);
+  background-color: #bbe2f1;
   display: none;
 }
 
 .tab__panel-box003 {
-  background-color: rgb(200, 248, 195);
+  background-color: #e0f2ed;
   display: none;
 }
 
@@ -90,6 +91,13 @@
     <body style="text-align: left;">
         <h1>ハンドブック</h1>
 <body>
+
+
+  <form method="post" action="/C5/HandbookServlet">
+            	<input type="submit" name="test" value="テスト">
+			</form>
+
+
   <div class="tab">
     <ul class="tab__menu">
       <li class="tab__menu-item is-active" data-tab="01">衣</li>
