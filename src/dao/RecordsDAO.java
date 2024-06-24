@@ -377,23 +377,6 @@ public class RecordsDAO {
 			pStmt.setString(5, upload.getImgPath4());
 			pStmt.setString(6, upload.getImgPath5());
 
-			// 登録：SQL文を完成させる
-			//				if (upload.getImgPath1() != null && !upload.getImgPath1().equals("")) {
-			//					pStmt.setString(1, upload.getImgPath1());
-			//				}
-			//				if (upload.getImgPath2() != null && !upload.getImgPath2().equals("")) {
-			//					pStmt.setString(2, upload.getImgPath2());
-			//				}
-			//				if (upload.getImgPath3() != null && !upload.getImgPath3().equals("")) {
-			//					pStmt.setString(3, upload.getImgPath3());
-			//				}
-			//				if (upload.getImgPath4() != null && !upload.getImgPath4().equals("")) {
-			//					pStmt.setString(4, upload.getImgPath4());
-			//				}
-			//				if (upload.getImgPath5() != null && !upload.getImgPath5().equals("")) {
-			//					pStmt.setString(5, upload.getImgPath5());
-			//				}
-
 			// SQL文を実行する
 			if (pStmt.executeUpdate() == 1) {
 				result = true;
