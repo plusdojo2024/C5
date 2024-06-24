@@ -16,7 +16,6 @@ import model.Record_sleeps;
 import model.Records;
 import model.UploadFile;
 
-
 public class RecordsDAO {
 	// 記録書に指定の日付のデータを表示する
 	public List<RecordTime> select(Date date, int user_id) {
@@ -43,7 +42,6 @@ public class RecordsDAO {
 			// SQL文を実行し、結果表を取得する
 			ResultSet rs = pStmt.executeQuery();
 
-
 			// 結果表をjavaが扱いやすいコレクション（リスト）に変換する
 			while (rs.next()) {
 				RecordTime record = new RecordTime();
@@ -59,7 +57,6 @@ public class RecordsDAO {
 				}
 				cardList.add(record);
 			}
-
 
 			//排泄
 			sql = "select * from record_excretions "
@@ -86,7 +83,6 @@ public class RecordsDAO {
 				}
 				cardList.add(record);
 			}
-
 
 			//睡眠
 			sql = "select * from record_sleeps "
@@ -133,9 +129,6 @@ public class RecordsDAO {
 		return cardList;
 	}
 
-
-
-
 	// 記録書登録
 	public boolean insert(Records record) {
 		Connection conn = null;
@@ -147,7 +140,6 @@ public class RecordsDAO {
 
 			// データベースに接続する
 			conn = DriverManager.getConnection("jdbc:h2:file:C:/pleiades/workspace/data/C5", "sa", "pw");
-
 
 			// SQL文を準備する（AUTO_INCREMENTのNUMBER列にはNULLを指定する）
 			String sql = "INSERT INTO Records(id,user_id,date,temperature) "
@@ -349,7 +341,7 @@ public class RecordsDAO {
 	}
 
 	//新規画像登録
-	public boolean insert(UploadFile upload) {
+	public boolean insert4(UploadFile upload) {
 
 		Connection conn = null;
 		boolean result = false;
@@ -362,7 +354,7 @@ public class RecordsDAO {
 			conn = DriverManager.getConnection("jdbc:h2:file:C:/pleiades/workspace/data/C5", "sa", "pw");
 
 			// SQL文を準備する（AUTO_INCREMENTのNUMBER列にはNULLを指定する）
-			String sql = "INSERT INTO photos (user_id,img_timestamp,imgPath1, imgPath2, imgPath3, imgPath4, imgPath5) VALUES (?,CURRENT_TIMESTAMP,?,?,?,?,?)";
+			String sql = "INSERT INTO photos (id, user_id,img_timestamp,imgPath1, imgPath2, imgPath3, imgPath4, imgPath5) VALUES (NULL,?,CURRENT_TIMESTAMP,?,?,?,?,?)";
 			PreparedStatement pStmt = conn.prepareStatement(sql);
 
 			pStmt.setInt(1, upload.getUser_id());

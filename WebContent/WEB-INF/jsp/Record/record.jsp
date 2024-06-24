@@ -22,7 +22,7 @@
 	<h2 class="title">育児記録書</h2>
 	<h3 class="calendar">
 		<form action="/C5/RecordServlet" method="get">
-			<input type="date" id="record_date" name="date">
+			<input type="date" id="hiduke" name="date">
 			<input type="submit" value="日付送信">
 		</form>
 	</h3>
@@ -93,5 +93,21 @@
 			</tr>
 		</table>
 	</footer>
+	<script>
+	  //曜日を配列として定義
+	const daysOFWeek = ["日","月","火","水","木","金","土",]
+
+    //今日の日付を取得
+    const today = new Date();
+
+    //年、月、日、曜日を取得
+    const year = today.getFullYear();
+    const month = today.getMonth()+1;
+    const date = today.getDate();
+    const day = daysOFWeek[today.getDay()];
+
+    //日付（曜日）を文字列として整形
+   	document.getElementById("hiduke").Date =year + month +  + date;
+	</script>
 </body>
 </html>
