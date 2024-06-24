@@ -144,15 +144,6 @@ public class RecordsDAO {
 			// データベースに接続する
 			conn = DriverManager.getConnection("jdbc:h2:file:C:/pleiades/workspace/data/C5", "sa", "pw");
 
-			/*				String sqls = "INSERT INTO Records(user_id) VALUES(?)";
-							PreparedStatement pStmts = conn.prepareStatement(sqls);
-							Users user = new Users();
-
-							pStmts.setInt(1,record.getUser_id());
-
-							if (pStmts.executeUpdate() == 1) {
-								result = true;
-							}*/
 
 			// SQL文を準備する（AUTO_INCREMENTのNUMBER列にはNULLを指定する）
 			String sql = "INSERT INTO Records(id,user_id,date,temperature) "

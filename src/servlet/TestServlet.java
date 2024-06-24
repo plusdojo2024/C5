@@ -13,6 +13,7 @@ import javax.servlet.http.HttpSession;
 
 import dao.GamesDAO;
 import model.Games;
+import model.Scores;
 
 @WebServlet("/TestServlet")
 public class TestServlet extends HttpServlet {
@@ -36,7 +37,6 @@ public class TestServlet extends HttpServlet {
 		//セッションスコープに格納
 		session.setAttribute("game1", game1);
 
-
 		session.setAttribute("gameList", gameList);
 
 		//フォワード
@@ -54,6 +54,8 @@ public class TestServlet extends HttpServlet {
 		//int i をセッションスコープから取り出す
 		HttpSession session = request.getSession();
 		int i = (int) session.getAttribute("i");
+		int users_id = (int) session.getAttribute("user_id");
+
 
 		//		回答をセッションスコープに格納する
 		if (i == 0) {
@@ -71,7 +73,6 @@ public class TestServlet extends HttpServlet {
 		//		セッションスコープからgameListを取り出す
 		List<Games> gameList = (List<Games>) session.getAttribute("gameList");
 		//		型 名前 = (型) session.getAttribute("属性名");
-
 
 		if (i == 0) {
 			i += 1;
@@ -101,7 +102,7 @@ public class TestServlet extends HttpServlet {
 
 			session.setAttribute("game5", game);
 
-			//i==4は実質機能していない
+			//
 		} else if (i == 4) {
 
 			// パパの回答を取得
@@ -118,15 +119,15 @@ public class TestServlet extends HttpServlet {
 			String correctAnswer4 = gameList.get(3).getCorrect();
 			String correctAnswer5 = gameList.get(4).getCorrect();
 
-			int sum =0;
+			int sum = 0;
 			session.setAttribute("sum", sum);
 			//問１の答え合わせ
 			if (userAnswer1.equals(correctAnswer1)) {
 
 				String Cheack1 = "◎";
 				session.setAttribute("問1", Cheack1);
-//				List<Games> gameList = (List<Games>) session.getAttribute("gameList");
-				sum+=1;
+				//				List<Games> gameList = (List<Games>) session.getAttribute("gameList");
+				sum += 1;
 				session.setAttribute("sum", sum);
 			} else {
 				String Cheack1 = "✖";
@@ -139,7 +140,7 @@ public class TestServlet extends HttpServlet {
 				String Cheack2 = "◎";
 				session.setAttribute("問2", Cheack2);
 
-				sum+=1;
+				sum += 1;
 				session.setAttribute("sum", sum);
 			} else {
 				String Cheack2 = "✖";
@@ -152,7 +153,7 @@ public class TestServlet extends HttpServlet {
 				String Cheack3 = "◎";
 				session.setAttribute("問3", Cheack3);
 
-				sum+=1;
+				sum += 1;
 				session.setAttribute("sum", sum);
 			} else {
 				String Cheack3 = "✖";
@@ -165,7 +166,7 @@ public class TestServlet extends HttpServlet {
 				String Cheack4 = "◎";
 				session.setAttribute("問4", Cheack4);
 
-				sum+=1;
+				sum += 1;
 				session.setAttribute("sum", sum);
 			} else {
 				String Cheack4 = "✖";
@@ -178,26 +179,38 @@ public class TestServlet extends HttpServlet {
 				String Cheack5 = "◎";
 				session.setAttribute("問5", Cheack5);
 
-				sum+=1;
+				sum += 1;
 				session.setAttribute("sum", sum);
 			} else {
 				String Cheack5 = "✖";
 				session.setAttribute("問5", Cheack5);
 			}
 
-			if(sum == 5) {
+			if (sum == 5) {
 				String Perfect = "全問正解！！！！！おめでとう～🎉";
+				int score = 10;
+				session.setAttribute("score", score);
 				session.setAttribute("perfect", Perfect);
-			}else if(sum==4) {
+			} else if (sum == 4) {
 				String Perfect = "惜しい！！";
 				session.setAttribute("perfect", Perfect);
-			}else if(sum==0) {
+			} else if (sum == 0) {
 				String Perfect = "え、１問も正解できなかったの、、";
 				session.setAttribute("perfect", Perfect);
-			}	else {
+			} else {
 				String Perfect = "まだまだ勉強不足！間違えた箇所はハンドブックをチェックしよう";
 				session.setAttribute("perfect", Perfect);
 			}
+			int score1 =  (int) session.getAttribute("score");
+			Scores score = new Scores();
+
+			score.setId(0);
+			score.setUser_id(users_id);
+			score.setScore(score1);
+
+			GamesDAO gDAO = new GamesDAO();
+			gDAO.insert(score);
+
 			RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/Handbook/testResult.jsp");
 			dispatcher.forward(request, response);
 
