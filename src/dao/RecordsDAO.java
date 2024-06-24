@@ -395,4 +395,119 @@ public class RecordsDAO {
 		return result;
 	}
 
+	// 記録書に指定の日付のデータを表示する
+	public List<RecordTime> select(Date date, int user_id) {
+		Connection conn = null;
+		List<RecordTime> cardList = new ArrayList<RecordTime>();
+
+		try {
+			// JDBCドライバを読み込む
+			Class.forName("org.h2.Driver");
+
+			// データベースに接続する
+			conn = DriverManager.getConnection("jdbc:h2:file:C:/pleiades/workspace/data/C5", "sa", "pw");
+
+			// SQL文を準備する
+			String sql = "select * from record_meals "
+					+ "where cast(meal_timestamp as date) = ? AND user_id = ? ";
+			PreparedStatement pStmt = conn.prepareStatement(sql);
+
+			//SQLを完成させる
+
+			pStmt.setDate(1, date);
+			pStmt.setInt(2, user_id);
+
+			// SQL文を実行し、結果表を取得する
+			ResultSet rs = pStmt.executeQuery();
+
+
+			// 結果表をjavaが扱いやすいコレクション（リスト）に変換する
+			while (rs.next()) {
+				RecordTime record = new RecordTime();
+				//ごはん
+				record.setTime(rs.getTimestamp("meal_timestamp"));
+				if (rs.getBoolean("milk") == true) {
+					record.setWork("ミルク");
+					record.setMilk_quantity(rs.getString("milk_quantity") + "ml");
+					record.setComment(rs.getString("meal_comment"));
+				} else {
+					record.setWork("離乳食");
+					record.setComment(rs.getString("meal_comment"));
+				}
+				cardList.add(record);
+			}
+
+
+			//排泄
+			sql = "select * from record_excretions "
+					+ "where cast(excretion_timestamp as date)= ? AND user_id = ? ";
+			pStmt = conn.prepareStatement(sql);
+
+			//SQLを完成させる
+
+			pStmt.setDate(1, date);
+			pStmt.setInt(2, user_id);
+
+			// SQL文を実行し、結果表を取得する
+			rs = pStmt.executeQuery();
+
+			while (rs.next()) {
+				RecordTime record = new RecordTime();
+				record.setTime(rs.getTimestamp("excretion_timestamp"));
+				if (rs.getBoolean("poop") == true) {
+					record.setWork("うんち");
+					record.setComment(rs.getString("excretion_comment"));
+				} else {
+					record.setWork("おしっこ");
+					record.setComment(rs.getString("excretion_comment"));
+				}
+				cardList.add(record);
+			}
+
+
+			//睡眠
+			sql = "select * from record_sleeps "
+					+ "where cast(sleep_timestamp as date) = ? AND user_id = ? ";
+			pStmt = conn.prepareStatement(sql);
+
+			//SQLを完成させる
+
+			pStmt.setDate(1, date);
+			pStmt.setInt(2, user_id);
+
+			// SQL文を実行し、結果表を取得する
+			rs = pStmt.executeQuery();
+
+			while (rs.next()) {
+				RecordTime record = new RecordTime();
+				record.setTime(rs.getTimestamp("sleep_timestamp"));
+				record.setComment(rs.getString("sleep_comment"));
+				cardList.add(record);
+			}
+
+		}
+
+		catch (SQLException e) {
+			e.printStackTrace();
+			cardList = null;
+		} catch (ClassNotFoundException e) {
+			e.printStackTrace();
+			cardList = null;
+		} finally {
+			// データベースを切断
+			if (conn != null) {
+				try {
+					conn.close();
+				} catch (SQLException e) {
+					e.printStackTrace();
+					cardList = null;
+				}
+
+			}
+		}
+
+		// 結果を返す
+		return cardList;
+	}
+
 }
