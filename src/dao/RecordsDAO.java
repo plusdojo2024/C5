@@ -16,6 +16,7 @@ import model.Record_sleeps;
 import model.Records;
 import model.UploadFile;
 
+
 public class RecordsDAO {
 	// 記録書に指定の日付のデータを表示する
 	public List<RecordTime> select(Date date, int user_id) {
@@ -131,6 +132,9 @@ public class RecordsDAO {
 		// 結果を返す
 		return cardList;
 	}
+
+
+
 
 	// 記録書登録
 	public boolean insert(Records record) {

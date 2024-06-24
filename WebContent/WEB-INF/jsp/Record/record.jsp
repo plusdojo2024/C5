@@ -35,19 +35,16 @@
 			<p class="RecordData">${e.timeFormat}${e.work}${e.milk_quantity}
 				${e.comment}</p>
 		</c:forEach>
-		<!--
-      <p class="RecordData">8:00 ミルク 50ml</p>
-      <hr>
-      <p class="RecordData">10:00 お昼寝</p>
-      <hr>
-      <p class="RecordData">12:00 ミルク 50ml</p>
-      <hr>-->
+<hr>
+		<c:forEach var="c" items="${comments}">
+			<p class="RecordData">${c.comment}</p>
+		</c:forEach>
 	</div>
-	<form>
+	<form action="/C5/RecordServlet" method="post">
 		<textarea name="RecordComment" class="RecordComment"
 			placeholder="コメントを入力してください"></textarea>
 		<br>
-		<button class="CommentButton">コメントする</button>
+		<input type ="submit" name="koment" value="コメントする"  class="CommentButton">
 	</form>
 	<br>
 	<footer>
