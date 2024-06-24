@@ -1,6 +1,7 @@
 package servlet;
 
 import java.io.IOException;
+import java.util.Collection;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
@@ -144,26 +145,34 @@ public class RecordServlet extends HttpServlet {
 			input3.setSleep_comment(sleep_comment);
 			RecordsDAO rDao = new RecordsDAO();
 			rDao.insert3(input3);
-
 		} else if (syasin != null) {
 
-			String imgPath1 = request.getPart("img").getSubmittedFileName();
-			String imgPath2 = request.getPart("img").getSubmittedFileName();
-			String imgPath3 = request.getPart("img").getSubmittedFileName();
-			String imgPath4 = request.getPart("img").getSubmittedFileName();
-			String imgPath5 = request.getPart("img").getSubmittedFileName();
+			request.setCharacterEncoding("UTF-8");
+
+			Collection<Part> parts = request.getParts();
+			Part[] images = parts.toArray(new Part[parts.size()]);
+
+			//images = [ Part, Part, Part, Part, Part ];
 
 			UploadFile upload = new UploadFile();
+			if (images.length < 7) {
 
-			upload.setUser_id(users_id);
-			upload.setImgPath1(imgPath1);
-			upload.setImgPath2(imgPath2);
-			upload.setImgPath3(imgPath3);
-			upload.setImgPath4(imgPath4);
-			upload.setImgPath5(imgPath5);
+				upload.setId(0);
+				upload.setUser_id(users_id);
+				upload.setImgPath1(images[0].getSubmittedFileName());
+				upload.setImgPath2(images[1].getSubmittedFileName());
+				upload.setImgPath3(images[2].getSubmittedFileName());
+				upload.setImgPath4(images[3].getSubmittedFileName());
+				upload.setImgPath5(images[4].getSubmittedFileName());
+
+			} else {
+				// アップロード失敗時の処理
+				String errorMessage = "画像は5枚までです。";
+				request.setAttribute("errorMessage", errorMessage);
+			}
 
 			RecordsDAO uDao = new RecordsDAO();
-			uDao.insert(upload);
+			uDao.insert4(upload);
 
 			List<Part> fileParts = request.getParts().stream()
 					.filter(part -> "img".equals(part.getName()) && part.getSize() > 0)
