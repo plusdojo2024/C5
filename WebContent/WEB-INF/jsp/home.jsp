@@ -22,12 +22,17 @@
 				<input type="submit" value="ログアウト">
 			</form>
 		</header>
+
+		<!-- ↓今日の日付-->
+		<form id = hiduke></form>
+
 		<form id="birthdateForm">
-			<label for="birthdate">生年月日を選択してください:</label> <input type="date"
+			<label for="birthdate"></label> <input type="date"
 				id="birthdate" name="birthdate" value="${child_birthday}">
 		</form>
 		<!--↓生年月日を表示する-->
 		<p id="result"></p>
+
 		<img src="/C5/images/Home-Hiroshi.png"> <br>
 		<button id="click-btn">体温を測る</button>
 		<div id="popup-wrapper">
@@ -403,6 +408,21 @@
             result += `${days}日です`;
                 document.getElementById('result').textContent = result;
         }
+
+        //曜日を配列として定義
+		const daysOFWeek = ["日","月","火","水","木","金","土",]
+
+        //今日の日付を取得
+        const today = new Date();
+
+        //年、月、日、曜日を取得
+        const year = today.getFullYear();
+        const month = today.getMonth()+1;
+        const date = today.getDate();
+        const day = daysOFWeek[today.getDay()];
+
+        //日付（曜日）を文字列として整形
+       	document.getElementById("hiduke").textContent = month + "月" + date + "日" + "("+ day +")";
         </script>
 	</div>
 </body>
