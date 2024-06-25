@@ -10,8 +10,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import dao.GamesDAO;
-
 @WebServlet("/HomeServlet")
 public class HomeServlet extends HttpServlet {
     private static final long serialVersionUID = 1L;
@@ -28,14 +26,19 @@ public class HomeServlet extends HttpServlet {
 			return;
 		}
 
-		// 検索処理を行う
-		GamesDAO sDao = new GamesDAO();
-		// ここを改造しました
-//		List<Scores> scoreList = sDao.select();
+//		// 検索処理を行う
+//		GamesDAO sDao = new GamesDAO();
 //
+//		sDao.sum( (Scores) session.getAttribute("user_id"));
 //
-//		session.setAttribute("scoreList", scoreList);
-
+//		Sum sum1 = new Sum();
+//		int list = sum1.getSum();
+//
+//System.out.println(list);
+//		/*		int MAX =  list.getScore();
+//				score += MAX;*/
+//
+//		session.setAttribute("list", list);
 
 
             // ホーム画面にフォワードする
