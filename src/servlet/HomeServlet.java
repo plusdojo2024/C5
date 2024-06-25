@@ -1,6 +1,7 @@
 package servlet;
 
 import java.io.IOException;
+import java.util.List;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -9,6 +10,9 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+
+import dao.GamesDAO;
+import model.Scores;
 
 @WebServlet("/HomeServlet")
 public class HomeServlet extends HttpServlet {
@@ -25,6 +29,16 @@ public class HomeServlet extends HttpServlet {
 			response.sendRedirect("/C5/LoginServlet");
 			return;
 		}
+
+		// 検索処理を行う
+		GamesDAO sDao = new GamesDAO();
+		// ここを改造しました
+		List<Scores> scoreList = sDao.select();
+
+
+		session.setAttribute("scoreList", scoreList);
+
+
 
             // ホーム画面にフォワードする
             RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/home.jsp");

@@ -10,6 +10,7 @@ import java.util.List;
 
 import model.Games;
 import model.Scores;
+import model.Sum;
 
 public class GamesDAO {
 
@@ -67,6 +68,7 @@ public class GamesDAO {
 		return gameList;
 	}
 
+//	点数を入力する
 	public boolean insert(Scores score) {
 		Connection conn = null;
 		boolean result = false;
@@ -85,7 +87,7 @@ public class GamesDAO {
 
 			// SQL文を完成させる
 			pStmt.setInt(1, score.getUser_id());
-			pStmt.setInt(1, score.getScore());
+			pStmt.setInt(2, score.getScore());
 
 			// SQL文を実行する
 			if (pStmt.executeUpdate() == 1) {
@@ -111,4 +113,58 @@ public class GamesDAO {
 		return result;
 	}
 
+	//点数を出力する
+	//selectallをselectへ変更
+//	public List<Scores> select() {
+		public Sum sum() {
+			Connection conn = null;
+			Sum sum = new Sum();
+//			List<Scores> scoreList = new ArrayList<>();
+
+			try {
+				// JDBCドライバを読み込む
+				Class.forName("org.h2.Driver");
+
+				// データベースに接続する
+				conn = DriverManager.getConnection("jdbc:h2:file:C:/pleiades/workspace/data/C5", "sa", "pw");
+
+				// SQL文を準備する
+//				String sql = "SELECT * FROM Scores";
+				String sql = "SELECT SUM(score) AS sum FROM SCORES WHERE user_id = ?";
+				PreparedStatement pStmt = conn.prepareStatement(sql);
+
+				// SQL文を実行し、結果表を取得する
+				ResultSet rs = pStmt.executeQuery();
+
+				// 結果表をコレクションにコピーする
+				while (rs.next()) {
+////					Scores score = new Scores(
+//							rs.getInt("sum")
+////							rs.getInt("user_id"),
+////							rs.getInt("score"));
+//					scoreList.add(sum);
+					sum.setSum(rs.getInt("sum"));
+			}
+
+			} catch (SQLException e) {
+				e.printStackTrace();
+				sum = null; // エラー時はnullを返す（または適切なエラー処理を行う）
+			} catch (ClassNotFoundException e) {
+				e.printStackTrace();
+				sum = null; // エラー時はnullを返す（または適切なエラー処理を行う）
+			} finally {
+				// データベースを切断
+				if (conn != null) {
+					try {
+						conn.close();
+					} catch (SQLException e) {
+						e.printStackTrace();
+						sum = null; // エラー時はnullを返す（または適切なエラー処理を行う）
+					}
+				}
+			}
+
+			// 結果を返す
+			return sum;
+		}
 }
