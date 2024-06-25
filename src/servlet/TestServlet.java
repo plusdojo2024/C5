@@ -14,6 +14,7 @@ import javax.servlet.http.HttpSession;
 import dao.GamesDAO;
 import model.Games;
 import model.Scores;
+import model.Sum;
 
 @WebServlet("/TestServlet")
 public class TestServlet extends HttpServlet {
@@ -188,8 +189,21 @@ public class TestServlet extends HttpServlet {
 
 			if (sum == 5) {
 				String Perfect = "全問正解！！！！！おめでとう～🎉";
+
 				int score = 10;
-				session.setAttribute("score", score);
+				// 検索処理を行う
+				GamesDAO sDao = new GamesDAO();
+				// ここを改造しました
+				Sum sum1 = sDao.sum();
+
+				int list = sum1.getSum();
+
+
+//				int MAX =  list.getScore();
+//				score += MAX;
+
+				session.setAttribute("list", list);
+
 				session.setAttribute("perfect", Perfect);
 			} else if (sum == 4) {
 				String Perfect = "惜しい！！";
@@ -201,6 +215,7 @@ public class TestServlet extends HttpServlet {
 				String Perfect = "まだまだ勉強不足！間違えた箇所はハンドブックをチェックしよう";
 				session.setAttribute("perfect", Perfect);
 			}
+
 			int score1 =  (int) session.getAttribute("score");
 			Scores score = new Scores();
 
@@ -211,9 +226,10 @@ public class TestServlet extends HttpServlet {
 			GamesDAO gDAO = new GamesDAO();
 			gDAO.insert(score);
 
+//			フォワード
 			RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/Handbook/testResult.jsp");
 			dispatcher.forward(request, response);
-
+//下のフォワードも実行されてしまっている
 		}
 		//		フォワード
 		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/Handbook/test.jsp");

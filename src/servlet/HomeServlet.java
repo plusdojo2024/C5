@@ -10,6 +10,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import dao.GamesDAO;
+
 @WebServlet("/HomeServlet")
 public class HomeServlet extends HttpServlet {
     private static final long serialVersionUID = 1L;
@@ -25,6 +27,16 @@ public class HomeServlet extends HttpServlet {
 			response.sendRedirect("/C5/LoginServlet");
 			return;
 		}
+
+		// 検索処理を行う
+		GamesDAO sDao = new GamesDAO();
+		// ここを改造しました
+//		List<Scores> scoreList = sDao.select();
+//
+//
+//		session.setAttribute("scoreList", scoreList);
+
+
 
             // ホーム画面にフォワードする
             RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/home.jsp");
