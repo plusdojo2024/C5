@@ -2,14 +2,44 @@
 
 /*スマホ画面サイズに調整するCSS*/
 
-/*---ログイン--------------------------------------------*/
+/*----スプラッシュ画面-------------------------------------------*/
+
+.Splash-Background{
+    background-color: #ffff;
+}
+
+.splash-screen {
+    background: url('path/to/image.jpg') no-repeat center center/cover;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+.gif{
+    margin-top: 50px;
+    width: 420px;
+    height: 420px;
+}
+
+#skip-button {
+    position: absolute;
+    top: 20px;
+    padding: 10px;
+    background: rgba(255, 255, 255, 0.7);
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+/*---ログイン&新規登録&ログアウト--------------------------------------------*/
 
 #Login-Signup-Background{
-    background-color: #b1dbd1;
+    background-color: #e0f2ed;
     text-align: center;
 }
 
-/*囲み白ボックス*/
+/*(1)囲み白ボックス*/
 
 .WhiteBox{
     background-color: white;
@@ -17,10 +47,19 @@
     padding: 50px;
 }
 
-/*ひろしninaruのロゴサイズ調整*/
+/*(2)IKUMIのロゴサイズ調整*/
 
-/*ユーザーネームinput欄*/
+.LoginImg{
+    width: 200px;
+    height: 200px;
+}
 
+.LoginIkumi{
+    color: #5abca5;
+    margin: 0%;
+}
+
+/*(3)ユーザーネーム等のinput欄*/
 .userInfo{
     background: white;
     border: none;
@@ -37,14 +76,12 @@
     outline: none;
 }
 
-/*パスワードinput欄*/
-
-/*ログインボタン*/
+/*(4)ログインボタン*/
 
 .Login{
     margin-top: 30px;
     width: 80%;
-    background-color: #65b84c;
+    background-color: #5abca5;
     color: white;
     font-weight: bold;
     border: none;
@@ -55,9 +92,14 @@
     text-align: center;
     text-transform: uppercase;
     transition: 0.3s ease-in-out;
+    border-radius: 50px;
 }
 
-/*新規登録ボタン*/
+  .Login:hover {
+    background: #b1dbd1;
+  }
+
+/*(5)新規登録ボタン*/
 
 .SignUp{
     margin-top: 20px;
@@ -73,9 +115,39 @@
     text-align: center;
     text-transform: uppercase;
     transition: 0.3s ease-in-out;
+    border-radius: 50px;
 }
 
-/*---ログアウト--------------------------------------------*/
+.SignUp:hover {
+    background: #fdd887;
+  }
+
+/*(6)ガイド文字（灰色）*/
+
+.Guide{
+    color: #4d5156;
+    font-size: small;
+    text-align: left;
+    padding-left: 25px;
+}
+
+/*(7)登録ボタン*/
+
+.Register{
+    margin-top: 40px;
+    width: 80%;
+    background-color: #5abca5;
+    color: white;
+    font-weight: bold;
+    border: none;
+    cursor: pointer;
+    height: 50px;
+    font-size: 1.2em;
+    letter-spacing: 0.05em;
+    text-align: center;
+    text-transform: uppercase;
+    transition: 0.3s ease-in-out;
+}
 
 /*(8)ログアウトボタン*/
 
@@ -101,94 +173,88 @@
     margin-top: 10px;
 }
 
-
-/*---新規登録--------------------------------------------*/
-
-/*囲み白ボックスはログイン画面と同じ↑*/
-
-.WhiteBox{
-    background-color: white;
-    margin: 50px;
-    padding: 50px;
-}
-
-/*ひろしninaruのロゴサイズ調整*/
-
-/*ユーザーネームinput欄*/
-
-/*パスワードinput欄*/
-
-/*ログインボタン*/
-
-/*新規登録ボタン*/
-
-.SignUp{
-    margin-top: 20px;
-    width: 80%;
-    background-color: #f9c146;
-    color: white;
-    font-weight: bold;
-    border: none;
-    cursor: pointer;
-    height: 50px;
-    font-size: 1.2em;
-    letter-spacing: 0.05em;
-    text-align: center;
-    text-transform: uppercase;
-    transition: 0.3s ease-in-out;
-}
-
-/*(6)ガイド文字（紺色）*/
-
-.Guide{
-    color: #1c458c;
-    font-size: small;
-    text-align: left;
-    padding-left: 25px;
-}
-
-/*(7)登録ボタン*/
-
-.Register{
-    margin-top: 40px;
-    width: 80%;
-    background-color: #65b84c;
-    color: white;
-    font-weight: bold;
-    border: none;
-    cursor: pointer;
-    height: 50px;
-    font-size: 1.2em;
-    letter-spacing: 0.05em;
-    text-align: center;
-    text-transform: uppercase;
-    transition: 0.3s ease-in-out;
-}
-
-
 /*---ホーム----------------------------------------------*/
 
 /*共通ツールバー【トップ＆フッター固定部分】*/
 
-header{
+.header{
     text-align: center;
     margin-top: 0px;
     padding: 5px;
-    background-color: #f9c146;
+    background-color: #5abca5;
     width: 100%;
 }
 
-/*ひろしninaruロゴの色*/
+/*IKUMIロゴの色*/
 .AppLogo{
     color: white;
+}
+
+.logoutButton{
+    margin-top: 20px;
+}
+
+.headerBox{
+    display: flex;
+    justify-content: center;
+}
+
+.headerItem1{
+    margin-left: 10px;
+    margin-right: 70px;
+}
+
+.headerItem2{
+    margin-left: 10px;
+    margin-right: 10px;
+}
+
+.headerItem3{
+    margin-left: 70px;
+    margin-right: 10px;
 }
 
 .Content{
     text-align: center;
     width: 100%;
     padding-top: 10px;
-    background-color: #b1dbd1;
+    background-color: #e0f2ed;
     margin-bottom: 20px;
+}
+
+.hidukeBox{
+    display: flex;
+    justify-content: center;
+}
+
+.hidukeItem1{
+    margin-left: 40px;
+    margin-right: 10px;
+    margin: 20px;
+    padding: 10px;
+    width: 50%;
+    background-color: #5abca5;
+    color: white;
+    font-weight: bold;
+    border: none;
+    font-size: 1.0em;
+    letter-spacing: 0.05em;
+    text-align: center;
+    text-transform: uppercase;
+    transition: 0.3s ease-in-out;
+    border-radius: 50px;
+}
+
+.hidukeItem2{
+    margin-left: 50px;
+    margin-right: 10px;
+    margin-bottom: 0;
+    padding: 10px;
+}
+
+.homeIkumi{
+    width: 200px;
+    height: 200px;
 }
 
 .RecordIcon{
@@ -217,6 +283,7 @@ footer {
     list-style-type: none;	/* 先頭の記号をなくす */
     padding-right: 30px;		/* 区切りを空ける */
 }
+
 
 
 
