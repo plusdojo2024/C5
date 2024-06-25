@@ -21,6 +21,11 @@
 			<form method="get" action="/C5/LogoutServlet">
 				<input type="submit" value="ログアウト">
 			</form>
+
+
+			<p>${list }</p>
+
+
 		</header>
 
 		<!-- ↓今日の日付-->
