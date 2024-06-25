@@ -116,9 +116,9 @@ public class GamesDAO {
 	//点数を出力する
 	//selectallをselectへ変更
 //	public List<Scores> select() {
-		public Sum sum() {
+		public Sum sum(Scores scores) {
 			Connection conn = null;
-			Sum sum = new Sum();
+			Sum sum= new Sum();
 //			List<Scores> scoreList = new ArrayList<>();
 
 			try {
@@ -132,7 +132,7 @@ public class GamesDAO {
 //				String sql = "SELECT * FROM Scores";
 				String sql = "SELECT SUM(score) AS sum FROM SCORES WHERE user_id = ?";
 				PreparedStatement pStmt = conn.prepareStatement(sql);
-
+				pStmt.setInt(1,scores.getUser_id());
 				// SQL文を実行し、結果表を取得する
 				ResultSet rs = pStmt.executeQuery();
 
@@ -143,15 +143,16 @@ public class GamesDAO {
 ////							rs.getInt("user_id"),
 ////							rs.getInt("score"));
 //					scoreList.add(sum);
+				//.setUser_id(rs.getInt("user_id"));
 					sum.setSum(rs.getInt("sum"));
 			}
 
 			} catch (SQLException e) {
 				e.printStackTrace();
-				sum = null; // エラー時はnullを返す（または適切なエラー処理を行う）
+//				sum1 = null; // エラー時はnullを返す（または適切なエラー処理を行う）
 			} catch (ClassNotFoundException e) {
 				e.printStackTrace();
-				sum = null; // エラー時はnullを返す（または適切なエラー処理を行う）
+//				sum1 = null; // エラー時はnullを返す（または適切なエラー処理を行う）
 			} finally {
 				// データベースを切断
 				if (conn != null) {
@@ -159,7 +160,7 @@ public class GamesDAO {
 						conn.close();
 					} catch (SQLException e) {
 						e.printStackTrace();
-						sum = null; // エラー時はnullを返す（または適切なエラー処理を行う）
+//						sum1 = null; // エラー時はnullを返す（または適切なエラー処理を行う）
 					}
 				}
 			}
