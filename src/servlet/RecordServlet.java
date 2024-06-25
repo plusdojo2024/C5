@@ -47,6 +47,7 @@ public class RecordServlet extends HttpServlet {
 		String currentDateStr = currentDate.format(formatter);
 		List<RecordTime> list = null;
 		List<record_comments> comments = null;
+		List<UploadFile> photo = null;
 
 		//nullじゃないとき　→　何もしない。
 		//nullのとき　　　　→　今日の日付データをdoGetメソッドで生成する。
@@ -57,10 +58,17 @@ public class RecordServlet extends HttpServlet {
 			HttpSession session = request.getSession();
 			RecordsDAO dao = new RecordsDAO();
 			list = dao.select(java.sql.Date.valueOf(userInputDate), (int) session.getAttribute("user_id"));
+			photo = dao.photoselect(java.sql.Date.valueOf(userInputDate), (int) session.getAttribute("user_id"));
 			Collections.sort(list, new Comparator<RecordTime>() {
 				@Override
 				public int compare(RecordTime o1, RecordTime o2) {
 					return o1.getTime().compareTo(o2.getTime());
+				}
+			});
+			Collections.sort(photo, new Comparator<UploadFile>() {
+				@Override
+				public int compare(UploadFile o1, UploadFile o2) {
+					return o1.getImg_timestamp().compareTo(o2.getImg_timestamp());
 				}
 			});
 			Record_commentsDAO rcDao = new Record_commentsDAO();
@@ -76,10 +84,17 @@ public class RecordServlet extends HttpServlet {
 			HttpSession session = request.getSession();
 			RecordsDAO dao = new RecordsDAO();
 			list = dao.select(java.sql.Date.valueOf(userInputDate), (int) session.getAttribute("user_id"));
+			photo = dao.photoselect(java.sql.Date.valueOf(userInputDate), (int) session.getAttribute("user_id"));
 			Collections.sort(list, new Comparator<RecordTime>() {
 				@Override
 				public int compare(RecordTime o1, RecordTime o2) {
 					return o1.getTime().compareTo(o2.getTime());
+				}
+			});
+			Collections.sort(photo, new Comparator<UploadFile>() {
+				@Override
+				public int compare(UploadFile o1, UploadFile o2) {
+					return o1.getImg_timestamp().compareTo(o2.getImg_timestamp());
 				}
 			});
 			Record_commentsDAO rcDao = new Record_commentsDAO();
@@ -93,7 +108,11 @@ public class RecordServlet extends HttpServlet {
 		}
 		//リクエストスコープに格納
 		request.setAttribute("list", list);
+		request.setAttribute("photo", photo);
 		request.setAttribute("comments", comments);
+		System.out.println(list);
+		System.out.println(photo);
+		System.out.println(comments);
 
 		//フォワード
 		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/Record/record.jsp");
@@ -212,7 +231,7 @@ public class RecordServlet extends HttpServlet {
 				Part part = fileParts.get(i);
 				String submittedFileName = getSubmittedFileName(part);
 				String fileName = new String(submittedFileName.getBytes("UTF-8"), "UTF-8");
-				String filePath = "/images/icons/" + fileName;
+				String filePath = "/images/" + fileName;
 
 				// ここでファイルを保存する処理を追加
 				part.write(getServletContext().getRealPath(filePath));

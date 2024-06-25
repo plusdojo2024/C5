@@ -390,4 +390,54 @@ public class RecordsDAO {
 		// 結果を返す
 		return result;
 	}
+
+	public List<UploadFile> photoselect(Date date, int user_id) {
+		Connection conn = null;
+		List<UploadFile> photoList = new ArrayList<UploadFile>();
+
+		try {
+			// JDBCドライバを読み込む
+			Class.forName("org.h2.Driver");
+
+			// データベースに接続する
+			conn = DriverManager.getConnection("jdbc:h2:file:C:/pleiades/workspace/data/C5", "sa", "pw");
+
+			// SQL文を準備する
+			String sql = "select * from photos "
+					+ "where cast(img_timestamp as date) = ? AND user_id = ? ";
+			PreparedStatement pStmt = conn.prepareStatement(sql);
+			pStmt.setDate(1, date);
+			pStmt.setInt(2, user_id);
+			ResultSet rs = pStmt.executeQuery();
+			while (rs.next()) {
+				UploadFile upho = new UploadFile();
+				upho.setImg_timestamp(rs.getTimestamp("img_timestamp"));
+				upho.setImgPath1(rs.getString("imgPath1"));
+				upho.setImgPath2(rs.getString("imgPath2"));
+				upho.setImgPath3(rs.getString("imgPath3"));
+				upho.setImgPath4(rs.getString("imgPath4"));
+				upho.setImgPath5(rs.getString("imgPath5"));
+				photoList.add(upho);
+			}
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+			photoList = null;
+		} catch (ClassNotFoundException e) {
+			e.printStackTrace();
+			photoList = null;
+		} finally {
+			// データベースを切断
+			if (conn != null) {
+				try {
+					conn.close();
+				} catch (SQLException e) {
+					e.printStackTrace();
+					photoList = null;
+				}
+
+			}
+		}
+		return photoList;
+	}
 }

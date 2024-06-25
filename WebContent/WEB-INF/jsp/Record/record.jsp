@@ -22,21 +22,24 @@
 	<h2 class="title">育児記録書</h2>
 	<h3 class="calendar">
 		<form action="/C5/RecordServlet" method="get">
-			<input type="date" id="hiduke" name="date">
-			<input type="submit" value="日付送信">
+			<input type="date" id="hiduke" name="date"> <input
+				type="submit" value="日付送信">
 		</form>
 	</h3>
 	<!--<a href="home.html"></a>-->
-		<hr />
-		<div class="upload">
-                <p>アップロードファイル：画像</p>
-					<img class="uploadFile" src="<%= request.getContextPath() %>${upload.imgPath1}" width=200 height=200>
-                	<img class="uploadFile" src="<%= request.getContextPath() %>${upload.imgPath2}" width=200 height=200>
-                	<img class="uploadFile" src="<%= request.getContextPath() %>${upload.imgPath3}" width=200 height=200>
-                	<img class="uploadFile" src="<%= request.getContextPath() %>${upload.imgPath4}" width=200 height=200>
-                	<img class="uploadFile" src="<%= request.getContextPath() %>${upload.imgPath5}" width=200 height=200>
-		</div>
-		<hr />
+	<hr />
+	<div class="upload">
+		<p>アップロードファイル：画像</p>
+		<c:forEach var="p" items="${photo }">
+		<P>${p.img_timestamp }</P>
+			<img src="${p.imgPath1}" width=200 height=200>
+			<img src="${p.imgPath2}" width=200 height=200>
+			<img src="${p.imgPath3}" width=200 height=200>
+			<img src="${p.imgPath4}" width=200 height=200>
+			<img src="${p.imgPath5}" width=200 height=200>
+		</c:forEach>
+	</div>
+	<hr />
 
 	<div class="TimeRecord">
 		<hr>
@@ -45,7 +48,7 @@
 			<p class="RecordData">${e.timeFormat}${e.work}${e.milk_quantity}
 				${e.comment}</p>
 		</c:forEach>
-<hr>
+		<hr>
 		<c:forEach var="c" items="${comments}">
 			<p class="RecordData">${c.comment}</p>
 		</c:forEach>
@@ -53,8 +56,8 @@
 	<form action="/C5/RecordServlet" method="post">
 		<textarea name="RecordComment" class="RecordComment"
 			placeholder="コメントを入力してください"></textarea>
-		<br>
-		<input type ="submit" name="koment" value="コメントする"  class="CommentButton">
+		<br> <input type="submit" name="koment" value="コメントする"
+			class="CommentButton">
 	</form>
 	<br>
 	<footer>
@@ -94,20 +97,20 @@
 		</table>
 	</footer>
 	<script>
-	  //曜日を配列として定義
-	const daysOFWeek = ["日","月","火","水","木","金","土",]
+		//曜日を配列として定義
+		const daysOFWeek = [ "日", "月", "火", "水", "木", "金", "土", ]
 
-    //今日の日付を取得
-    const today = new Date();
+		//今日の日付を取得
+		const today = new Date();
 
-    //年、月、日、曜日を取得
-    const year = today.getFullYear();
-    const month = today.getMonth()+1;
-    const date = today.getDate();
-    const day = daysOFWeek[today.getDay()];
+		//年、月、日、曜日を取得
+		const year = today.getFullYear();
+		const month = today.getMonth() + 1;
+		const date = today.getDate();
+		const day = daysOFWeek[today.getDay()];
 
-    //日付（曜日）を文字列として整形
-   	document.getElementById("hiduke").Date =year + month +  + date;
+		//日付（曜日）を文字列として整形
+		document.getElementById("hiduke").Date = year + month + +date;
 	</script>
 </body>
 </html>
