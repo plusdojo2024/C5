@@ -8,6 +8,7 @@ import java.sql.Timestamp;
 public class UploadFile {
 
 	/** 画像パス */
+	private int id;
 	private int user_id;
 	private Timestamp img_timestamp;
 	private String imgPath1;
@@ -93,6 +94,14 @@ public class UploadFile {
 
 	public void setImgPath5(String imgPath5) {
 		this.imgPath5 = imgPath5;
+	}
+
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
 	}
 
 }

@@ -22,7 +22,7 @@
 	<h2 class="title">育児記録書</h2>
 	<h3 class="calendar">
 		<form action="/C5/RecordServlet" method="get">
-			<input type="date" id="record_date" name="date">
+			<input type="date" id="hiduke" name="date">
 			<input type="submit" value="日付送信">
 		</form>
 	</h3>
@@ -45,19 +45,16 @@
 			<p class="RecordData">${e.timeFormat}${e.work}${e.milk_quantity}
 				${e.comment}</p>
 		</c:forEach>
-		<!--
-      <p class="RecordData">8:00 ミルク 50ml</p>
-      <hr>
-      <p class="RecordData">10:00 お昼寝</p>
-      <hr>
-      <p class="RecordData">12:00 ミルク 50ml</p>
-      <hr>-->
+<hr>
+		<c:forEach var="c" items="${comments}">
+			<p class="RecordData">${c.comment}</p>
+		</c:forEach>
 	</div>
-	<form>
+	<form action="/C5/RecordServlet" method="post">
 		<textarea name="RecordComment" class="RecordComment"
 			placeholder="コメントを入力してください"></textarea>
 		<br>
-		<button class="CommentButton">コメントする</button>
+		<input type ="submit" name="koment" value="コメントする"  class="CommentButton">
 	</form>
 	<br>
 	<footer>
@@ -96,5 +93,21 @@
 			</tr>
 		</table>
 	</footer>
+	<script>
+	  //曜日を配列として定義
+	const daysOFWeek = ["日","月","火","水","木","金","土",]
+
+    //今日の日付を取得
+    const today = new Date();
+
+    //年、月、日、曜日を取得
+    const year = today.getFullYear();
+    const month = today.getMonth()+1;
+    const date = today.getDate();
+    const day = daysOFWeek[today.getDay()];
+
+    //日付（曜日）を文字列として整形
+   	document.getElementById("hiduke").Date =year + month +  + date;
+	</script>
 </body>
 </html>

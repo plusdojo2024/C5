@@ -1,6 +1,7 @@
 package servlet;
 
 import java.io.IOException;
+import java.util.Collection;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
@@ -16,6 +17,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import javax.servlet.http.Part;
 
+import dao.Record_commentsDAO;
 import dao.RecordsDAO;
 import model.RecordTime;
 import model.Record_excretions;
@@ -23,6 +25,7 @@ import model.Record_meals;
 import model.Record_sleeps;
 import model.Records;
 import model.UploadFile;
+import model.record_comments;
 
 /**
  * Servlet implementation class RecordServlet
@@ -38,6 +41,7 @@ public class RecordServlet extends HttpServlet {
 
 		String userInputDate = request.getParameter("date");
 		List<RecordTime> list = null;
+		List<record_comments> comments = null;
 
 		if (userInputDate != null) {
 			HttpSession session = request.getSession();
@@ -49,9 +53,19 @@ public class RecordServlet extends HttpServlet {
 					return o1.getTime().compareTo(o2.getTime());
 				}
 			});
+			Record_commentsDAO rcDao = new Record_commentsDAO();
+			comments = rcDao.select(java.sql.Date.valueOf(userInputDate), (int) session.getAttribute("user_id"));
+			Collections.sort(comments, new Comparator<record_comments>() {
+				@Override
+				public int compare(record_comments o1, record_comments o2) {
+					return o1.getComment_timestamp().compareTo(o2.getComment_timestamp());
+				}
+			});
 		}
 		//リクエストスコープに格納
 		request.setAttribute("list", list);
+		request.setAttribute("comments", comments);
+
 		//フォワード
 		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/Record/record.jsp");
 		dispatcher.forward(request, response);
@@ -69,6 +83,7 @@ public class RecordServlet extends HttpServlet {
 		String suimin = request.getParameter("suimin");
 		String gohan = request.getParameter("gohan");
 		String syasin = request.getParameter("syasin");
+		String koment = request.getParameter("koment");
 
 		if (taion != null) {
 			//体温記録
@@ -130,26 +145,34 @@ public class RecordServlet extends HttpServlet {
 			input3.setSleep_comment(sleep_comment);
 			RecordsDAO rDao = new RecordsDAO();
 			rDao.insert3(input3);
-
 		} else if (syasin != null) {
 
-			String imgPath1 = request.getPart("img").getSubmittedFileName();
-			String imgPath2 = request.getPart("img").getSubmittedFileName();
-			String imgPath3 = request.getPart("img").getSubmittedFileName();
-			String imgPath4 = request.getPart("img").getSubmittedFileName();
-			String imgPath5 = request.getPart("img").getSubmittedFileName();
+			request.setCharacterEncoding("UTF-8");
+
+			Collection<Part> parts = request.getParts();
+			Part[] images = parts.toArray(new Part[parts.size()]);
+
+			//images = [ Part, Part, Part, Part, Part ];
 
 			UploadFile upload = new UploadFile();
+			if (images.length < 7) {
 
-			upload.setUser_id(users_id);
-			upload.setImgPath1(imgPath1);
-			upload.setImgPath2(imgPath2);
-			upload.setImgPath3(imgPath3);
-			upload.setImgPath4(imgPath4);
-			upload.setImgPath5(imgPath5);
+				upload.setId(0);
+				upload.setUser_id(users_id);
+				upload.setImgPath1(images[0].getSubmittedFileName());
+				upload.setImgPath2(images[1].getSubmittedFileName());
+				upload.setImgPath3(images[2].getSubmittedFileName());
+				upload.setImgPath4(images[3].getSubmittedFileName());
+				upload.setImgPath5(images[4].getSubmittedFileName());
+
+			} else {
+				// アップロード失敗時の処理
+				String errorMessage = "画像は5枚までです。";
+				request.setAttribute("errorMessage", errorMessage);
+			}
 
 			RecordsDAO uDao = new RecordsDAO();
-			uDao.insert(upload);
+			uDao.insert4(upload);
 
 			List<Part> fileParts = request.getParts().stream()
 					.filter(part -> "img".equals(part.getName()) && part.getSize() > 0)
@@ -187,11 +210,22 @@ public class RecordServlet extends HttpServlet {
 				}
 			}
 			request.setAttribute("upload", upload);
+		} else if (koment != null) {
+			//コメント
+			String RecordComment = request.getParameter("RecordComment");
+
+			record_comments input4 = new record_comments();
+			input4.setComment_id(0);
+			input4.setUser_id(users_id);
+			input4.setComment(RecordComment);
+			Record_commentsDAO rcDao = new Record_commentsDAO();
+			rcDao.insert(input4);
+			doGet(request, response);
 		}
 
-		//フォワード
 		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/home.jsp");
 		dispatcher.forward(request, response);
+
 	}
 
 	private String getSubmittedFileName(Part part) {
