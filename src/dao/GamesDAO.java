@@ -116,7 +116,7 @@ public class GamesDAO {
 	//点数を出力する
 	//selectallをselectへ変更
 //	public List<Scores> select() {
-		public Sum sum(Scores scores) {
+		public Sum sum(int user_id) {
 			Connection conn = null;
 			Sum sum= new Sum();
 //			List<Scores> scoreList = new ArrayList<>();
@@ -132,7 +132,7 @@ public class GamesDAO {
 //				String sql = "SELECT * FROM Scores";
 				String sql = "SELECT SUM(score) AS sum FROM SCORES WHERE user_id = ?";
 				PreparedStatement pStmt = conn.prepareStatement(sql);
-				pStmt.setInt(1,scores.getUser_id());
+				pStmt.setInt(1,user_id);
 				// SQL文を実行し、結果表を取得する
 				ResultSet rs = pStmt.executeQuery();
 
@@ -143,7 +143,6 @@ public class GamesDAO {
 ////							rs.getInt("user_id"),
 ////							rs.getInt("score"));
 //					scoreList.add(sum);
-				//.setUser_id(rs.getInt("user_id"));
 					sum.setSum(rs.getInt("sum"));
 			}
 

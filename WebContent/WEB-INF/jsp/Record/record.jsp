@@ -49,6 +49,7 @@
 				${e.comment}</p>
 		</c:forEach>
 		<hr>
+		<p>コメント欄</p>
 		<c:forEach var="c" items="${comments}">
 			<p class="RecordData">${c.comment}</p>
 		</c:forEach>
