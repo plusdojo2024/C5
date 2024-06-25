@@ -5,6 +5,8 @@
 <html lang="ja">
 
 <head>
+<script src="https://cdn.rawgit.com/davidshimjs/qrcodejs/gh-pages/qrcode.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/qrcode-generator/qrcode.js"></script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link
@@ -208,24 +210,17 @@
 		</table>
 
 
-		<!-- 画像出力の実験 -->
 
-		<hr />
-		<div class="upload">
-                <p>アップロードファイル：画像</p>
-                	<img class="uploadFile" src="<%= request.getContextPath() %>${upload.imgPath1}" width=200 height=200>
-                	<img class="uploadFile" src="<%= request.getContextPath() %>${upload.imgPath2}" width=200 height=200>
-                	<img class="uploadFile" src="<%= request.getContextPath() %>${upload.imgPath3}" width=200 height=200>
-                	<img class="uploadFile" src="<%= request.getContextPath() %>${upload.imgPath4}" width=200 height=200>
-                	<img class="uploadFile" src="<%= request.getContextPath() %>${upload.imgPath5}" width=200 height=200>
+
+
+		<button id="click-btn5">${child_name}の記録をシェアしよう</button> <br>
+		<div id="popup-wrapper5">
+		<div id="popup-inside5">
+		<div id="close5">x</div>
+		<button id="generate" class="shareQR">共有QRコードを作成</button>
+		<div id="qrcode" ></div>
 		</div>
-		<hr />
-
-		<!-- 画像出力の実験 -->
-
-
-		<p>${child_name}の記録をシェアしよう</p>
-		<input type="submit" class="shareQR" value="パートナーにシェア"> <br>
+		</div>
 		<br> <br> <br> <br>
 		<!--ポップアップダイアログ
                 <div id="popup" class="modal">
@@ -372,6 +367,45 @@
                 popupWrapper4.style.display = 'none';
             }
         });
+
+        //パートナーにシェアQRコード
+
+    	 const clickBtn5 = document.getElementById('click-btn5');
+         const popupWrapper5 = document.getElementById('popup-wrapper5');
+         const close5 = document.getElementById('close5');
+
+         // ボタンをクリックしたときにポップアップを表示させる
+         clickBtn5.addEventListener('click', () => {
+             popupWrapper5.style.display = "block";
+         });
+
+
+         	document.addEventListener('DOMContentLoaded', function() {
+     			var generateButton = document.getElementById('generate');
+
+     			generateButton.addEventListener('click', function() {
+     				var url = "http://localhost:8080/C5/LoginServlet";
+
+     				var qrcode = new QRCode(document.getElementById('qrcode'), {
+     	            	text: url,
+
+     	            	width: 100,
+     	            	height: 100
+     	       	 	});
+
+
+    			 });
+ 			});
+
+
+
+
+         // ポップアップの外側又は「x」のマークをクリックしたときポップアップを閉じる
+         popupWrapper5.addEventListener('click', e => {
+             if (e.target.id === popupWrapper5.id || e.target.id === close5.id) {
+                 popupWrapper5.style.display = 'none';
+             }
+         });
 
         //カレンダー
         document.addEventListener('DOMContentLoaded',function(){
