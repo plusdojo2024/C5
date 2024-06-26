@@ -18,11 +18,17 @@
 </head>
 
 <body>
-	<header>
-		<h3 id="AppLogo">ひろしninaru</h3>
-		<form method="get" action="/C5/LogoutServlet">
-			<input type="submit" value="ログアウト">
-		</form>
+<div class="Content">
+		<header class="header">
+            <div class="headerBox">
+                <div class="headerItem1">
+                    <form method="get" action="/C5/LogoutServlet">
+				    <input class="logoutButton" type="submit" value="ログアウト">
+			        </form>
+			        </div>
+			    <div class="headerItem2"><h3 class="AppLogo">IKUMI</h3></div>
+            </div>
+		</header>
 
 		<c:choose>
 			<c:when test="${sum <= 20 or sum == null}">
@@ -58,21 +64,22 @@
 		</c:choose>
 
 
-	</header>
 	<div class="Content">
 		<!-- ↓今日の日付-->
-		<form id=hiduke></form>
-		<a id="hiduke">生年月日:${child_birthday}</a>
+		<div class="hidukeBox">
+		<div class="hidukeItem1"><form id = hiduke></form>
+		<a id="hiduke">生年月日:${child_birthday}</a></div>
 		<p></p>
-		<form id="birthdateForm">
+		<form id="birthdateForm"></form>
 			<label for="birthdate"></label>
+			  </div>
 			<%-- <input type="date" id="birthdate"
 				name="birthdate" value="${child_birthday}"> --%>
-		</form>
+
 		<!--↓生年月日を表示する-->
 		<p id="result"></p>
 
-		<img src="/C5/images/Home-Hiroshi.png"> <br>
+		<img src="image/IKUMI.png" class="homeIkumi"> <br>
 		<button id="click-btn">体温を測る</button>
 		<div id="popup-wrapper">
 			<div id="popup-inside">
@@ -496,7 +503,7 @@
         const day = daysOFWeek[today.getDay()];
 
         //日付（曜日）を文字列として整形
-       	document.getElementById("hiduke").textContent = month + "月" + date + "日" + "("+ day +")";
+       	document.getElementById("hiduke").textContent ="日付:" + month + "月" + date + "日" + "("+ day +")";
         </script>
 	</div>
 </body>

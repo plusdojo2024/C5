@@ -188,8 +188,14 @@
     color: white;
 }
 
+/*ログアウトボタン*/
 .logoutButton{
-    margin-top: 20px;
+    background-color: #f9c146;
+    color: white;
+    font-weight: bold;
+    border: none;
+    height: 40px;
+    margin-top: 10px;
 }
 
 .headerBox{
@@ -263,16 +269,6 @@
 .FixedBar{
     width: 40px;
     height: 40px;
-}
-
-/*ログアウトボタン*/
-.logoutButton{
-    background-color: #f9c146;
-    color: white;
-    font-weight: bold;
-    border: none;
-    height: 40px;
-    margin-top: 10px;
 }
 
 footer {
