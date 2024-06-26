@@ -23,7 +23,7 @@
 	<h3 class="calendar">
 		<form action="/C5/RecordServlet" method="get">
 			<input type="date" id="hiduke" name="date"> <input
-				type="submit" value="日付送信">
+				type="submit" value="日付送信" class="dateButton">
 		</form>
 	</h3>
 	<!--<a href="home.html"></a>-->
