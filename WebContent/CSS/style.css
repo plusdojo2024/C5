@@ -316,12 +316,15 @@ footer {
 	text-align: center;
 }
 	/*ヘッダー*/
-  header {
+ header {
 	text-align: center;
 	margin-top: 0px;
 	padding: 5px;
 	background-color: #f9c146;
 	width: 100%;
+}
+.ml{
+	margin-left: auto;
 }
 
 #nav {

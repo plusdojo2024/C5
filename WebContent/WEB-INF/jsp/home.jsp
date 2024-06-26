@@ -18,43 +18,56 @@
 </head>
 
 <body>
+	<header>
+		<h3 id="AppLogo">ひろしninaru</h3>
+		<form method="get" action="/C5/LogoutServlet">
+			<input type="submit" value="ログアウト">
+		</form>
+
+		<c:choose>
+			<c:when test="${sum <= 20 or sum == null}">
+				<p>
+					<img src="/C5/images/icons/a_1920.jpeg" width="70px" height="90px" id="ml">
+				</p>
+			</c:when>
+			<c:when test="${sum <= 40}">
+				<p>
+					<img src="/C5/images/icons/c_1920.png" width="70px" height="90px">
+				</p>
+			</c:when>
+			<c:when test="${sum <= 60}">
+				<p>
+					<img src="/C5/images/icons/d_1920.png" width="70px" height="90px">
+				</p>
+			</c:when>
+			<c:when test="${sum <= 80}">
+				<p>
+					<img src="/C5/images/icons/b_1920.png" width="70px" height="90px">
+				</p>
+			</c:when>
+			<c:when test="${sum <= 99}">
+				<p>
+					<img src="/C5/images/icons/e_1920.png" width="70px" height="90px">
+				</p>
+			</c:when>
+			<c:otherwise>
+				<p>
+					<img src="/C5/images/icons/f_1920.png" width="70px" height="90px" id="ml">
+				</p>
+			</c:otherwise>
+		</c:choose>
+
+
+	</header>
 	<div class="Content">
-		<header>
-			<h3 id="AppLogo">ひろしninaru</h3>
-			<form method="get" action="/C5/LogoutServlet">
-				<input type="submit" value="ログアウト">
-			</form>
-
-			<c:choose>
-				<c:when test="${sum <= 20 or sum == null}">
-					<p>ブロンズ</p>
-				</c:when>
-				<c:when test="${sum <= 40}">
-					<p>シルバー</p>
-				</c:when>
-				<c:when test="${sum <= 60}">
-					<p>ゴールド</p>
-				</c:when>
-				<c:when test="${sum <= 80}">
-					<p>プラチナ</p>
-				</c:when>
-				<c:when test="${sum <= 99}">
-					<p>ダイヤ</p>
-				</c:when>
-				<c:otherwise>
-					<p>マスター</p>
-				</c:otherwise>
-			</c:choose>
-
-
-		</header>
-
 		<!-- ↓今日の日付-->
 		<form id=hiduke></form>
-
+		<a id="hiduke">生年月日:${child_birthday}</a>
+		<p></p>
 		<form id="birthdateForm">
-			<label for="birthdate"></label> <input type="date" id="birthdate"
-				name="birthdate" value="${child_birthday}">
+			<label for="birthdate"></label>
+			<%-- <input type="date" id="birthdate"
+				name="birthdate" value="${child_birthday}"> --%>
 		</form>
 		<!--↓生年月日を表示する-->
 		<p id="result"></p>
