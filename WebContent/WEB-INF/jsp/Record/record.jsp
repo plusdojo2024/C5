@@ -32,11 +32,11 @@
 		<p>アップロードファイル：画像</p>
 		<c:forEach var="p" items="${photo }">
 		<P>${p.img_timestamp }</P>
-			<img src="${p.imgPath1}" width=200 height=200>
-			<img src="${p.imgPath2}" width=200 height=200>
-			<img src="${p.imgPath3}" width=200 height=200>
-			<img src="${p.imgPath4}" width=200 height=200>
-			<img src="${p.imgPath5}" width=200 height=200>
+			<img src=/C5/upload/${p.imgPath1} width=200 height=200>
+			<img src=/C5/upload/${p.imgPath2} width=200 height=200>
+			<img src=/C5/upload/${p.imgPath3} width=200 height=200>
+			<img src=/C5/upload/${p.imgPath4} width=200 height=200>
+			<img src=/C5/upload/${p.imgPath5} width=200 height=200>
 		</c:forEach>
 	</div>
 	<hr />
