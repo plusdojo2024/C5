@@ -24,11 +24,11 @@
 <p style="text-align:center">ハンドブックの理解度はどうだったかな？</p>
 
 
-<p>問1  ${game1.quiz}<br> 解答:     ${問1}</p>
-<p>問2  ${game2.quiz}<br> 解答:     ${問2}</p>
-<p>問3  ${game3.quiz}<br> 解答:     ${問3}</p>
-<p>問4  ${game4.quiz}<br> 解答:     ${問4}</p>
-<p>問5  ${game5.quiz}<br> 解答:     ${問5}</p>
+<p style="text-align:center">問1  ${game1.quiz}<br> 解答:     ${問1}</p>
+<p style="text-align:center">問2  ${game2.quiz}<br> 解答:     ${問2}</p>
+<p style="text-align:center">問3  ${game3.quiz}<br> 解答:     ${問3}</p>
+<p style="text-align:center">問4  ${game4.quiz}<br> 解答:     ${問4}</p>
+<p style="text-align:center">問5  ${game5.quiz}<br> 解答:     ${問5}</p>
 
 <%--<p>問1  ${game1.quiz}<br> 解答:選択肢${answer1}     ${問1}</p>--%>
 
@@ -38,15 +38,16 @@
 
 <br>
 <br>
+<div style="text-align:center">
 <p>${perfect}</p>
-<p style="text-align:center">まだまだ勉強不足！間違えた箇所はハンドブックをチェックしよう</p>
 <form method="get" action="/C5/HandbookServlet">
 	<input type="submit" value="ハンドブックを確認する" class="#HandBookCheck">
 </form>
+</div>
 
 <br>
 <br>
-<form method="post" action="/C5/TestResultServlet">
+<form method="get" action="/C5/TestServlet">
 	<p style="text-align:center">もう一度テストする？</p>
 	<input type="submit" value="再テスト" class="testButton">
 </form>
