@@ -2,7 +2,7 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
-<html lang="ja">
+<html lang="ja" class="RecordBody">
 
 <head>
 <script
@@ -13,21 +13,31 @@
 <link
 	href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@100..900&display=swap"
 	rel="stylesheet">
-<link rel="stylesheet" type="text/css" href="/C5/CSS/style.css">
+<link rel="stylesheet" type="text/css" href="/C5/CSS/home.css">
 <title>ホーム</title>
 </head>
 
 <body>
-	<header>
-		<h3 id="AppLogo">ひろしninaru</h3>
-		<form method="get" action="/C5/LogoutServlet">
-			<input type="submit" value="ログアウト">
-		</form>
+	<div class="Content">
+		<header class="header">
+			<div class="headerBox">
+				<div class="headerItem1">
+					<form method="get" action="/C5/LogoutServlet">
+						<input class="logoutButton" type="submit" value="ログアウト">
+					</form>
+				</div>
+				<div class="headerItem2">
+					<h3 class="AppLogo">IKUMI</h3>
+				</div>
+			</div>
+		</header>
 
 		<c:choose>
 			<c:when test="${sum <= 20 or sum == null}">
+				<h3>称号：</h3>
 				<p>
-					<img src="/C5/images/icons/a_1920.jpeg" width="70px" height="90px" id="ml">
+					<img src="/C5/images/icons/a_1920.png" width="70px" height="90px"
+						id="ml">
 				</p>
 			</c:when>
 			<c:when test="${sum <= 40}">
@@ -52,210 +62,217 @@
 			</c:when>
 			<c:otherwise>
 				<p>
-					<img src="/C5/images/icons/f_1920.png" width="70px" height="90px" id="ml">
+					<img src="/C5/images/icons/f_1920.png" width="70px" height="90px"
+						id="ml">
 				</p>
 			</c:otherwise>
 		</c:choose>
 
 
-	</header>
-	<div class="Content">
-		<!-- ↓今日の日付-->
-		<form id=hiduke></form>
-		<a id="hiduke">生年月日:${child_birthday}</a>
-		<p></p>
-		<form id="birthdateForm">
-			<label for="birthdate"></label>
+		<div class="Content">
+			<!-- ↓今日の日付-->
+			<div class="hidukeBox">
+				<div class="hidukeItem1">
+					<form id=hiduke></form>
+					<a id="hiduke">生年月日:${child_birthday}</a>
+				</div>
+				<p></p>
+				<form id="birthdateForm"></form>
+				<label for="birthdate"></label>
+			</div>
 			<%-- <input type="date" id="birthdate"
 				name="birthdate" value="${child_birthday}"> --%>
-		</form>
-		<!--↓生年月日を表示する-->
-		<p id="result"></p>
 
-		<img src="/C5/images/Home-Hiroshi.png"> <br>
-		<button id="click-btn">体温を測る</button>
-		<div id="popup-wrapper">
-			<div id="popup-inside">
-				<div id="close">x</div>
-				<div id="message">
-					<p>体温検査</p>
-					<form action="/C5/RecordServlet" method="post">
-						<table>
-							<tr>
-								<th><input type="date" name="date"></th>
-							</tr>
-							<tr>
-								<th class="ct"><input type="text" name="temperature">℃</th>
-							</tr>
-							<tr>
-								<th><input type="submit" value="記録する" name="taion"></th>
-							</tr>
-						</table>
-					</form>
+			<!--↓生年月日を表示する-->
+			<p id="result"></p>
+
+			<img src="/C5/images/IKUMI.png" class="homeIkumi"> <br>
+			<button id="click-btn">体温を測る</button>
+			<div id="popup-wrapper">
+				<div id="popup-inside">
+					<div id="close">x</div>
+					<div id="message">
+						<p>体温検査</p>
+						<form action="/C5/RecordServlet" method="post">
+							<table>
+								<tr>
+									<th><input type="date" name="date"></th>
+								</tr>
+								<tr>
+									<th class="ct"><input type="text" name="temperature">℃</th>
+								</tr>
+								<tr>
+									<th><input type="submit" value="記録する" name="taion"
+										class="button"></th>
+								</tr>
+							</table>
+						</form>
+					</div>
 				</div>
 			</div>
-		</div>
-		<h2>記録する</h2>
-		<table align="center">
-			<tr>
-				<td><img src="/C5/images/icons/poop.jpeg" class="RecordIcon"
-					alt="排泄"></td>
-				<td><img src="/C5/images/icons/sleepingHima.png"
-					class="RecordIcon" alt="睡眠"></td>
-				<td><img src="/C5/images/icons/milk.jpeg" class="RecordIcon"
-					alt="ごはん"></td>
-				<td><img src="/C5/images/icons/photos.jpeg" class="RecordIcon"
-					alt="写真"></td>
-			</tr>
+			<h2>記録する</h2>
+			<table align="center">
+				<tr>
+					<td><img src="/C5/images/icons/poop.png" class="RecordIcon"
+						alt="排泄"></td>
+					<td><img src="/C5/images/icons/sleep.png" class="RecordIcon"
+						alt="睡眠"></td>
+					<td><img src="/C5/images/icons/milk.png" class="RecordIcon"
+						alt="ごはん"></td>
+					<td><img src="/C5/images/icons/photos.png" class="RecordIcon"
+						alt="写真"></td>
+				</tr>
 
-			<tr>
-				<td><button id="click-btn1">排泄</button>
-					<div id="popup-wrapper1">
-						<div id="popup-inside1">
-							<div id="close1">x</div>
-							<div id="message1">
-								<p>排泄記録</p>
-								<form action="/C5/RecordServlet" method="post">
-									<table align="center">
-										<tr>
-											<th>おしっこ<input type="checkbox" name="excretion_checkbox"
-												value="pee"></th>
-										</tr>
-										<tr>
-											<th>うんち<input type="checkbox" name="excretion_checkbox"
-												value="poop"></th>
-										</tr>
-										<tr>
-											<th>時間</th>
-										</tr>
-										<tr>
-											<th><input type="time" name="excretion_time"></th>
-										</tr>
-										<tr>
-											<th>備考</th>
-										</tr>
-										<tr>
-											<th><textarea rows="10" cols="40"
-													name="excretion_comment"></textarea></th>
-										</tr>
-										<tr>
-											<th><input type="submit" value="記録する" name="haisetu"></th>
-										</tr>
-									</table>
-								</form>
+				<tr>
+					<td><button id="click-btn1">排泄</button>
+						<div id="popup-wrapper1">
+							<div id="popup-inside1">
+								<div id="close1">x</div>
+								<div id="message1">
+									<p>排泄記録</p>
+									<form action="/C5/RecordServlet" method="post">
+										<table align="center">
+											<tr>
+												<th>おしっこ<input type="checkbox"
+													name="excretion_checkbox" value="pee"></th>
+											</tr>
+											<tr>
+												<th>うんち<input type="checkbox" name="excretion_checkbox"
+													value="poop"></th>
+											</tr>
+											<tr>
+												<th>時間</th>
+											</tr>
+											<tr>
+												<th><input type="time" name="excretion_time"></th>
+											</tr>
+											<tr>
+												<th>備考</th>
+											</tr>
+											<tr>
+												<th><textarea rows="10" cols="40"
+														name="excretion_comment"></textarea></th>
+											</tr>
+											<tr>
+												<th><input type="submit" value="記録する" name="haisetu"
+													class="button"></th>
+											</tr>
+										</table>
+									</form>
+								</div>
 							</div>
-						</div>
-					</div></td>
+						</div></td>
 
-				<td><button id="click-btn2">睡眠</button>
-					<div id="popup-wrapper2">
-						<div id="popup-inside2">
-							<div id="close2">x</div>
-							<div id="message2">
-								<p>睡眠記録</p>
-								<form action="/C5/RecordServlet" method="post">
-									<table>
-										<tr>
-											<th>時間</th>
-										</tr>
-										<tr>
-											<th><input type="time" name="sleep_time"></th>
-										</tr>
-										<tr>
-											<th>備考</th>
-										</tr>
-										<tr>
-											<th><textarea rows="10" cols="40" name="sleep_comment"></textarea></th>
-										</tr>
-										<tr>
-											<th><input type="submit" value="記録する" name="suimin"></th>
-										</tr>
-									</table>
-								</form>
+					<td><button id="click-btn2">睡眠</button>
+						<div id="popup-wrapper2">
+							<div id="popup-inside2">
+								<div id="close2">x</div>
+								<div id="message2">
+									<p>睡眠記録</p>
+									<form action="/C5/RecordServlet" method="post">
+										<table>
+											<tr>
+												<th>時間</th>
+											</tr>
+											<tr>
+												<th><input type="time" name="sleep_time"></th>
+											</tr>
+											<tr>
+												<th>備考</th>
+											</tr>
+											<tr>
+												<th><textarea rows="10" cols="40" name="sleep_comment"></textarea></th>
+											</tr>
+											<tr>
+												<th><input type="submit" value="記録する" name="suimin"
+													class="button"></th>
+											</tr>
+										</table>
+									</form>
+								</div>
 							</div>
-						</div>
-					</div></td>
+						</div></td>
 
-				<td><button id="click-btn3">ごはん</button>
-					<div id="popup-wrapper3">
-						<div id="popup-inside3">
-							<div id="close3">x</div>
-							<div id="message3">
-								<p>ごはん記録</p>
-								<form action="/C5/RecordServlet" method="post">
-									<table>
-										<tr>
-											<th>ミルク<input type="checkbox" name="meal_checkbox"
-												value="milk"></th>
-										</tr>
-										<tr>
-											<th>離乳食<input type="checkbox" name="meal_checkbox"
-												value="milk_quantity"></th>
-										</tr>
-										<tr>
-											<th>時間</th>
-										</tr>
-										<tr>
-											<th><input type="time" name="meal_time"></th>
-										</tr>
-										<tr>
-											<th>ミルク量<input type="text" name="milk_quantity">ml
-											</th>
-										</tr>
-										<tr>
-											<th>備考</th>
-										</tr>
-										<tr>
-											<th><textarea rows="10" cols="40" name="meal_comment"></textarea></th>
-										</tr>
-										<tr>
-											<th><input type="submit" value="記録する" name="gohan"></th>
-										</tr>
-									</table>
-								</form>
+					<td><button id="click-btn3">ごはん</button>
+						<div id="popup-wrapper3">
+							<div id="popup-inside3">
+								<div id="close3">x</div>
+								<div id="message3">
+									<p>ごはん記録</p>
+									<form action="/C5/RecordServlet" method="post">
+										<table>
+											<tr>
+												<th>ミルク<input type="checkbox" name="meal_checkbox"
+													value="milk"></th>
+											</tr>
+											<tr>
+												<th>離乳食<input type="checkbox" name="meal_checkbox"
+													value="milk_quantity"></th>
+											</tr>
+											<tr>
+												<th>時間</th>
+											</tr>
+											<tr>
+												<th><input type="time" name="meal_time"></th>
+											</tr>
+											<tr>
+												<th>ミルク量<input type="text" name="milk_quantity">ml
+												</th>
+											</tr>
+											<tr>
+												<th>備考</th>
+											</tr>
+											<tr>
+												<th><textarea rows="10" cols="40" name="meal_comment"></textarea></th>
+											</tr>
+											<tr>
+												<th><input type="submit" value="記録する" name="gohan"
+													class="button"></th>
+											</tr>
+										</table>
+									</form>
+								</div>
 							</div>
-						</div>
-					</div></td>
+						</div></td>
 
-				<td><button id="click-btn4">写真</button>
-					<div id="popup-wrapper4">
-						<div id="popup-inside4">
-							<div id="close4">x</div>
-							<div id="message4">
-								<p>写真の追加</p>
-								<form action="/C5/RecordServlet" method="post"
-									enctype="multipart/form-data">
-									<table>
-										<tr>
-											<th class="ct"><input type="file" name="img" id="files"
-												multiple></th>
-										</tr>
-										<tr>
-											<th><input type="submit" value="保存する" name="syasin"></th>
-										</tr>
-									</table>
-								</form>
+					<td><button id="click-btn4">写真</button>
+						<div id="popup-wrapper4">
+							<div id="popup-inside4">
+								<div id="close4">x</div>
+								<div id="message4">
+									<p>写真の追加</p>
+									<form action="/C5/RecordServlet" method="post"
+										enctype="multipart/form-data">
+										<table>
+											<tr>
+												<th class="ct"><input type="file" name="img" id="files"
+													multiple></th>
+											</tr>
+											<tr>
+												<th><input type="submit" value="保存する" name="syasin"
+													class="button"></th>
+											</tr>
+										</table>
+									</form>
+								</div>
 							</div>
-						</div>
-					</div></td>
-			</tr>
-		</table>
+						</div></td>
+				</tr>
+			</table>
 
 
 
-
-
-		<button id="click-btn5">${child_name}の記録をシェアしよう</button>
-		<br>
-		<div id="popup-wrapper5">
-			<div id="popup-inside5">
-				<div id="close5">x</div>
-				<button id="generate" class="shareQR">共有QRコードを作成</button>
-				<div id="qrcode"></div>
+			<button id="click-btn5">${child_name}の記録をシェアしよう</button>
+			<br>
+			<div id="popup-wrapper5">
+				<div id="popup-inside5">
+					<div id="close5">x</div>
+					<button id="generate">共有QRコードを作成</button>
+					<div id="qrcode" class="ct"></div>
+				</div>
 			</div>
-		</div>
-		<br> <br> <br> <br>
-		<!--ポップアップダイアログ
+			<br> <br> <br> <br>
+			<!--ポップアップダイアログ
                 <div id="popup" class="modal">
                     <div class="modal-content">
                         <span class="close">&times;</span>
@@ -267,7 +284,7 @@
                                 <button id="submitBtn">登録</button>
 =======
                 <!--ポップアップダイアログ-->
-		<!-- 		<div id="popup" class="modal" style="display: none;">
+			<!-- 		<div id="popup" class="modal" style="display: none;">
 			<div class="modal-content">
 				<span class="close">&times;</span>
 				<p>テキストを入力してください:</p>
@@ -278,43 +295,43 @@
 					id="toggleSwitch"> <span class="toggle-slider round"></span></label>
 			</div>
 		</div> -->
-		<footer>
-			<table align="center">
-				<tr>
-					<td><img src="/C5/images/icons/home.png" class="FixedBar"
-						alt="ホーム"></a></td>
-					<td><img src="/C5/images/icons/record.png" class="FixedBar"
-						alt="記録書"></a></td>
-					<td><img src="/C5/images/icons/handbook.png" class="FixedBar"
-						alt="ハンドブック"></a></td>
-					<td><img src="/C5/images/icons/consul.png" class="FixedBar"
-						alt="相談所"></a></td>
-				</tr>
-				<tr>
-					<td>
-						<form method="get" action="/C5/HomeServlet">
-							<input type="submit" id="" value="ホーム"></input>
-						</form>
-					</td>
-					<td>
-						<form method="get" action="/C5/RecordServlet">
-							<input type="submit" id="" value="記録書"></input>
-						</form>
-					</td>
-					<td>
-						<form method="get" action="/C5/HandbookServlet">
-							<input type="submit" id="" value="ハンドブック"></input>
-						</form>
-					</td>
-					<td>
-						<form method="get" action="/C5/ConsulServlet">
-							<input type="submit" id="" value="相談所"></input>
-						</form>
-					</td>
-				</tr>
-			</table>
-		</footer>
-		<script>
+			<footer>
+				<table align="center">
+					<tr>
+						<td><img src="/C5/images/icons/home.png" class="FixedBar"
+							alt="ホーム"></a></td>
+						<td><img src="/C5/images/icons/record.png" class="FixedBar"
+							alt="記録書"></a></td>
+						<td><img src="/C5/images/icons/handbook.png" class="FixedBar"
+							alt="ハンドブック"></a></td>
+						<td><img src="/C5/images/icons/consul.png" class="FixedBar"
+							alt="相談所"></a></td>
+					</tr>
+					<tr>
+						<td>
+							<form method="get" action="/C5/HomeServlet">
+								<input type="submit" id="" value="ホーム" class="button"></input>
+							</form>
+						</td>
+						<td>
+							<form method="get" action="/C5/RecordServlet">
+								<input type="submit" id="" value="記録書" class="button"></input>
+							</form>
+						</td>
+						<td>
+							<form method="get" action="/C5/HandbookServlet">
+								<input type="submit" id="" value="ハンドブック" class="button"></input>
+							</form>
+						</td>
+						<td>
+							<form method="get" action="/C5/ConsulServlet">
+								<input type="submit" id="" value="相談所" class="button"></input>
+							</form>
+						</td>
+					</tr>
+				</table>
+			</footer>
+			<script>
         //体温ポップアップ
         const clickBtn = document.getElementById('click-btn');
         const popupWrapper = document.getElementById('popup-wrapper');
@@ -496,8 +513,8 @@
         const day = daysOFWeek[today.getDay()];
 
         //日付（曜日）を文字列として整形
-       	document.getElementById("hiduke").textContent = month + "月" + date + "日" + "("+ day +")";
+       	document.getElementById("hiduke").textContent ="日付:" + month + "月" + date + "日" + "("+ day +")";
         </script>
-	</div>
+		</div>
 </body>
 </html>

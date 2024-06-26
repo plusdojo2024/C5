@@ -12,23 +12,23 @@
 <link
 	href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@100..900&display=swap"
 	rel="stylesheet">
-<link rel="stylesheet" type="text/css" href="/C5/CSS/style.css">
+<link rel="stylesheet" type="text/css" href="/C5/CSS/record.css">
 <title>育児記録書</title>
 </head>
 <body class="RecordBody">
-	<header>
+	<header class="header">
 		<h3>IKUMI</h3>
 	</header>
-	<h2 class="title">育児記録書</h2>
-	<h3 class="calendar">
+	<h1 class="kiroku ct">育児記録書</h1>
+	<h3 class="ct">
 		<form action="/C5/RecordServlet" method="get">
 			<input type="date" id="hiduke" name="date"> <input
-				type="submit" value="日付送信" class="dateButton">
+				type="submit" value="日付送信" class="button">
 		</form>
 	</h3>
 	<!--<a href="home.html"></a>-->
 	<hr />
-	<div class="RecorsImage">
+	<div class="ct">
 
 		<c:forEach var="p" items="${photo }">
 
@@ -42,36 +42,43 @@
     	<a class="next" onclick="plusSlides(1)">&#10095;</a>
 	</div>
 
-	<p text-align="center">体温：37.0℃</p>
+	<p class="ct">体温：37.0℃</p>
 
 	<hr />
 
 	<div class="TimeRecord">
 		<hr>
-		<p>記録</p>
+		<p class="ct">記録</p>
 		<hr>
 		<!--c:forEachで取得したデータを繰り返し表示-->
 		<c:forEach var="e" items="${list}">
-			<p class="RecordData">${e.timeFormat} &emsp; ${e.work} &emsp; ${e.milk_quantity} &emsp; ${e.comment}</p>
+			<h3  class="RecordData">${e.timeFormat} &emsp; ${e.work} &emsp; ${e.milk_quantity} &emsp; ${e.comment}</h3 >
 			<hr>
 		</c:forEach>
 
-		<p>コメント欄</p>
+		<p class="ct">コメント欄</p>
 		<hr>
 		<c:forEach var="c" items="${comments}">
-			<p class="RecordData">${c.comment}</p>
+			<h3 class="RecordData">${c.comment}</h3>
 			<hr>
 		</c:forEach>
 	</div>
+	<div class="ct">
 	<form action="/C5/RecordServlet" method="post">
 		<textarea name="RecordComment" class="RecordComment"
 			placeholder="コメントを入力してください"></textarea>
 		<br> <input type="submit" name="koment" value="コメントする"
-			class="CommentButton">
+			class="button">
 	</form>
 	<br>
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
+	</div>
 	<footer>
-		<table align="center">
+		<table class="ct mg">
 			<tr>
 				<td><img src="/C5/images/icons/home.png" class="FixedBar"
 					alt="ホーム"></a></td>
@@ -85,22 +92,22 @@
 			<tr>
 				<td>
 					<form method="get" action="/C5/HomeServlet">
-						<input type="submit" id="" value="ホーム"></input>
+						<input type="submit" id="" value="ホーム" class="button"></input>
 					</form>
 				</td>
 				<td>
 					<form method="get" action="/C5/RecordServlet">
-						<input type="submit" id="" value="記録書"></input>
+						<input type="submit" id="" value="記録書" class="button"></input>
 					</form>
 				</td>
 				<td>
 					<form method="get" action="/C5/HandbookServlet">
-						<input type="submit" id="" value="ハンドブック"></input>
+						<input type="submit" id="" value="ハンドブック" class="button"></input>
 					</form>
 				</td>
 				<td>
 					<form method="get" action="/C5/ConsulServlet">
-						<input type="submit" id="" value="相談所"></input>
+						<input type="submit" id="" value="相談所" class="button"></input>
 					</form>
 				</td>
 			</tr>

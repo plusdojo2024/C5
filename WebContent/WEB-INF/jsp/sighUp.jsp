@@ -8,7 +8,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@100..900&display=swap" rel="stylesheet">
-    <link rel="stylesheet" type="text/css" href="/C5/CSS/style.css">
+    <link rel="stylesheet" type="text/css" href="/C5/CSS/sighup.css">
 
     <title>新規登録</title>
 </head>
@@ -16,7 +16,7 @@
 <body>
     <div class="WhiteBox">
 
-        <h1>新規登録</h1>
+        <h2 class="sinki">新規登録</h2>
 
         <form method="post" action="/C5/SignUpServlet">
             <p class="Guide">ユーザーID</p>
@@ -34,7 +34,7 @@
         </form>
 
  		<form method="post" action="/C5/LoginServlet">
-        	<input type="submit" name="back" value="戻る">
+        	<input type="submit" name="back" value="戻る" class="back">
         </form>
 
     </div>

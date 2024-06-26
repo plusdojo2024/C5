@@ -1,0 +1,409 @@
+@charset "UTF-8";
+/*---ホーム----------------------------------------------*/
+
+/*共通ツールバー【トップ＆フッター固定部分】*/
+.header {
+	text-align: center;
+	margin-top: 0px;
+	padding: 5px;
+	background-color: #f9c146;
+	width: 100%;
+}
+
+/*IKUMIロゴの色*/
+.AppLogo {
+	color: white;
+}
+
+/*ログアウトボタン*/
+.logoutButton {
+	background-color: #5abca5;
+	color: white;
+	font-weight: bold;
+	border: none;
+	height: 40px;
+	margin-top: 10px;
+}
+
+.headerBox {
+	display: flex;
+	justify-content: center;
+}
+
+.headerItem1 {
+	margin-left: 10px;
+	margin-right: 70px;
+}
+
+.headerItem2 {
+	margin-left: 10px;
+	margin-right: 10px;
+}
+
+.headerItem3 {
+	margin-left: 70px;
+	margin-right: 10px;
+}
+
+.Content {
+	text-align: center;
+	width: 100%;
+	padding-top: 10px;
+	background-color: #e0f2ed;
+	margin-bottom: 20px;
+}
+
+.hidukeBox {
+	display: flex;
+	justify-content: center;
+}
+
+.hidukeItem1 {
+	margin-left: 40px;
+	margin-right: 10px;
+	margin: 20px;
+	padding: 10px;
+	width: 50%;
+	background-color: #5abca5;
+	color: white;
+	font-weight: bold;
+	border: none;
+	font-size: 1.0em;
+	letter-spacing: 0.05em;
+	text-align: center;
+	text-transform: uppercase;
+	transition: 0.3s ease-in-out;
+	border-radius: 50px;
+}
+
+.hidukeItem2 {
+	margin-left: 50px;
+	margin-right: 10px;
+	margin-bottom: 0;
+	padding: 10px;
+}
+
+.homeIkumi {
+	width: 200px;
+	height: 200px;
+}
+
+.RecordIcon {
+	width: 70px;
+	height: 75px;
+}
+
+.RecordBody {
+	margin: 0%;
+	background-color: #e0f2ed;
+}
+
+.FixedBar {
+	width: 40px;
+	height: 40px;
+}
+
+footer {
+	position: fixed;
+	bottom: 0;
+	left: 0;
+	width: 100%;
+	text-align: center;
+	background: white;
+	margin-top: 10px;
+	padding: 10px 0;
+}
+
+#nav li {
+	display: inline; /* インラインで横に表示する */
+	list-style-type: none; /* 先頭の記号をなくす */
+	padding-right: 30px; /* 区切りを空ける */
+}
+
+/* ポップアップ */
+#click-btn {
+	display: block;
+	margin: 20px auto;
+	background-color: #5abca5;
+	color: white;
+	font-weight: bold;
+	border: 0;
+	padding: 5px 45px;
+	font-size: 20px;
+}
+
+#popup-wrapper {
+	background-color: rgba(0, 0, 0, .5);
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	display: none;
+}
+
+#popup-inside {
+	text-align: center;
+	width: 100%;
+	max-width: 300px;
+	background: white;
+	margin: 10% auto;
+	padding: 20px;
+	position: relative;
+}
+
+#message a {
+	background: rgb(61, 60, 61);
+	color: white;
+	text-decoration: none;
+	padding: 6px 10px;
+}
+
+#close {
+	position: absolute;
+	top: 0;
+	right: 5px;
+	cursor: pointer;
+}
+
+#click-btn1 {
+	display: block;
+	margin: 20px auto;
+	background-color: #5abca5;
+	color: white;
+	border: 0;
+	padding: 6px 10px;
+}
+
+#popup-wrapper1 {
+	background-color: rgba(0, 0, 0, .5);
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	display: none;
+}
+
+#popup-inside1 {
+	text-align: center;
+	width: 100%;
+	max-width: 300px;
+	background: white;
+	margin: 10% auto;
+	padding: 20px;
+	position: relative;
+}
+
+#message1 a {
+	background: rgb(61, 60, 61);
+	color: white;
+	text-decoration: none;
+	padding: 6px 10px;
+}
+
+#close1 {
+	position: absolute;
+	top: 0;
+	right: 5px;
+	cursor: pointer;
+}
+
+#click-btn2 {
+	display: block;
+	margin: 20px auto;
+	background-color: #5abca5;
+	color: white;
+	border: 0;
+	padding: 6px 10px;
+}
+
+#popup-wrapper2 {
+	background-color: rgba(0, 0, 0, .5);
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	display: none;
+}
+
+#popup-inside2 {
+	text-align: center;
+	width: 100%;
+	max-width: 300px;
+	background: white;
+	margin: 10% auto;
+	padding: 20px;
+	position: relative;
+}
+
+#message2 a {
+	background: rgb(61, 60, 61);
+	color: white;
+	text-decoration: none;
+	padding: 6px 10px;
+}
+
+#close2 {
+	position: absolute;
+	top: 0;
+	right: 5px;
+	cursor: pointer;
+}
+
+#click-btn3 {
+	display: block;
+	margin: 20px auto;
+	background-color: #5abca5;
+	color: white;
+	border: 0;
+	padding: 6px 10px;
+}
+
+#click-btn3:hover {
+
+}
+
+#popup-wrapper3 {
+	background-color: rgba(0, 0, 0, .5);
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	display: none;
+}
+
+#popup-inside3 {
+	text-align: center;
+	width: 100%;
+	max-width: 300px;
+	background: white;
+	margin: 10% auto;
+	padding: 20px;
+	position: relative;
+}
+
+#message3 a {
+	background: rgb(61, 60, 61);
+	color: white;
+	text-decoration: none;
+	padding: 6px 10px;
+}
+
+#close3 {
+	position: absolute;
+	top: 0;
+	right: 5px;
+	cursor: pointer;
+}
+
+#click-btn4 {
+	display: block;
+	margin: 20px auto;
+	background-color: #5abca5;
+	color: white;
+	border: 0;
+	padding: 6px 10px;
+}
+
+#popup-wrapper4 {
+	background-color: rgba(0, 0, 0, .5);
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	display: none;
+}
+
+#popup-inside4 {
+	text-align: center;
+	width: 100%;
+	max-width: 300px;
+	background: white;
+	margin: 10% auto;
+	padding: 20px;
+	position: relative;
+}
+
+#message4 a {
+	background: rgb(61, 60, 61);
+	color: white;
+	text-decoration: none;
+	padding: 6px 10px;
+}
+
+#close4 {
+	position: absolute;
+	top: 0;
+	right: 5px;
+	cursor: pointer;
+}
+
+#click-btn5 {
+	display: block;
+	margin: 20px auto;
+	background-color: #5abca5;
+	color: white;
+	border: 0;
+	padding: 6px 10px;
+}
+
+#popup-wrapper5 {
+	background-color: rgba(0, 0, 0, .5);
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	display: none;
+}
+
+#popup-inside5 {
+	text-align: center;
+	width: 100%;
+	max-width: 300px;
+	background: white;
+	margin: 10% auto;
+	padding: 20px;
+	position: relative;
+}
+
+#message5 a {
+	background: rgb(61, 60, 61);
+	color: white;
+	text-decoration: none;
+	padding: 6px 10px;
+}
+
+#close5 {
+	position: absolute;
+	top: 0;
+	right: 5px;
+	cursor: pointer;
+}
+
+.button {
+	display: inline-block;
+	border-radius: 14%; /* 角丸       */
+	font-size: 10pt; /* 文字サイズ */
+	text-align: center; /* 文字位置   */
+	cursor: pointer; /* カーソル   */
+	padding: 5px 4px; /* 余白       */
+	background: #5abca5; /* 背景色     */
+	color: #ffffff; /* 文字色     */
+	line-height: 1em; /* 1行の高さ  */
+	opacity: 0.9; /* 透明度     */
+	transition: .3s; /* なめらか変化 */
+}
+
+.button:hover {
+	box-shadow: none; /* カーソル時の影消去 */
+	opacity: 1; /* カーソル時透明度 */
+}
+
+.ct {
+	text-align: center;
+}
