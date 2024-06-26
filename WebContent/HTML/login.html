@@ -1,30 +1,46 @@
 ﻿<!doctype html>
-<html>
-<head>
-<meta charset="UTF-8">
-<title>ログイン</title>
+<html id="Login-Signup-Background">
 
+<head>
+    <meta charset="UTF-8">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@100..900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="0624.css">
+
+    <title>ログイン</title>
 </head>
 
-<body style="text-align: center;">
+<body>
+    <div class="WhiteBox">
 
-  <h1>
-    ひろしninaru
-  </h1>
+        <img class="LoginImg" src="image/IKUMI.png" alt="IKUMI">
 
-<div>
-<!--  <form method="post" action="/simpleBC/LoginServlet"> -->
-  
-          <br>
-          <input type="text" name="username" placeholder="username">
-          <br>
-          <input type="password" name="password" placeholder="password">
-          <br>
-          <input type="submit" name="submit" value="ログイン"><br>
-          <input type="reset" name="reset" value="新規登録">
-<!--          <span id="error_message"></span> -->
+      <h1 class="LoginIkumi">
+        IKUMI
+      </h1>
+
+        <div>
+
+        	<form method="post" action="/C5/LoginServlet">
+
+                <br>
+                <input type="text" class="userInfo" name="user_name" placeholder="user_name" required>
+                <br>
+                <input type="password" class="userInfo" name="password" placeholder="password" required>
+                <br>
+                <input type="submit" class="Login" name="submit" value="ログイン">
+                <br>
+
+            </form>
+
+			<form method="get" action="/C5/SignUpServlet">
+              <input type="submit" class="SignUp" name="reset" value="新規登録">
+            </form>
 
 
-</div>
+        </div>
+    </div>
 </body>
+
 </html>

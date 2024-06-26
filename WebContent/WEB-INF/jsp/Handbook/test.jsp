@@ -26,36 +26,39 @@
 
 	<h1 style="text-align: center">衣食住テスト</h1>
 	<c:if test="${i == 0 }">
-		<p style="text-align: left">問1</p>
+		<p style="text-align: center">問1</p>
 	</c:if>
 
 	<c:if test="${i == 1 }">
-		<p style="text-align: left">問2</p>
+		<p style="text-align: center">問2</p>
 	</c:if>
 
 	<c:if test="${i == 2}">
-		<p style="text-align: left">問3</p>
+		<p style="text-align: center">問3</p>
 	</c:if>
 
 	<c:if test="${i == 3 }">
-		<p style="text-align: left">問4</p>
+		<p style="text-align: center">問4</p>
 	</c:if>
 
 	<c:if test="${i == 4 }">
-		<p style="text-align: left">問5</p>
+		<p style="text-align: center">問5</p>
 	</c:if>
 	<form method="post" action="/C5/TestServlet">
-
+<div style="text-align:center">
 
 		<c:if test="${i ==0 }">
 			<p>${game1.quiz}</p>
 
 			<table>
+
 				<tr>
+				<div style="text-align:center">
 					<th><p>${game1.choice_1}</p></th>
 					<th><p>${game1.choice_2}</p></th>
 					<th><p>${game1.choice_3}</p></th>
 					<th><p>${game1.choice_4}</p></th>
+					</div>
 				</tr>
 				</c:if>
 
@@ -106,10 +109,10 @@
 											<th><p>${game5.choice_4}</p></th>
 										</tr>
 										</c:if>
-
+</div>
 									</table>
 
-
+<div style="text-align:center">
 										<c:if test="${i == 0}">
 											<th><input type="radio" name="answer" value="1"></th>
 											<th><input type="radio" name="answer" value="2"></th>
@@ -144,7 +147,7 @@
 											<th><input type="radio" id="#" name="answer" value="3"></th>
 											<th><input type="radio" id="#" name="answer" value="4"></th>
 										</c:if>
-
+</div>
 
 							</table>
 
