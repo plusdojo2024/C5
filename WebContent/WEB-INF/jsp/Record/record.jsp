@@ -28,16 +28,18 @@
 	</h3>
 	<!--<a href="home.html"></a>-->
 	<hr />
-	<div class="upload">
-		<p>アップロードファイル：画像</p>
+	<div class="RecorsImage">
+
 		<c:forEach var="p" items="${photo }">
-		<P>${p.img_timestamp }</P>
-			<img src=/C5/upload/${p.imgPath1} width=200 height=200>
-			<img src=/C5/upload/${p.imgPath2} width=200 height=200>
-			<img src=/C5/upload/${p.imgPath3} width=200 height=200>
-			<img src=/C5/upload/${p.imgPath4} width=200 height=200>
-			<img src=/C5/upload/${p.imgPath5} width=200 height=200>
+
+			<div class="slide"><img src=/C5/upload/${p.imgPath1} width=200 height=200></div>
+			<div class="slide"><img src=/C5/upload/${p.imgPath2} width=200 height=200></div>
+			<div class="slide"><img src=/C5/upload/${p.imgPath3} width=200 height=200></div>
+			<div class="slide"><img src=/C5/upload/${p.imgPath4} width=200 height=200></div>
+			<div class="slide"><img src=/C5/upload/${p.imgPath5} width=200 height=200></div>
 		</c:forEach>
+		<a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+    	<a class="next" onclick="plusSlides(1)">&#10095;</a>
 	</div>
 	<hr />
 
@@ -102,6 +104,32 @@
 		</table>
 	</footer>
 	<script>
+		let slideIndex = 1;
+		showSlides(slideIndex);
+
+		// 前後のスライドを切り替える関数
+		function plusSlides(n) {
+	  		showSlides(slideIndex += n);
+		}
+
+		// 現在のスライドを表示する関数
+		function showSlides(n) {
+	  		let slides = document.getElementsByClassName("slide");
+
+	  		// 最後のスライドの場合、最初のスライドに戻る
+	  		if (n > slides.length) { slideIndex = 1 }
+	  		// 最初のスライドの場合、最後のスライドに戻る
+	  		if (n < 1) { slideIndex = slides.length }
+
+	  		// すべてのスライドを非表示にする
+	  		for (let i = 0; i < slides.length; i++) {
+	      		slides[i].style.display = "none";
+	  		}
+
+	  		// 指定されたスライドを表示する
+	  		slides[slideIndex - 1].style.display = "block";
+		}
+
 		//曜日を配列として定義
 		const daysOFWeek = [ "日", "月", "火", "水", "木", "金", "土", ]
 
