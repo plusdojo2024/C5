@@ -5,7 +5,8 @@
 <html lang="ja">
 
 <head>
-<script src="https://cdn.rawgit.com/davidshimjs/qrcodejs/gh-pages/qrcode.min.js"></script>
+<script
+	src="https://cdn.rawgit.com/davidshimjs/qrcodejs/gh-pages/qrcode.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/qrcode-generator/qrcode.js"></script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -24,18 +25,36 @@
 				<input type="submit" value="ログアウト">
 			</form>
 
-
-			<p>${list }</p>
+			<c:choose>
+				<c:when test="${sum <= 20 or sum == null}">
+					<p>ブロンズ</p>
+				</c:when>
+				<c:when test="${sum <= 40}">
+					<p>シルバー</p>
+				</c:when>
+				<c:when test="${sum <= 60}">
+					<p>ゴールド</p>
+				</c:when>
+				<c:when test="${sum <= 80}">
+					<p>プラチナ</p>
+				</c:when>
+				<c:when test="${sum <= 99}">
+					<p>ダイヤ</p>
+				</c:when>
+				<c:otherwise>
+					<p>マスター</p>
+				</c:otherwise>
+			</c:choose>
 
 
 		</header>
 
 		<!-- ↓今日の日付-->
-		<form id = hiduke></form>
+		<form id=hiduke></form>
 
 		<form id="birthdateForm">
-			<label for="birthdate"></label> <input type="date"
-				id="birthdate" name="birthdate" value="${child_birthday}">
+			<label for="birthdate"></label> <input type="date" id="birthdate"
+				name="birthdate" value="${child_birthday}">
 		</form>
 		<!--↓生年月日を表示する-->
 		<p id="result"></p>
@@ -213,13 +232,14 @@
 
 
 
-		<button id="click-btn5">${child_name}の記録をシェアしよう</button> <br>
+		<button id="click-btn5">${child_name}の記録をシェアしよう</button>
+		<br>
 		<div id="popup-wrapper5">
-		<div id="popup-inside5">
-		<div id="close5">x</div>
-		<button id="generate" class="shareQR">共有QRコードを作成</button>
-		<div id="qrcode" ></div>
-		</div>
+			<div id="popup-inside5">
+				<div id="close5">x</div>
+				<button id="generate" class="shareQR">共有QRコードを作成</button>
+				<div id="qrcode"></div>
+			</div>
 		</div>
 		<br> <br> <br> <br>
 		<!--ポップアップダイアログ

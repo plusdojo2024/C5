@@ -1,5 +1,6 @@
 package servlet;
 
+import java.io.File;
 import java.io.IOException;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
@@ -231,6 +232,7 @@ public class RecordServlet extends HttpServlet {
 				Part part = fileParts.get(i);
 				String submittedFileName = getSubmittedFileName(part);
 				String fileName = new String(submittedFileName.getBytes("UTF-8"), "UTF-8");
+<<<<<<< HEAD
 				String absolutePath = "C:\\pleiades\\workspace\\C5\\WebContent\\upload\\";
 				String filePath = absolutePath + "/" + fileName;// 保存先の絶対パスを設定する
 				//filePath = "/images/" + fileName;
@@ -247,6 +249,12 @@ public class RecordServlet extends HttpServlet {
 				// ファイルを指定した絶対パスに保存する
 				part2.write(filePath);
 
+=======
+				String filePath = "/images/";
+
+				// ここでファイルを保存する処理を追加
+				part.write(getServletContext().getRealPath(filePath) + File.separator + fileName);
+>>>>>>> af962550a1fdfa45d183119871665b8248598369
 
 				// imgPath1 〜 imgPath5 の適切なフィールドにファイルパスを設定する
 				switch (i) {
