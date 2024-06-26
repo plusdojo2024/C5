@@ -1,5 +1,6 @@
 package servlet;
 
+import java.io.File;
 import java.io.IOException;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
@@ -231,10 +232,10 @@ public class RecordServlet extends HttpServlet {
 				Part part = fileParts.get(i);
 				String submittedFileName = getSubmittedFileName(part);
 				String fileName = new String(submittedFileName.getBytes("UTF-8"), "UTF-8");
-				String filePath = "/images/" + fileName;
+				String filePath = "/images/";
 
 				// ここでファイルを保存する処理を追加
-				part.write(getServletContext().getRealPath(filePath));
+				part.write(getServletContext().getRealPath(filePath) + File.separator + fileName);
 
 				// imgPath1 〜 imgPath5 の適切なフィールドにファイルパスを設定する
 				switch (i) {

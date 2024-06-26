@@ -188,21 +188,8 @@ public class TestServlet extends HttpServlet {
 
 			if (sum == 5) {
 				String Perfect = "全問正解！！！！！おめでとう～🎉";
-
 				int score = 10;
 				session.setAttribute("score",score);
-				// 検索処理を行う
-				// ここを改造しました
-//				Sum sum1 = sDao.sum();
-//
-//				int list = sum1.getSum();
-//
-//
-//				int MAX =  list.getScore();
-//				score += MAX;
-//
-//				session.setAttribute("list", list);
-
 				session.setAttribute("perfect", Perfect);
 			} else if (sum == 4) {
 				String Perfect = "惜しい！！";
