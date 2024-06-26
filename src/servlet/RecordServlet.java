@@ -232,7 +232,21 @@ public class RecordServlet extends HttpServlet {
 				Part part = fileParts.get(i);
 				String submittedFileName = getSubmittedFileName(part);
 				String fileName = new String(submittedFileName.getBytes("UTF-8"), "UTF-8");
-				String filePath = "/images/";
+				String absolutePath = "C:\\pleiades\\workspace\\C5\\WebContent\\upload\\";
+				String filePath = absolutePath + "/" + fileName;// 保存先の絶対パスを設定する
+				//filePath = "/images/" + fileName;
+
+				//String fileName = "uploaded_file.txt";
+
+				// ここでファイルを保存する処理を追加
+				//part.write(getServletContext().getRealPath(filePath));
+
+				// ファイル名を生成するなどして、保存するファイルパスを決定する
+
+				Part part2 = request.getPart("file"); // ファイルのパートを取得する
+
+				// ファイルを指定した絶対パスに保存する
+				part2.write(filePath);
 
 				// ここでファイルを保存する処理を追加
 				part.write(getServletContext().getRealPath(filePath) + File.separator + fileName);

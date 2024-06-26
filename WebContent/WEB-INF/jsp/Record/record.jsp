@@ -17,13 +17,13 @@
 </head>
 <body class="RecordBody">
 	<header>
-		<h3>ひろしninaru</h3>
+		<h3>IKUMI</h3>
 	</header>
 	<h2 class="title">育児記録書</h2>
 	<h3 class="calendar">
 		<form action="/C5/RecordServlet" method="get">
 			<input type="date" id="hiduke" name="date"> <input
-				type="submit" value="日付送信">
+				type="submit" value="日付送信" class="dateButton">
 		</form>
 	</h3>
 	<!--<a href="home.html"></a>-->
@@ -43,15 +43,19 @@
 
 	<div class="TimeRecord">
 		<hr>
+		<p>記録</p>
+		<hr>
 		<!--c:forEachで取得したデータを繰り返し表示-->
 		<c:forEach var="e" items="${list}">
-			<p class="RecordData">${e.timeFormat}${e.work}${e.milk_quantity}
-				${e.comment}</p>
+			<p class="RecordData">${e.timeFormat} &emsp; ${e.work} &emsp; ${e.milk_quantity} &emsp; ${e.comment}</p>
+			<hr>
 		</c:forEach>
-		<hr>
+
 		<p>コメント欄</p>
+		<hr>
 		<c:forEach var="c" items="${comments}">
 			<p class="RecordData">${c.comment}</p>
+			<hr>
 		</c:forEach>
 	</div>
 	<form action="/C5/RecordServlet" method="post">
