@@ -45,12 +45,13 @@
 		<hr>
 		<!--c:forEachで取得したデータを繰り返し表示-->
 		<c:forEach var="e" items="${list}">
-			<p class="RecordData">${e.timeFormat}${e.work}${e.milk_quantity}
-				${e.comment}</p>
+			<p class="RecordData">${e.timeFormat} ${e.work} ${e.milk_quantity} ${e.comment}</p>
+			<hr>
 		</c:forEach>
 		<hr>
 		<c:forEach var="c" items="${comments}">
 			<p class="RecordData">${c.comment}</p>
+			<hr>
 		</c:forEach>
 	</div>
 	<form action="/C5/RecordServlet" method="post">
