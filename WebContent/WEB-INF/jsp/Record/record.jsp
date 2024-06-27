@@ -12,61 +12,73 @@
 <link
 	href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@100..900&display=swap"
 	rel="stylesheet">
-<link rel="stylesheet" type="text/css" href="/C5/CSS/style.css">
+<link rel="stylesheet" type="text/css" href="/C5/CSS/record.css">
 <title>育児記録書</title>
 </head>
 <body class="RecordBody">
-	<header>
+	<header class="header">
 		<h3>IKUMI</h3>
 	</header>
-	<h2 class="title">育児記録書</h2>
-	<h3 class="calendar">
+	<h1 class="kiroku ct">育児記録書</h1>
+	<h3 class="ct">
 		<form action="/C5/RecordServlet" method="get">
 			<input type="date" id="hiduke" name="date"> <input
-				type="submit" value="日付送信" class="dateButton">
+				type="submit" value="日付送信" class="button">
 		</form>
 	</h3>
 	<!--<a href="home.html"></a>-->
 	<hr />
-	<div class="upload">
-		<p>アップロードファイル：画像</p>
+	<div class="ct">
+
 		<c:forEach var="p" items="${photo }">
-		<P>${p.img_timestamp }</P>
-			<img src="${p.imgPath1}" width=200 height=200>
-			<img src="${p.imgPath2}" width=200 height=200>
-			<img src="${p.imgPath3}" width=200 height=200>
-			<img src="${p.imgPath4}" width=200 height=200>
-			<img src="${p.imgPath5}" width=200 height=200>
+
+			<div class="slide"><img src=/C5/upload/${p.imgPath1} width=200 height=200></div>
+			<div class="slide"><img src=/C5/upload/${p.imgPath2} width=200 height=200></div>
+			<div class="slide"><img src=/C5/upload/${p.imgPath3} width=200 height=200></div>
+			<div class="slide"><img src=/C5/upload/${p.imgPath4} width=200 height=200></div>
+			<div class="slide"><img src=/C5/upload/${p.imgPath5} width=200 height=200></div>
 		</c:forEach>
+		<a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+    	<a class="next" onclick="plusSlides(1)">&#10095;</a>
 	</div>
+
+	<p class="ct">体温：37.0℃</p>
+
 	<hr />
 
 	<div class="TimeRecord">
 		<hr>
-		<p>記録</p>
+		<p class="ct">記録</p>
 		<hr>
 		<!--c:forEachで取得したデータを繰り返し表示-->
 		<c:forEach var="e" items="${list}">
-			<p class="RecordData">${e.timeFormat} &emsp; ${e.work} &emsp; ${e.milk_quantity} &emsp; ${e.comment}</p>
+			<h3  class="RecordData">${e.timeFormat} &emsp; ${e.work} &emsp; ${e.milk_quantity} &emsp; ${e.comment}</h3 >
 			<hr>
 		</c:forEach>
 
-		<p>コメント欄</p>
+		<p class="ct">コメント欄</p>
 		<hr>
 		<c:forEach var="c" items="${comments}">
-			<p class="RecordData">${c.comment}</p>
+			<h3 class="RecordData">${c.comment}</h3>
 			<hr>
 		</c:forEach>
 	</div>
+	<div class="ct">
 	<form action="/C5/RecordServlet" method="post">
 		<textarea name="RecordComment" class="RecordComment"
 			placeholder="コメントを入力してください"></textarea>
 		<br> <input type="submit" name="koment" value="コメントする"
-			class="CommentButton">
+			class="button">
 	</form>
 	<br>
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
+	</div>
 	<footer>
-		<table align="center">
+		<table class="ct mg">
 			<tr>
 				<td><img src="/C5/images/icons/home.png" class="FixedBar"
 					alt="ホーム"></a></td>
@@ -80,28 +92,54 @@
 			<tr>
 				<td>
 					<form method="get" action="/C5/HomeServlet">
-						<input type="submit" id="" value="ホーム"></input>
+						<input type="submit" id="" value="ホーム" class="button"></input>
 					</form>
 				</td>
 				<td>
 					<form method="get" action="/C5/RecordServlet">
-						<input type="submit" id="" value="記録書"></input>
+						<input type="submit" id="" value="記録書" class="button"></input>
 					</form>
 				</td>
 				<td>
 					<form method="get" action="/C5/HandbookServlet">
-						<input type="submit" id="" value="ハンドブック"></input>
+						<input type="submit" id="" value="ハンドブック" class="button"></input>
 					</form>
 				</td>
 				<td>
 					<form method="get" action="/C5/ConsulServlet">
-						<input type="submit" id="" value="相談所"></input>
+						<input type="submit" id="" value="相談所" class="button"></input>
 					</form>
 				</td>
 			</tr>
 		</table>
 	</footer>
 	<script>
+		let slideIndex = 1;
+		showSlides(slideIndex);
+
+		// 前後のスライドを切り替える関数
+		function plusSlides(n) {
+	  		showSlides(slideIndex += n);
+		}
+
+		// 現在のスライドを表示する関数
+		function showSlides(n) {
+	  		let slides = document.getElementsByClassName("slide");
+
+	  		// 最後のスライドの場合、最初のスライドに戻る
+	  		if (n > slides.length) { slideIndex = 1 }
+	  		// 最初のスライドの場合、最後のスライドに戻る
+	  		if (n < 1) { slideIndex = slides.length }
+
+	  		// すべてのスライドを非表示にする
+	  		for (let i = 0; i < slides.length; i++) {
+	      		slides[i].style.display = "none";
+	  		}
+
+	  		// 指定されたスライドを表示する
+	  		slides[slideIndex - 1].style.display = "block";
+		}
+
 		//曜日を配列として定義
 		const daysOFWeek = [ "日", "月", "火", "水", "木", "金", "土", ]
 

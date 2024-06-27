@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
-<html lang="ja">
+<html lang class = "Content"="ja">
 <head>
   <meta charset="UTF-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -10,17 +10,18 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@100..900&display=swap" rel="stylesheet">
-  <link rel="stylesheet" type="text/css" href="/C5/CSS/style.css">
+  <link rel="stylesheet" type="text/css" href="/C5/CSS/bookchoice.css">
 
   <title>ハンドブック</title>
 </head>
 <header style="text-align: center;">
-    ひろしninaru
+    <h3 class="AppLogo">IKUMI</h3>
 </header>
 
 <body style="text-align: center;">
+    <h1 class="book">Handbook</h1>
 
-    <h1>ハンドブック</h1>
+    <img src="/C5/images/meal.png" class="meal" width="300px" height="200px"> <br>
 
 <!--データベースからとってくる-->
 
@@ -29,7 +30,7 @@
     </form>
 
 <form method="post" action="/C5/HandbookServlet">
-<input type="submit" value="テストへ" class="next">
+<input type="submit" value="テストへ" class="test">
     </form>
 
 <!--ここまでデータベースからとってくる-->
@@ -63,27 +64,27 @@
             <tr>
                 <td>
                 	<form method="get" action="/C5/HomeServlet">
-                	<input type ="submit" id="" value="ホーム"></input>
+                	<input type ="submit" id="" value="ホーム" class="button"></input>
                 	</form>
                 </td>
                 <td>
                 	<form method="get" action="/C5/RecordServlet">
-                	<input type ="submit" id="" value="記録書"></input>
+                	<input type ="submit" id="" value="記録書" class="button"></input>
                 	</form>
                 </td>
                 <td>
                 	<form method="get" action="/C5/HandbookServlet">
-                	<input type ="submit" id="" value="ハンドブック"></input>
+                	<input type ="submit" id="" value="ハンドブック" class="button"></input>
                 	</form>
                 </td>
                 <td>
                 	<form method="get" action="/C5/ConsulServlet">
-                	<input type ="submit" id="" value="相談所"></input>
+                	<input type ="submit" id="" value="相談所" class="button"></input>
                 	</form>
                 </td>
             </tr>
         </table>
     </footer>
-
-      </body>
+</div>
+ </body>
       </html>

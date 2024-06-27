@@ -188,14 +188,8 @@
     color: white;
 }
 
-/*ログアウトボタン*/
 .logoutButton{
-    background-color: #f9c146;
-    color: white;
-    font-weight: bold;
-    border: none;
-    height: 40px;
-    margin-top: 10px;
+    margin-top: 20px;
 }
 
 .headerBox{
@@ -271,6 +265,16 @@
     height: 40px;
 }
 
+/*ログアウトボタン*/
+.logoutButton{
+    background-color: #f9c146;
+    color: white;
+    font-weight: bold;
+    border: none;
+    height: 40px;
+    margin-top: 10px;
+}
+
 footer {
     position: fixed;
     bottom: 0;
@@ -329,7 +333,6 @@ footer {
 /*記録書画面全体*/
 .RecordBody{
     margin: 0%;
-    text-align:center;
     background-color: #b1dbd1 ;
 }
 
@@ -352,17 +355,6 @@ h3{
 	display: block;
 	margin: 20px auto;
 	background-color: #5abca5;
-	color: white;
-    font-weight: bold;
-	border: 0;
-	padding: 5px 45px;
-    font-size: 20px;
-}
-
-#click-btn-kiroku {
-	display: block;
-	margin: 20px auto;
-	background-color: #f9c146;
 	color: white;
     font-weight: bold;
 	border: 0;
@@ -411,15 +403,6 @@ h3{
 	display: block;
 	margin: 20px auto;
 	background-color: #5abca5;
-	color: white;
-	border: 0;
-	padding: 6px 10px;
-}
-
-#click-btn-kiroku{
-	display: block;
-	margin: 20px auto;
-	background-color: red;
 	color: white;
 	border: 0;
 	padding: 6px 10px;

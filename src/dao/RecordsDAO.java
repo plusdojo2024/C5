@@ -84,7 +84,6 @@ public class RecordsDAO {
 				cardList.add(record);
 			}
 
-			//睡眠
 			sql = "select * from record_sleeps "
 					+ "where cast(sleep_timestamp as date) = ? AND user_id = ? ";
 			pStmt = conn.prepareStatement(sql);
@@ -103,7 +102,6 @@ public class RecordsDAO {
 				record.setComment(rs.getString("sleep_comment"));
 				cardList.add(record);
 			}
-
 		}
 
 		catch (SQLException e) {
@@ -124,7 +122,6 @@ public class RecordsDAO {
 
 			}
 		}
-
 		// 結果を返す
 		return cardList;
 	}
