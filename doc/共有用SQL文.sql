@@ -228,3 +228,10 @@ INSERT INTO Games  (id, quiz, choice_1, choice_2, choice_3, choice_4, correct, s
 '4',
 '10'
 );
+
+//scoresテーブルデータ
+create table scores(
+	id int primary key,
+	user_name int,
+	score int
+);
