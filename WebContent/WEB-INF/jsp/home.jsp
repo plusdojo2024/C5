@@ -34,7 +34,6 @@
 
 		<c:choose>
 			<c:when test="${sum <= 20 or sum == null}">
-				<h3>称号：</h3>
 				<p>
 					<img src="/C5/images/icons/a_1920.png" width="70px" height="90px"
 						id="ml">
