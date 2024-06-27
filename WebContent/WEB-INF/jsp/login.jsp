@@ -17,7 +17,7 @@
     <div class="WhiteBox">
 
       <h1>
-        ひろしninaru
+        IKUMI
       </h1>
 
         <div>
