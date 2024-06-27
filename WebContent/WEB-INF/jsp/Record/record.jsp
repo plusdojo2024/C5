@@ -32,7 +32,7 @@
 
 		<c:forEach var="p" items="${photo }">
 
-			<div class="slide"><img src=/C5/upload/${p.imgPath1} width=200 height=200></div>
+			<div class="slide"><img src=/C5/upload/${p.imgPath1} width=300 height=200></div>
 			<div class="slide"><img src=/C5/upload/${p.imgPath2} width=200 height=200></div>
 			<div class="slide"><img src=/C5/upload/${p.imgPath3} width=200 height=200></div>
 			<div class="slide"><img src=/C5/upload/${p.imgPath4} width=200 height=200></div>
