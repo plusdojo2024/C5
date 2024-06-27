@@ -232,6 +232,6 @@ INSERT INTO Games  (id, quiz, choice_1, choice_2, choice_3, choice_4, correct, s
 //scoresテーブルデータ
 create table scores(
 	id int primary key,
-	user_name int,
+	user_id int,
 	score int
 );
