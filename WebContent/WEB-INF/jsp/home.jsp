@@ -33,32 +33,32 @@
 		<c:choose>
 			<c:when test="${sum <= 20 or sum == null}">
 				<p>
-					<img src="/C5/images/icons/a_1920.jpeg" width="70px" height="90px" id="ml">
+					<img src="/C5/images/icons/a_1920.png" width="80px" height="90px" id="ml">
 				</p>
 			</c:when>
 			<c:when test="${sum <= 40}">
 				<p>
-					<img src="/C5/images/icons/c_1920.png" width="70px" height="90px">
+					<img src="/C5/images/icons/c_1920.png" width="80px" height="90px">
 				</p>
 			</c:when>
 			<c:when test="${sum <= 60}">
 				<p>
-					<img src="/C5/images/icons/d_1920.png" width="70px" height="90px">
+					<img src="/C5/images/icons/d_1920.png" width="80px" height="90px">
 				</p>
 			</c:when>
 			<c:when test="${sum <= 80}">
 				<p>
-					<img src="/C5/images/icons/b_1920.png" width="70px" height="90px">
+					<img src="/C5/images/icons/b_1920.png" width="80px" height="90px">
 				</p>
 			</c:when>
 			<c:when test="${sum <= 99}">
 				<p>
-					<img src="/C5/images/icons/e_1920.png" width="70px" height="90px">
+					<img src="/C5/images/icons/e_1920.png" width="80px" height="90px">
 				</p>
 			</c:when>
 			<c:otherwise>
 				<p>
-					<img src="/C5/images/icons/f_1920.png" width="70px" height="90px" id="ml">
+					<img src="/C5/images/icons/f_1920.png" width="80px" height="90px" id="ml">
 				</p>
 			</c:otherwise>
 		</c:choose>
@@ -79,7 +79,7 @@
 		<!--↓生年月日を表示する-->
 		<p id="result"></p>
 
-		<img src="image/IKUMI.png" class="homeIkumi"> <br>
+		<img src="/C5/images/IKUMI.png" class="homeIkumi"> <br>
 		<button id="click-btn">体温を測る</button>
 		<div id="popup-wrapper">
 			<div id="popup-inside">
@@ -102,16 +102,16 @@
 				</div>
 			</div>
 		</div>
-		<h2>記録する</h2>
+			<button id="click-btn-kiroku">記録する</button>
 		<table align="center">
 			<tr>
-				<td><img src="/C5/images/icons/poop.jpeg" class="RecordIcon"
+				<td><img src="/C5/images/icons/poop.png" class="RecordIcon"
 					alt="排泄"></td>
-				<td><img src="/C5/images/icons/sleepingHima.png"
+				<td><img src="/C5/images/icons/sleep.png"
 					class="RecordIcon" alt="睡眠"></td>
-				<td><img src="/C5/images/icons/milk.jpeg" class="RecordIcon"
+				<td><img src="/C5/images/icons/milk.png" class="RecordIcon"
 					alt="ごはん"></td>
-				<td><img src="/C5/images/icons/photos.jpeg" class="RecordIcon"
+				<td><img src="/C5/images/icons/photos.png" class="RecordIcon"
 					alt="写真"></td>
 			</tr>
 

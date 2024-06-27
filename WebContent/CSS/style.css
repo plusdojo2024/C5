@@ -359,6 +359,17 @@ h3{
     font-size: 20px;
 }
 
+#click-btn-kiroku {
+	display: block;
+	margin: 20px auto;
+	background-color: #f9c146;
+	color: white;
+    font-weight: bold;
+	border: 0;
+	padding: 5px 45px;
+    font-size: 20px;
+}
+
 #popup-wrapper {
 	background-color: rgba(0, 0, 0, .5);
 	position: fixed;
@@ -400,6 +411,15 @@ h3{
 	display: block;
 	margin: 20px auto;
 	background-color: #5abca5;
+	color: white;
+	border: 0;
+	padding: 6px 10px;
+}
+
+#click-btn-kiroku{
+	display: block;
+	margin: 20px auto;
+	background-color: red;
 	color: white;
 	border: 0;
 	padding: 6px 10px;
